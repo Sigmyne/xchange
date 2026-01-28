@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased]
+
+### Changed
+
+ - #18: A few code style improvements, spotted by cppcheck.
+ 
+
+
 ## [1.1.0] - 2025-11-10
 
 Minor feature release with bug fixes.

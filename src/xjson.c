@@ -1002,7 +1002,7 @@ static void *ParseArray(char **pos, XType *type, int *ndim, int sizes[X_MAX_DIMS
 
 static int GetObjectStringSize(int prefixSize, const XStructure *s) {
   int n;
-  XField *f;
+  const XField *f;
 
   if(!s) return 0;
 
@@ -1022,7 +1022,7 @@ static int PrintObject(const char *prefix, const XStructure *s, char *str) {
   static const char *fn = "PrintObject";
 
   char *fieldPrefix;
-  XField *f;
+  const XField *f;
   int n = 0;
 
   if(!s) return X_SUCCESS;

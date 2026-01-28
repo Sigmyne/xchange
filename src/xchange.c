@@ -556,8 +556,8 @@ static int CompareToken(const char *a, const char *b) {
  *                  parsing a floating-point value.
  * @return          the floating-point value at the head of the string, or NAN if the input string is NULL, or
  *                  0.0 if the string does not start with a numerical value, or is a value near zero that
- *                  cannot be represented by a float (underflow) or +/- INFINITY (or `HUGE_VAL` if INFINITY is
- *                  not defined in math.h) if the value exceeds the float range (overflow). In cases of
+ *                  cannot be represented by a float (underflow) or +/- `INFINITY` (or `HUGE_VAL` if `INFINITY`
+ *                  is not defined in math.h) if the value exceeds the float range (overflow). In cases of
  *                  underflow or overflow errno will be set to ERANGE.
  *
  * @sa xParseFloat()
@@ -621,7 +621,7 @@ double xParseDouble(const char *str, char **tail) {
  *                  parsing a floating-point value.
  * @return          the floating-point value at the head of the string, or NAN if the input string is NULL, or
  *                  0.0F if the string does not start with a numerical value, or is a value near zero that
- *                  cannot be represented by a float (underflow) or +/- INFINITY (or `HUGE_VAL` if INFINITY is
+ *                  cannot be represented by a float (underflow) or +/- `INFINITY` (or `HUGE_VAL` if `INFINITY` is
  *                  not defined in math.h) if the value exceeds the float range (overflow). In cases of
  *                  underflow or overflow errno will be set to ERANGE.
  *

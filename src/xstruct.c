@@ -101,7 +101,6 @@ XStructure *xCopyOfStruct(const XStructure *s) {
   }
 
   copy = xCreateStruct();
-  if(!copy) return x_trace_null(fn, NULL);
 
   for(f = s->firstField; f != NULL; f = f->next) {
     XField *cf = xCopyOfField(f);
@@ -1165,7 +1164,7 @@ XField *xSetField(XStructure *s, XField *f) {
  * @sa xDeepCountFields()
  */
 int xCountFields(const XStructure *s) {
-  XField *f;
+  const XField *f;
   int n = 0;
 
   if(!s) return 0;
@@ -1393,7 +1392,7 @@ int xReduceStruct(XStructure *s) {
     // We can eliminate the unnecessary nesting.
 
     XStructure *sub = (XStructure *) f->value;
-    XField *sf;
+    const XField *sf;
 
     s->firstField = sub->firstField;
 

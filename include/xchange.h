@@ -22,10 +22,10 @@
 #define XCHANGE_MINOR_VERSION  1
 
 /// Integer sub version of the release
-#define XCHANGE_PATCHLEVEL     0
+#define XCHANGE_PATCHLEVEL     1
 
 /// Additional release information in version, e.g. "-1", or "-rc1".
-#define XCHANGE_RELEASE_STRING ""
+#define XCHANGE_RELEASE_STRING "-devel"
 
 
 #ifdef str_2
@@ -84,8 +84,8 @@ typedef int XType;          ///< SMA-X data type.
 
 #define X_CHARS(length)      (-(length))    ///< \hideinitializer A fixed-size sequence of 'length' bytes.
 #define X_UNKNOWN           0       ///< Unknown XType (default)
-#define X_BOOLEAN           '?'     ///< \hideinitializer `boolean` XType
-#define X_BYTE              'B'     ///< \hideinitializer single `byte` XType
+#define X_BOOLEAN           '?'     ///< \hideinitializer boolean XType
+#define X_BYTE              'B'     ///< \hideinitializer single byte XType
 #define X_INT16             'S'     ///< \hideinitializer 16-bit integer Xtype
 #define X_INT32             'L'     ///< \hideinitializer 32-bit integer Xtype
 #define X_INT64             'Y'     ///< \hideinitializer 64-bit integer Xtype
@@ -106,11 +106,11 @@ typedef int XType;          ///< SMA-X data type.
 
 // Match platform-specific integer types to fixed width types
 #if SHRT_MAX == X_INT16_MAX
-#  define X_SHORT             X_INT16     ///< \hideinitializer native `short` XType
+#  define X_SHORT             X_INT16     ///< \hideinitializer native `short` integer XType
 #elif SHRT_MAX == X_INT32_MAX
-#  define X_SHORT             X_INT32     ///< \hideinitializer native `short` XType
+#  define X_SHORT             X_INT32     ///< \hideinitializer native `short` integer XType
 #elif SHRT_MAX == X_INT64_MAX
-#  define X_SHORT             X_INT64     ///< \hideinitializer native `short` XType
+#  define X_SHORT             X_INT64     ///< \hideinitializer native `short` integer XType
 #else
 #  error "xchange.h: Unmatched X_SHORT"
 #endif
@@ -126,17 +126,17 @@ typedef int XType;          ///< SMA-X data type.
 #endif
 
 #if LONG_MAX == X_INT32_MAX
-#  define X_LONG              X_INT32     ///< \hideinitializer native `long` XType
+#  define X_LONG              X_INT32     ///< \hideinitializer native `long` integer XType
 #elif LONG_MAX == X_INT64_MAX
-#  define X_LONG              X_INT64     ///< \hideinitializer native `long` XType
+#  define X_LONG              X_INT64     ///< \hideinitializer native `long` integer XType
 #else
 #  error "xchange.h: Unmatched X_LONG"
 #endif
 
 #if !defined(LLONG_MAX) || LLONG_MAX == X_INT64_MAX
-#  define X_LLONG             X_INT64     ///< \hideinitializer native `long long` XType
+#  define X_LLONG             X_INT64     ///< \hideinitializer native `long long` integer XType
 #else
-#  define X_LLONG             X_UNDEFINED ///< \hideinitializer no native `long long` XType
+#  define X_LLONG             X_UNDEFINED ///< \hideinitializer no native `long long` integer XType
 #endif
 
 // We only needed the limits up to here, no need to export them...
