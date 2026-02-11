@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the [Smithsonian/xchange](https://github.com/Smithsonian/xchange) library will be documented 
+All notable changes to the [Sigmyne/xchange](https://github.com/Sigmyne/xchange) library will be documented 
 in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to 

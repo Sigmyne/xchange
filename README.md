@@ -1,20 +1,12 @@
-![Build Status](https://github.com/Smithsonian/xchange/actions/workflows/build.yml/badge.svg)
-![Tests](https://github.com/Smithsonian/xchange/actions/workflows/test.yml/badge.svg)
-![Static Analysis](https://github.com/Smithsonian/xchange/actions/workflows/analyze.yml/badge.svg)
-<a href="https://smithsonian.github.io/xchange/apidoc/html/files.html">
- ![API documentation](https://github.com/Smithsonian/xchange/actions/workflows/dox.yml/badge.svg)
+![Build Status](https://github.com/Sigmyne/xchange/actions/workflows/build.yml/badge.svg)
+![Tests](https://github.com/Sigmyne/xchange/actions/workflows/test.yml/badge.svg)
+![Static Analysis](https://github.com/Sigmyne/xchange/actions/workflows/analyze.yml/badge.svg)
+<a href="https://sigmyne.github.io/xchange/apidoc/html/files.html">
+ ![API documentation](https://github.com/Sigmyne/xchange/actions/workflows/dox.yml/badge.svg)
 </a>
-<a href="https://smithsonian.github.io/xchange/index.html">
- ![Project page](https://github.com/Smithsonian/xchange/actions/workflows/pages/pages-build-deployment/badge.svg)
+<a href="https://sigmyne.github.io/xchange/index.html">
+ ![Project page](https://github.com/Sigmyne/xchange/actions/workflows/pages/pages-build-deployment/badge.svg)
 </a>
-
-<picture>
-  <source srcset="resources/CfA-logo-dark.png" alt="CfA logo" media="(prefers-color-scheme: dark)"/>
-  <source srcset="resources/CfA-logo.png" alt="CfA logo" media="(prefers-color-scheme: light)"/>
-  <img src="resources/CfA-logo.png" alt="CfA logo" width="400" height="67" align="right"/>
-</picture>
-<br clear="all">
-
 
 # xchange 
 
@@ -22,8 +14,8 @@
 
 Structured data representation and JSON support for C/C++.
 
- - [API documentation](https://smithsonian.github.io/xchange/apidoc/html/files.html)
- - [Project page](https://smithsonian.github.io/xchange) on github.io
+ - [API documentation](https://sigmyne.github.io/xchange/apidoc/html/files.html)
+ - [Project page](https://sigmyne.github.io/xchange) on github.io
 
 Author: Attila Kovacs
 
@@ -53,9 +45,8 @@ JSON parsing and generation. It is free to use, in any way you like, without lic
 For JSON parsing end emitting, __xchange__ provides a higher-level data model than __cjson__, with high-level 
 functions for accessing and manipulating data both with less code and with cleaner code.
 
-The __xchange__ library was created, and is maintained, by Attila Kovács at the Center for Astrophysics \| Harvard 
-&amp; Smithsonian, and it is available through the [Smithsonian/xchange](https://github.com/Smithsonian/xchange) 
-repository on GitHub. 
+The __xchange__ library was created, and is maintained, by Attila Kovács (Sigmyne, LLC), and it is available through 
+the [Sigmyne/xchange](https://github.com/Sigmyne/xchange) repository on GitHub. 
 
 -----------------------------------------------------------------------------
 
@@ -610,7 +601,7 @@ rolled out in bug-fix releases as long as they do not affect the existing API --
 bug-fix releases fully backwards compatible with their parent versions.
 
 In the weeks and month(s) preceding releases one or more _release candidates_ (e.g. `1.0.1-rc3`) will be published 
-temporarily on GitHub, under [Releases](https://github.com/Smithsonian/xchange/releases), so that changes can be 
+temporarily on GitHub, under [Releases](https://github.com/Sigmyne/xchange/releases), so that changes can be 
 tested by adopters before the releases are finalized. Please use due diligence to test such release candidates with 
 your code when they become available to avoid unexpected surprises when the finalized release is published. Release 
 candidates are typically available for one week only before they are superseded either by another, or by the finalized 
