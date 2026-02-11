@@ -40,7 +40,7 @@ jobs:
     - name: install doxygen
       run: sudo apt-get install doxygen
    
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Generate docs
       run: make dox
@@ -54,7 +54,7 @@ jobs:
     steps:
     
     - name: Checkout source
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
         
     - name: Generate headless README
       run: make README-xchange.md
@@ -64,7 +64,7 @@ jobs:
         additional-packages: font-roboto
        
     - name: Checkout gh-pages
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         ref: 'gh-pages'
         path: site
@@ -99,10 +99,10 @@ jobs:
     steps:
     
     - name: Checkout source
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
        
     - name: Checkout gh-pages
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         ref: 'gh-pages'
         path: site

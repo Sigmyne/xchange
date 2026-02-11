@@ -33,7 +33,7 @@ jobs:
     - name: install doxygen
       run: sudo apt-get install doxygen
     
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Build distro
       run: make distro
