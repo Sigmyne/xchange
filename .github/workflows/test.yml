@@ -34,7 +34,7 @@ jobs:
       LIB: ${{ github.workspace }}/lib
       LD_LIBRARY_PATH: ${{ github.workspace }}/lib
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     
     - name: Build and run tests
       run: make test
@@ -59,7 +59,7 @@ jobs:
           - arch: ppc64le
             distro: ubuntu_latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: uraimo/run-on-arch-action@v3
         name: Run regression tests
         id: test
