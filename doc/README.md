@@ -1,11 +1,9 @@
-<img src="/xchange/resources/CfA-logo.png" alt="CfA logo" width="400" height="67" align="right">
-<br clear="all">
-[![DOI](https://zenodo.org/badge/796202092.svg)](https://doi.org/10.5281/zenodo.14634824)
+[![DOI](resources/796202092.svg)](https://doi.org/10.5281/zenodo.14634824)
 
 Structured data representation and JSON support for C/C++.
 
- - [API documentation](https://smithsonian.github.io/xchange/apidoc/html/files.html)
- - [Project page](https://smithsonian.github.io/xchange) on github.io
+ - [API documentation](https://sigmyne.github.io/xchange/apidoc/html/files.html)
+ - [Project page](https://sigmyne.github.io/xchange) on github.io
 
 Author: Attila Kovacs
 
@@ -20,7 +18,8 @@ Updated for 1.0 and later releases.
  - [JSON parser and emitter](#json-interchange)
  - [Error handling](#xchange-error-handling)
  - [Debugging support](#xchange-debugging-support)
- - [Future plans](#xchange-future-plans) 
+ - [Future plans](#xchange-future-plans)
+ - [Release schedule](#xchange-release-schedule)
 
 
 -----------------------------------------------------------------------------
@@ -28,15 +27,14 @@ Updated for 1.0 and later releases.
 <a name="xchange-introduction"></a>
 ## Introduction
 
-The __xchange__ library provides a free framework structured data representation and exchange in C/C++, and includes 
-support for JSON parsing and generation. It is free to use, in any way you like, without licensing restrictions.
+The __xchange__ library provides structured data representation and exchange in C/C++, and includes support for 
+JSON parsing and generation. It is free to use, in any way you like, without licensing restrictions.
 
 For JSON parsing end emitting, __xchange__ provides a higher-level data model than __cjson__, with high-level 
 functions for accessing and manipulating data both with less code and with cleaner code.
 
-The __xchange__ library was created, and is maintained, by Attila Kovács at the Center for Astrophysics \| Harvard 
-&amp; Smithsonian, and it is available through the [Smithsonian/xchange](https://github.com/Smithsonian/xchange) 
-repository on GitHub. 
+The __xchange__ library was created, and is maintained, by Attila Kovács (Sigmyne, LLC), and it is available through 
+the [Sigmyne/xchange](https://github.com/Sigmyne/xchange) repository on GitHub. 
 
 -----------------------------------------------------------------------------
 
@@ -60,11 +58,18 @@ prior to invoking `make`. The following build variables can be configured:
    defined then `-std=$(CSTANDARD)` is added to `CFLAGS` automatically.
    
  - `WEXTRA`: If set to 1, `-Wextra` is added to `CFLAGS` automatically.
+
+ - `FORTIFY`: If set it will set the `_FORTIFY_SOURCE` macro to the specified value (`gcc` supports values 1 
+   through 3). It affords varying levels of extra compile time / runtime checks.
    
  - `LDFLAGS`: Extra linker flags (default: _not set_). Note, `-lm -lpthread` will be added automatically.
 
  - `CHECKEXTRA`: Extra options to pass to `cppcheck` for the `make check` target
 
+ - `DOXYGEN`: Specify the `doxygen` executable to use for generating documentation. If not set (default), `make` will
+   use `doxygen` in your `PATH` (if any). You can also set it to `none` to disable document generation and the
+   checking for a usable `doxygen` version entirely.
+ 
  
 After configuring, you can simply run `make`, which will build the `shared` (`lib/libxchange.so[.1]`) and `static` 
 (`lib/libxchange.a`) libraries, local HTML documentation (provided `doxygen` is available), and performs static
@@ -142,8 +147,8 @@ The __xchange__ library supports most basic (primitive) data types used across p
 shows the unique __xchange__ types recognized by the library and the corresponding pointer/array type values:
 
  | `XType`       | element type             | Comment / example                                               |
- |---------------|--------------------------|-----------------------------------------------------------------|
- | `X_BOOLEAN`   | `boolean`                | '`true`' or '`false`'                                           |
+ |:--------------|:------------------------:|:----------------------------------------------------------------|
+ | `X_BOOLEAN`   | `boolean`                | `TRUE` (1 or non-zero) or `FALSE` (0)                           |
  | `X_BYTE`      | `char`                   | '`-128`' to  '`127`'                                            |
  | `X_INT16`     | `int16_t`                | '`-32768`' to '`32767`'                                         |
  | `X_INT32`     | `int32_t`                | '`-2,147,483,648`' to '`2,147,483,647`'                         |
@@ -159,15 +164,16 @@ The `boolean` type is defined in `xchange.h`. The `XField.value` is a pointer / 
 an `XField` of type `X_DOUBLE` will have a `value` field that should be cast a `(double *)`, while for type `X_STRING`
 the value field shall be cast as `(char **)`.
 
-Additionally, the __xchange__ also defines derivatives types, for native integer types, whose widths are platform
-dependent. Hence, these alias the matching unique types by the C preprocessor during compilation:
+Additionally, the __xchange__ also defines derivative `XType` values for native integer storage types, whose widths 
+depend on the particular CPU architecture. Hence, these are aliased to matching unique types (above) by the C 
+preprocessor during compilation:
 
- | `XType`       | native type              | Comment / example                                               |
- |---------------|--------------------------|-----------------------------------------------------------------|
- | `X_SHORT`     | `short`                  | at least 16-bits                                                |
- | `X_INT`       | `int`                    | at least 16-bits                                                |
- | `X_LONG`      | `long`                   | at least 32-bits                                                |
- | `X_LLONG`     | `long long`              | at least 64-bits                                                |
+ | `XType`       | element type             | width            | alias of                                   |
+ |:--------------|:------------------------:|:----------------:|:-------------------------------------------|
+ | `X_SHORT`     | `short`                  |   &gt;= 16-bits  | typically `X_INT16`                        |
+ | `X_INT`       | `int`                    |   &gt;= 16-bits  | often `X_INT32`                            |
+ | `X_LONG`      | `long`                   |   &gt;= 32-bits  | typically `X_INT32` or `X_INT64`           |
+ | `X_LLONG`     | `long long`              |   &gt;= 64-bits  | typically `X_INT64`                        |
 
 
 <a name="xchange-strings"></a>
@@ -220,8 +226,8 @@ The __xchange__ library supports array data types in one or more dimensions (up 
 create a field for 2&times;3&times;4 array of `double`s, you may have something along:
 
 ```c
-  double data[2][3][4] = ...;		// The native array in C
-  int sizes[] = { 2, 3, 4 };		// An array containing the dimensions for xchange
+  double data[2][3][4] = ...;           // The native array in C
+  int sizes[] = { 2, 3, 4 };            // An array containing the dimensions for xchange
   
   // Create a field for the 3-dimensional array with the specified shape.
   XField *f = xCreateField("my-array", X_DOUBLE, 3, sizes, data);
@@ -236,7 +242,7 @@ Arrays of irregular shape or mixed element types can be represented by fields co
 entries:
 
 ```c
-  XField *row1, row2, ...  		   // Heterogeneous entries, each wrapped in an `XField`
+  XField *row1, *row2, ...                 // Heterogeneous entries, each wrapped in an `XField`
   XField data[N] = { *row1, *row2, ... };  // The irregular / mixed-type array. 
 
   XField *f = xCreateMixed1DField("my_array", N);
@@ -425,6 +431,8 @@ structure (and its substructures) in descending alphabetical order:
 Once you have an `XStructure` data object, you can easily convert it to JSON string representation, as:
 
 ```c
+  #include <xjson.h>
+
   XStructure *s = ...
 
   // Obtain a JSON string representation of the structure 's'.
@@ -435,9 +443,11 @@ The above produces a proper JSON document. Or, you can do the reverse and create
 representation, either from a string (a 0-terminated `char` array):
 
 ```c
-  int lineNumber = 0;
-  XStructure *s1 = xjsonParseAt(json, &lineNumber);
-  if (s1 == NULL) {
+  #include <xjson.h>
+
+  char *tail;    // for return parse position
+  XStructure *s = xjsonParseString(json, &tail);
+  if (s == NULL) {
      // Oops, there was some problem...
   }
 ```
@@ -445,13 +455,15 @@ representation, either from a string (a 0-terminated `char` array):
 or parse it from a file, which contains a JSON definition of the structured data:
 
 ```c
-  XStructure *s1 = xjsonParseFilename("my-data.json", &lineNumber);
-  if (s1 == NULL) {
+  #include <xjson.h>
+
+  XStructure *s = xjsonParsePath("my-data.json");
+  if (s == NULL) {
      // Oops, there was some problem...
   }
 ```
 
-### Snippets
+### JSON fragments
 
 Alternatively, you can also create partial JSON fragments for individual fields, e.g.:
   
@@ -465,7 +477,7 @@ Alternatively, you can also create partial JSON fragments for individual fields,
 For example, for a numerical array field with 4 elements the above might generate something like:
 
 ```json
-  "my-numbers": [ 1, 2, 3, 4]
+  "my-numbers": [ 1, 2, 3, 4 ]
 ```
 
 
@@ -516,7 +528,7 @@ example,
   char *text = ...
   int status = xParseDouble(text, NULL);
   if (status != X_SUCCESS) {
-    // Ooops, something went wrong...
+    // Oops, something went wrong...
     fprintf(stderr, "WARNING! %s", xErrorDescription(status));
     ...
   }
@@ -525,7 +537,7 @@ example,
 The JSON parser can also sink its error messages to a designated file or stream, which can be set by 
 `xjsonSetErrorStream(FILE *)`.
  
- -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
  
 <a name="xchange-debugging-support"></a>
 ## Debugging support
@@ -543,6 +555,7 @@ verbosity being enabled via `xSetVerbose(boolean)` and `xSetDebug(boolean)`, res
 __xchange__ may use these macros to produce their own verbose and/or debugging outputs conditional on the same global 
 settings. 
 
+-----------------------------------------------------------------------------
 
 <a name="xchange-future-plans"></a>
 ## Future plans
@@ -557,6 +570,31 @@ paths forward are:
 If you have an idea for a must have feature, please let me (Attila) know. Pull requests, for new features or fixes to
 existing ones are especially welcome! 
  
+-----------------------------------------------------------------------------
+
+<a name="xchange-release-schedule"></a>
+## Release schedule
+
+A predictable release schedule and process can help manage expectations and reduce stress on adopters and developers 
+alike.
+
+The __xchange__ library will try to follow a quarterly release schedule. You may expect upcoming releases to be 
+published around __February 1__, __May 1__, __August 1__, and/or __November 1__ each year, on an as-needed basis. That 
+means that if there are outstanding bugs, or new pull requests (PRs), you may expect a release that addresses these in 
+the upcoming quarter. The dates are placeholders only, with no guarantee that a new release will actually be available 
+every quarter. If nothing of note comes up, a potential release date may pass without a release being published.
+
+New features are generally reserved for the feature releases (e.g. __1.x.0__ version bumps), although they may also be 
+rolled out in bug-fix releases as long as they do not affect the existing API -- in line with the desire to keep 
+bug-fix releases fully backwards compatible with their parent versions.
+
+In the weeks and month(s) preceding releases one or more _release candidates_ (e.g. `1.0.1-rc3`) will be published 
+temporarily on GitHub, under [Releases](https://github.com/Sigmyne/xchange/releases), so that changes can be 
+tested by adopters before the releases are finalized. Please use due diligence to test such release candidates with 
+your code when they become available to avoid unexpected surprises when the finalized release is published. Release 
+candidates are typically available for one week only before they are superseded either by another, or by the finalized 
+release.
+
 
 -----------------------------------------------------------------------------
-Copyright (C) 2024 Attila Kovács
+Copyright (C) 2025 Attila Kovács

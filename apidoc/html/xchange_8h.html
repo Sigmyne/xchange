@@ -45,7 +45,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="smithsonian-logo-55x55.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Sigmyne-logo-55x55.png"/></td>
   <td id="projectalign">
    <div id="projectname">xchange<span id="projectnumber">&#160;v1.0</span>
    </div>
@@ -144,8 +144,8 @@ Macros</h2></td></tr>
 <tr class="memdesc:aa93f0eb578d23995850d61f7d61c55c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean 'false' value, if not already defined. <br /></td></tr>
 <tr class="separator:aa93f0eb578d23995850d61f7d61c55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a956e2723d559858d08644ac99146e910" id="r_a956e2723d559858d08644ac99146e910"><td class="memItemLeft" align="right" valign="top"><a id="a956e2723d559858d08644ac99146e910" name="a956e2723d559858d08644ac99146e910"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INFINITY</b>&#160;&#160;&#160;(1.0/0.0)</td></tr>
-<tr class="memdesc:a956e2723d559858d08644ac99146e910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Infinity in case it's not already defined in math.h. <br /></td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>INFINITY</b>&#160;&#160;&#160;HUGE_VAL</td></tr>
+<tr class="memdesc:a956e2723d559858d08644ac99146e910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Infinity in case it's not already defined in math.h (uses C89 <code>HUGE_VAL</code>) <br /></td></tr>
 <tr class="separator:a956e2723d559858d08644ac99146e910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73012d5991cc49ef05bf1d621a1cde55" id="r_a73012d5991cc49ef05bf1d621a1cde55"><td class="memItemLeft" align="right" valign="top"><a id="a73012d5991cc49ef05bf1d621a1cde55" name="a73012d5991cc49ef05bf1d621a1cde55"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_DEBUG_ERROR_COUNT</b>&#160;&#160;&#160;100</td></tr>
@@ -173,11 +173,11 @@ Macros</h2></td></tr>
 <tr class="separator:a9e947ab368178c7e248b3cf8b26defa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe0465f7669775b6129551a7ef3300bc" id="r_abe0465f7669775b6129551a7ef3300bc"><td class="memItemLeft" align="right" valign="top"><a id="abe0465f7669775b6129551a7ef3300bc" name="abe0465f7669775b6129551a7ef3300bc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_BOOLEAN</b></td></tr>
-<tr class="memdesc:abe0465f7669775b6129551a7ef3300bc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>boolean</code> XType <br /></td></tr>
+<tr class="memdesc:abe0465f7669775b6129551a7ef3300bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">boolean XType <br /></td></tr>
 <tr class="separator:abe0465f7669775b6129551a7ef3300bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb01219635d162589ae5aadb90702bb0" id="r_afb01219635d162589ae5aadb90702bb0"><td class="memItemLeft" align="right" valign="top"><a id="afb01219635d162589ae5aadb90702bb0" name="afb01219635d162589ae5aadb90702bb0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_BYTE</b></td></tr>
-<tr class="memdesc:afb01219635d162589ae5aadb90702bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">single <code>byte</code> XType <br /></td></tr>
+<tr class="memdesc:afb01219635d162589ae5aadb90702bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">single byte XType <br /></td></tr>
 <tr class="separator:afb01219635d162589ae5aadb90702bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76d723969626d4e25235eb24533e3e3a" id="r_a76d723969626d4e25235eb24533e3e3a"><td class="memItemLeft" align="right" valign="top"><a id="a76d723969626d4e25235eb24533e3e3a" name="a76d723969626d4e25235eb24533e3e3a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_CHARS</b>(length)</td></tr>
@@ -209,34 +209,38 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INCOMPLETE</b>&#160;&#160;&#160;(-9)</td></tr>
 <tr class="memdesc:a888dbfa464548f0b65794e172713160b"><td class="mdescLeft">&#160;</td><td class="mdescRight">incomplete data transfer <br /></td></tr>
 <tr class="separator:a888dbfa464548f0b65794e172713160b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4003d7fe06200f77805c52cc7db56784" id="r_a4003d7fe06200f77805c52cc7db56784"><td class="memItemLeft" align="right" valign="top"><a id="a4003d7fe06200f77805c52cc7db56784" name="a4003d7fe06200f77805c52cc7db56784"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INT</b></td></tr>
-<tr class="memdesc:a4003d7fe06200f77805c52cc7db56784"><td class="mdescLeft">&#160;</td><td class="mdescRight">native <code>int</code> XType <br /></td></tr>
-<tr class="separator:a4003d7fe06200f77805c52cc7db56784"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bb3051d3e40b57dc6ef5f1592cc8c75" id="r_a3bb3051d3e40b57dc6ef5f1592cc8c75"><td class="memItemLeft" align="right" valign="top"><a id="a3bb3051d3e40b57dc6ef5f1592cc8c75" name="a3bb3051d3e40b57dc6ef5f1592cc8c75"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INT16</b></td></tr>
 <tr class="memdesc:a3bb3051d3e40b57dc6ef5f1592cc8c75"><td class="mdescLeft">&#160;</td><td class="mdescRight">16-bit integer Xtype <br /></td></tr>
 <tr class="separator:a3bb3051d3e40b57dc6ef5f1592cc8c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabe0e9c885960aaa25b5f6344131546d" id="r_aabe0e9c885960aaa25b5f6344131546d"><td class="memItemLeft" align="right" valign="top"><a id="aabe0e9c885960aaa25b5f6344131546d" name="aabe0e9c885960aaa25b5f6344131546d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INT16_MAX</b>&#160;&#160;&#160;32767</td></tr>
+<tr class="memdesc:aabe0e9c885960aaa25b5f6344131546d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest 16-bit integer value. <br /></td></tr>
+<tr class="separator:aabe0e9c885960aaa25b5f6344131546d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a247a3094d14d18583d42abba83d0d9a5" id="r_a247a3094d14d18583d42abba83d0d9a5"><td class="memItemLeft" align="right" valign="top"><a id="a247a3094d14d18583d42abba83d0d9a5" name="a247a3094d14d18583d42abba83d0d9a5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INT32</b></td></tr>
 <tr class="memdesc:a247a3094d14d18583d42abba83d0d9a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">32-bit integer Xtype <br /></td></tr>
 <tr class="separator:a247a3094d14d18583d42abba83d0d9a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a805abf3832ea0c88ef3ed803eed95059" id="r_a805abf3832ea0c88ef3ed803eed95059"><td class="memItemLeft" align="right" valign="top"><a id="a805abf3832ea0c88ef3ed803eed95059" name="a805abf3832ea0c88ef3ed803eed95059"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INT32_MAX</b>&#160;&#160;&#160;2147483647</td></tr>
+<tr class="memdesc:a805abf3832ea0c88ef3ed803eed95059"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest 32-bit integer value. <br /></td></tr>
+<tr class="separator:a805abf3832ea0c88ef3ed803eed95059"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9343538ba7ef4aff10d4bed7353be9d" id="r_ad9343538ba7ef4aff10d4bed7353be9d"><td class="memItemLeft" align="right" valign="top"><a id="ad9343538ba7ef4aff10d4bed7353be9d" name="ad9343538ba7ef4aff10d4bed7353be9d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INT64</b></td></tr>
 <tr class="memdesc:ad9343538ba7ef4aff10d4bed7353be9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">64-bit integer Xtype <br /></td></tr>
 <tr class="separator:ad9343538ba7ef4aff10d4bed7353be9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44937132e92cb7ae4ec2414db86d252e" id="r_a44937132e92cb7ae4ec2414db86d252e"><td class="memItemLeft" align="right" valign="top"><a id="a44937132e92cb7ae4ec2414db86d252e" name="a44937132e92cb7ae4ec2414db86d252e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INT64_MAX</b>&#160;&#160;&#160;9223372036854775807LL</td></tr>
+<tr class="memdesc:a44937132e92cb7ae4ec2414db86d252e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest 64-bit integer value. <br /></td></tr>
+<tr class="separator:a44937132e92cb7ae4ec2414db86d252e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3942401de37f774e72393ffa73c9fb9f" id="r_a3942401de37f774e72393ffa73c9fb9f"><td class="memItemLeft" align="right" valign="top"><a id="a3942401de37f774e72393ffa73c9fb9f" name="a3942401de37f774e72393ffa73c9fb9f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_INTERRUPTED</b>&#160;&#160;&#160;(-8)</td></tr>
 <tr class="memdesc:a3942401de37f774e72393ffa73c9fb9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">a waiting call interrupted by user <br /></td></tr>
 <tr class="separator:a3942401de37f774e72393ffa73c9fb9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32d6187065d543d5d6fb6e1bcd33efdc" id="r_a32d6187065d543d5d6fb6e1bcd33efdc"><td class="memItemLeft" align="right" valign="top"><a id="a32d6187065d543d5d6fb6e1bcd33efdc" name="a32d6187065d543d5d6fb6e1bcd33efdc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_LLONG</b></td></tr>
-<tr class="memdesc:a32d6187065d543d5d6fb6e1bcd33efdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">native <code>long long</code> XType <br /></td></tr>
+<tr class="memdesc:a32d6187065d543d5d6fb6e1bcd33efdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">native <code>long long</code> integer XType <br /></td></tr>
 <tr class="separator:a32d6187065d543d5d6fb6e1bcd33efdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36405f1834eb7cd51a17f103b2942e21" id="r_a36405f1834eb7cd51a17f103b2942e21"><td class="memItemLeft" align="right" valign="top"><a id="a36405f1834eb7cd51a17f103b2942e21" name="a36405f1834eb7cd51a17f103b2942e21"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>X_LONG</b></td></tr>
-<tr class="memdesc:a36405f1834eb7cd51a17f103b2942e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">native <code>long</code> XType <br /></td></tr>
-<tr class="separator:a36405f1834eb7cd51a17f103b2942e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a910ee1c8cd983bf127f7ca2c705d7894" id="r_a910ee1c8cd983bf127f7ca2c705d7894"><td class="memItemLeft" align="right" valign="top"><a id="a910ee1c8cd983bf127f7ca2c705d7894" name="a910ee1c8cd983bf127f7ca2c705d7894"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_MAX_DIMS</b>&#160;&#160;&#160;20</td></tr>
 <tr class="memdesc:a910ee1c8cd983bf127f7ca2c705d7894"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of dimensionas (2^20 -&gt; 1 million points). <br /></td></tr>
@@ -293,10 +297,6 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_SEP_LENGTH</b>&#160;&#160;&#160;(sizeof(<a class="el" href="xchange_8h.html#a923cd66e2074f32817a3468c5617a440">X_SEP</a>) - 1)</td></tr>
 <tr class="memdesc:a28120364666ec6054159012a58ba27af"><td class="mdescLeft">&#160;</td><td class="mdescRight">String length of hierarchical separator. <br /></td></tr>
 <tr class="separator:a28120364666ec6054159012a58ba27af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfdc22097b12d42c040dcce8700d64b8" id="r_adfdc22097b12d42c040dcce8700d64b8"><td class="memItemLeft" align="right" valign="top"><a id="adfdc22097b12d42c040dcce8700d64b8" name="adfdc22097b12d42c040dcce8700d64b8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>X_SHORT</b></td></tr>
-<tr class="memdesc:adfdc22097b12d42c040dcce8700d64b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">native <code>short</code> XType <br /></td></tr>
-<tr class="separator:adfdc22097b12d42c040dcce8700d64b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a816c5dad11d9bfd91a795ed1af30e732" id="r_a816c5dad11d9bfd91a795ed1af30e732"><td class="memItemLeft" align="right" valign="top"><a id="a816c5dad11d9bfd91a795ed1af30e732" name="a816c5dad11d9bfd91a795ed1af30e732"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>X_SIZE_INVALID</b>&#160;&#160;&#160;(-23)</td></tr>
 <tr class="memdesc:a816c5dad11d9bfd91a795ed1af30e732"><td class="mdescLeft">&#160;</td><td class="mdescRight">invalid data size <br /></td></tr>
@@ -340,11 +340,11 @@ Macros</h2></td></tr>
 <tr class="memdesc:a13ea68e798d0cd9cab06667707737055"><td class="mdescLeft">&#160;</td><td class="mdescRight">API major version. <br /></td></tr>
 <tr class="separator:a13ea68e798d0cd9cab06667707737055"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52519844e66bcff3ed17e4feaab76b2f" id="r_a52519844e66bcff3ed17e4feaab76b2f"><td class="memItemLeft" align="right" valign="top"><a id="a52519844e66bcff3ed17e4feaab76b2f" name="a52519844e66bcff3ed17e4feaab76b2f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>XCHANGE_MINOR_VERSION</b>&#160;&#160;&#160;0</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XCHANGE_MINOR_VERSION</b>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:a52519844e66bcff3ed17e4feaab76b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">API minor version. <br /></td></tr>
 <tr class="separator:a52519844e66bcff3ed17e4feaab76b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef108c611a8388c435502dfd89c41a5f" id="r_aef108c611a8388c435502dfd89c41a5f"><td class="memItemLeft" align="right" valign="top"><a id="aef108c611a8388c435502dfd89c41a5f" name="aef108c611a8388c435502dfd89c41a5f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>XCHANGE_PATCHLEVEL</b>&#160;&#160;&#160;0</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>XCHANGE_PATCHLEVEL</b>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:aef108c611a8388c435502dfd89c41a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer sub version of the release. <br /></td></tr>
 <tr class="separator:aef108c611a8388c435502dfd89c41a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cda2967190e2d61c5560bf6b43d930d" id="r_a1cda2967190e2d61c5560bf6b43d930d"><td class="memItemLeft" align="right" valign="top"><a id="a1cda2967190e2d61c5560bf6b43d930d" name="a1cda2967190e2d61c5560bf6b43d930d"></a>
@@ -422,6 +422,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae0ce99c867b11bd14971031eec8ba4ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02ea2d67e4c540ad706edcc1b3a0431e" id="r_a02ea2d67e4c540ad706edcc1b3a0431e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchange_8h.html#a02ea2d67e4c540ad706edcc1b3a0431e">xDestroyLookup</a> (<a class="el" href="structXLookupTable.html">XLookupTable</a> *tab)</td></tr>
 <tr class="separator:a02ea2d67e4c540ad706edcc1b3a0431e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f3e8af10b2ef8979eac5d7534648c1" id="r_a01f3e8af10b2ef8979eac5d7534648c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchange_8h.html#a01f3e8af10b2ef8979eac5d7534648c1">xDestroyLookupAndData</a> (<a class="el" href="structXLookupTable.html">XLookupTable</a> *tab)</td></tr>
+<tr class="separator:a01f3e8af10b2ef8979eac5d7534648c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe3fda2f392bae11e136e8c0c90f086d" id="r_afe3fda2f392bae11e136e8c0c90f086d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchange_8h.html#afe3fda2f392bae11e136e8c0c90f086d">xDestroyStruct</a> (<a class="el" href="structXStructure.html">XStructure</a> *s)</td></tr>
 <tr class="separator:afe3fda2f392bae11e136e8c0c90f086d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5ec26d18b20fc0da9ec9032af73fa9e" id="r_af5ec26d18b20fc0da9ec9032af73fa9e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchange_8h.html#af5ec26d18b20fc0da9ec9032af73fa9e">xElementSizeOf</a> (<a class="el" href="xchange_8h.html#a1c7e02eda23566a7891310fd09307a70">XType</a> type)</td></tr>
@@ -490,6 +492,8 @@ Functions</h2></td></tr>
 <tr class="separator:a309b9ae681c40121517672ca50ba665b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e2e177c11fe7f44ca5ce11f316c0ad9" id="r_a7e2e177c11fe7f44ca5ce11f316c0ad9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchange_8h.html#a7e2e177c11fe7f44ca5ce11f316c0ad9">xParseDouble</a> (const char *str, char **tail)</td></tr>
 <tr class="separator:a7e2e177c11fe7f44ca5ce11f316c0ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13f9a2ea37f70545aeda01069a8e068c" id="r_a13f9a2ea37f70545aeda01069a8e068c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchange_8h.html#a13f9a2ea37f70545aeda01069a8e068c">xParseFloat</a> (const char *str, char **tail)</td></tr>
+<tr class="separator:a13f9a2ea37f70545aeda01069a8e068c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aced93c2ca8cef260663ff1f9cfc0140e" id="r_aced93c2ca8cef260663ff1f9cfc0140e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchange_8h.html#aced93c2ca8cef260663ff1f9cfc0140e">xPrintDims</a> (char *dst, int ndim, const int *sizes)</td></tr>
 <tr class="separator:aced93c2ca8cef260663ff1f9cfc0140e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3eb8c827cfc2139687d175649284f7be" id="r_a3eb8c827cfc2139687d175649284f7be"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="xchange_8h.html#a3eb8c827cfc2139687d175649284f7be">xPrintDouble</a> (char *str, double value)</td></tr>
@@ -696,7 +700,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xstruct_8c.html#ae0ce99c867b11bd14971031eec8ba4ad">xDestroyField()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXField.html#a5ac083a645d964373f022d03df4849c8">XField::name</a>, <a class="el" href="structXField.html#a2f076846fbd6b30183ba3ab61e3334e5">XField::subtype</a>, <a class="el" href="structXField.html#a6535ecc7e6d29e64f0d34cd926823fd9">XField::type</a>, <a class="el" href="structXField.html#a0f61d63b009d0880a89c843bd50d8d76">XField::value</a>, <a class="el" href="xchange_8h.html#a7e4c8b651428f090a441804bd8b7673e">X_FIELD</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, <a class="el" href="xchange_8h.html#a63de1f3edab36b1a53ee312ac0711cbb">X_STRUCT</a>, <a class="el" href="xstruct_8c.html#a2b81d2bbe48788a9741e815cdaa336eb">xClearField()</a>, <a class="el" href="xstruct_8c.html#ae45c0a047c30a17aba84d2fc8c08a2dc">xClearStruct()</a>, and <a class="el" href="xstruct_8c.html#aa2db2b2201bca0c646fa26daa44143e3">xGetFieldCount()</a>.</p>
+<p class="reference">References <a class="el" href="structXField.html#aaa68a7e140a5370ed0eb52710744c341">XField::isSerialized</a>, <a class="el" href="structXField.html#a5ac083a645d964373f022d03df4849c8">XField::name</a>, <a class="el" href="structXField.html#a2f076846fbd6b30183ba3ab61e3334e5">XField::subtype</a>, <a class="el" href="structXField.html#a6535ecc7e6d29e64f0d34cd926823fd9">XField::type</a>, <a class="el" href="structXField.html#a0f61d63b009d0880a89c843bd50d8d76">XField::value</a>, <a class="el" href="xchange_8h.html#a7e4c8b651428f090a441804bd8b7673e">X_FIELD</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, <a class="el" href="xchange_8h.html#a63de1f3edab36b1a53ee312ac0711cbb">X_STRUCT</a>, <a class="el" href="xstruct_8c.html#a2b81d2bbe48788a9741e815cdaa336eb">xClearField()</a>, <a class="el" href="xstruct_8c.html#ae45c0a047c30a17aba84d2fc8c08a2dc">xClearStruct()</a>, and <a class="el" href="xstruct_8c.html#aa2db2b2201bca0c646fa26daa44143e3">xGetFieldCount()</a>.</p>
 
 </div>
 </div>
@@ -781,7 +785,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A fully independent (deep) copy of the argument or NULL if the input field is NULL.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xstruct_8c.html#ad78b2fb3d6d1474c8a44c57575a6e13b">xCopyOfStruct()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXField.html#aaa68a7e140a5370ed0eb52710744c341">XField::isSerialized</a>, <a class="el" href="structXField.html#a5ac083a645d964373f022d03df4849c8">XField::name</a>, <a class="el" href="structXField.html#ae1ebaf87eb62e6266b14908eee28e565">XField::next</a>, <a class="el" href="structXField.html#a6535ecc7e6d29e64f0d34cd926823fd9">XField::type</a>, <a class="el" href="structXField.html#a0f61d63b009d0880a89c843bd50d8d76">XField::value</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, <a class="el" href="xchange_8h.html#a63de1f3edab36b1a53ee312ac0711cbb">X_STRUCT</a>, <a class="el" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31">x_trace_null()</a>, <a class="el" href="xstruct_8c.html#ad78b2fb3d6d1474c8a44c57575a6e13b">xCopyOfStruct()</a>, <a class="el" href="xstruct_8c.html#ae0ce99c867b11bd14971031eec8ba4ad">xDestroyField()</a>, <a class="el" href="xchange_8c.html#af5ec26d18b20fc0da9ec9032af73fa9e">xElementSizeOf()</a>, <a class="el" href="xstruct_8c.html#aa2db2b2201bca0c646fa26daa44143e3">xGetFieldCount()</a>, and <a class="el" href="xchange_8c.html#a01d730a1a98963816de2dd73e72957a5">xStringCopyOf()</a>.</p>
+<p class="reference">References <a class="el" href="structXField.html#aaa68a7e140a5370ed0eb52710744c341">XField::isSerialized</a>, <a class="el" href="structXField.html#a5ac083a645d964373f022d03df4849c8">XField::name</a>, <a class="el" href="structXField.html#ae1ebaf87eb62e6266b14908eee28e565">XField::next</a>, <a class="el" href="structXField.html#a2f076846fbd6b30183ba3ab61e3334e5">XField::subtype</a>, <a class="el" href="structXField.html#a6535ecc7e6d29e64f0d34cd926823fd9">XField::type</a>, <a class="el" href="structXField.html#a0f61d63b009d0880a89c843bd50d8d76">XField::value</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#a7e4c8b651428f090a441804bd8b7673e">X_FIELD</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, <a class="el" href="xchange_8h.html#a63de1f3edab36b1a53ee312ac0711cbb">X_STRUCT</a>, <a class="el" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31">x_trace_null()</a>, <a class="el" href="xstruct_8c.html#afdb31906269568772fdf63adb6685fbc">xCopyOfField()</a>, <a class="el" href="xstruct_8c.html#ad78b2fb3d6d1474c8a44c57575a6e13b">xCopyOfStruct()</a>, <a class="el" href="xstruct_8c.html#ae0ce99c867b11bd14971031eec8ba4ad">xDestroyField()</a>, <a class="el" href="xchange_8c.html#af5ec26d18b20fc0da9ec9032af73fa9e">xElementSizeOf()</a>, <a class="el" href="xstruct_8c.html#aa2db2b2201bca0c646fa26daa44143e3">xGetFieldCount()</a>, and <a class="el" href="xchange_8c.html#a01d730a1a98963816de2dd73e72957a5">xStringCopyOf()</a>.</p>
 
 </div>
 </div>
@@ -1070,7 +1074,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A newly created field with the supplied data, or NULL if there was an error.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xstruct_8c.html#a4587dcd0157acce30373288e19f1237d">xCreateLongField()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="xchange_8h.html#a4003d7fe06200f77805c52cc7db56784">X_INT</a>, <a class="el" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31">x_trace_null()</a>, and <a class="el" href="xstruct_8c.html#a965f7e58fd1c10570c6f6a472599b08f">xCreateScalarField()</a>.</p>
+<p class="reference">References <a class="el" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31">x_trace_null()</a>, and <a class="el" href="xstruct_8c.html#a965f7e58fd1c10570c6f6a472599b08f">xCreateScalarField()</a>.</p>
 
 </div>
 </div>
@@ -1435,16 +1439,49 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Destroys a lookup table, freeing up it's in-memory resources.</p>
+<p>Destroys a lookup table, freeing up it's in-memory resources. However, since the lookup table contains references to <a class="el" href="structXField.html" title="An SMA-X field, typically as part of an XStructure. A field may be a reference to a nested XStructure...">XField</a> fata, which may be used elsewhere, the values themselves are not destroyed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tab</td><td>Pointer to the lookup table to destroy.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="xlookup_8c.html#af8bee9eeac947d7e36ea436252e8dc2d">xCreateLookup()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="xlookup_8c.html#a01f3e8af10b2ef8979eac5d7534648c1">xDestroyLookupAndData()</a> </dd>
+<dd>
+<a class="el" href="xlookup_8c.html#af8bee9eeac947d7e36ea436252e8dc2d">xCreateLookup()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>.</p>
+<p class="reference">References <a class="el" href="xjson_8c.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>.</p>
+
+</div>
+</div>
+<a id="a01f3e8af10b2ef8979eac5d7534648c1" name="a01f3e8af10b2ef8979eac5d7534648c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f3e8af10b2ef8979eac5d7534648c1">&#9670;&#160;</a></span>xDestroyLookupAndData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void xDestroyLookupAndData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structXLookupTable.html">XLookupTable</a> *&#160;</td>
+          <td class="paramname"><em>tab</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Destroys a lookup table, freeing up it's in-memory resources, including the data that is referenced in the lookup table.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tab</td><td>Pointer to the lookup table to destroy.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="xlookup_8c.html#a02ea2d67e4c540ad706edcc1b3a0431e">xDestroyLookup()</a> </dd>
+<dd>
+<a class="el" href="xlookup_8c.html#af8bee9eeac947d7e36ea436252e8dc2d">xCreateLookup()</a></dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.1 </dd></dl>
+
+<p class="reference">References <a class="el" href="xjson_8c.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>.</p>
 
 </div>
 </div>
@@ -1499,7 +1536,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>[bytes] the native storage size of a single element of that type. E.g. for X_CHAR(20) it will return 20. X_DOUBLE will return 8, etc. Unrecognised types will return 0. </dd></dl>
 
-<p class="reference">References <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a849c7ccb02f63d8554323a889a3d8b4d">X_DOUBLE</a>, <a class="el" href="xchange_8h.html#a7e4c8b651428f090a441804bd8b7673e">X_FIELD</a>, <a class="el" href="xchange_8h.html#a99605e05158426b1b44e924e42a1162c">X_FLOAT</a>, <a class="el" href="xchange_8h.html#a4003d7fe06200f77805c52cc7db56784">X_INT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, and <a class="el" href="xchange_8h.html#a63de1f3edab36b1a53ee312ac0711cbb">X_STRUCT</a>.</p>
+<p class="reference">References <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a849c7ccb02f63d8554323a889a3d8b4d">X_DOUBLE</a>, <a class="el" href="xchange_8h.html#a7e4c8b651428f090a441804bd8b7673e">X_FIELD</a>, <a class="el" href="xchange_8h.html#a99605e05158426b1b44e924e42a1162c">X_FLOAT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, and <a class="el" href="xchange_8h.html#a63de1f3edab36b1a53ee312ac0711cbb">X_STRUCT</a>.</p>
 
 </div>
 </div>
@@ -1684,7 +1721,7 @@ Variables</h2></td></tr>
 <dd>
 <a class="el" href="xstruct_8c.html#a3035f9e6bd1b2993e0d19e0017f537fe">xGetStringAtIndex()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXField.html#aaa68a7e140a5370ed0eb52710744c341">XField::isSerialized</a>, <a class="el" href="xchange_8h.html#a8abfcc76130f3f991d124dd22d7e69bc">NAN</a>, <a class="el" href="structXField.html#a6535ecc7e6d29e64f0d34cd926823fd9">XField::type</a>, <a class="el" href="structXField.html#a0f61d63b009d0880a89c843bd50d8d76">XField::value</a>, <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a849c7ccb02f63d8554323a889a3d8b4d">X_DOUBLE</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#a99605e05158426b1b44e924e42a1162c">X_FLOAT</a>, <a class="el" href="xchange_8h.html#a4003d7fe06200f77805c52cc7db56784">X_INT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, <a class="el" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31">x_trace_null()</a>, <a class="el" href="xchange_8c.html#af5ec26d18b20fc0da9ec9032af73fa9e">xElementSizeOf()</a>, <a class="el" href="xstruct_8c.html#ae683dbdc302ce2ce78f77c5301e09386">xGetElementAtIndex()</a>, and <a class="el" href="xchange_8c.html#adcc86baacb3ddebcc529e269223274b8">xIsCharSequence()</a>.</p>
+<p class="reference">References <a class="el" href="structXField.html#aaa68a7e140a5370ed0eb52710744c341">XField::isSerialized</a>, <a class="el" href="xchange_8h.html#a8abfcc76130f3f991d124dd22d7e69bc">NAN</a>, <a class="el" href="structXField.html#a6535ecc7e6d29e64f0d34cd926823fd9">XField::type</a>, <a class="el" href="structXField.html#a0f61d63b009d0880a89c843bd50d8d76">XField::value</a>, <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a849c7ccb02f63d8554323a889a3d8b4d">X_DOUBLE</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#a99605e05158426b1b44e924e42a1162c">X_FLOAT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, <a class="el" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31">x_trace_null()</a>, <a class="el" href="xchange_8c.html#af5ec26d18b20fc0da9ec9032af73fa9e">xElementSizeOf()</a>, <a class="el" href="xstruct_8c.html#ae683dbdc302ce2ce78f77c5301e09386">xGetElementAtIndex()</a>, and <a class="el" href="xchange_8c.html#adcc86baacb3ddebcc529e269223274b8">xIsCharSequence()</a>.</p>
 
 </div>
 </div>
@@ -1780,7 +1817,7 @@ Variables</h2></td></tr>
 <dd>
 <a class="el" href="xstruct_8c.html#a3035f9e6bd1b2993e0d19e0017f537fe">xGetStringAtIndex()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXField.html#aaa68a7e140a5370ed0eb52710744c341">XField::isSerialized</a>, <a class="el" href="xchange_8h.html#a8abfcc76130f3f991d124dd22d7e69bc">NAN</a>, <a class="el" href="structXField.html#a6535ecc7e6d29e64f0d34cd926823fd9">XField::type</a>, <a class="el" href="structXField.html#a0f61d63b009d0880a89c843bd50d8d76">XField::value</a>, <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a849c7ccb02f63d8554323a889a3d8b4d">X_DOUBLE</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#a99605e05158426b1b44e924e42a1162c">X_FLOAT</a>, <a class="el" href="xchange_8h.html#a4003d7fe06200f77805c52cc7db56784">X_INT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, <a class="el" href="xchange_8c.html#a9b61b8b8b3ef0f7cc0b96ab499265c74">x_trace()</a>, <a class="el" href="xchange_8c.html#af5ec26d18b20fc0da9ec9032af73fa9e">xElementSizeOf()</a>, <a class="el" href="xstruct_8c.html#ae683dbdc302ce2ce78f77c5301e09386">xGetElementAtIndex()</a>, and <a class="el" href="xchange_8c.html#adcc86baacb3ddebcc529e269223274b8">xIsCharSequence()</a>.</p>
+<p class="reference">References <a class="el" href="structXField.html#aaa68a7e140a5370ed0eb52710744c341">XField::isSerialized</a>, <a class="el" href="xchange_8h.html#a8abfcc76130f3f991d124dd22d7e69bc">NAN</a>, <a class="el" href="structXField.html#a6535ecc7e6d29e64f0d34cd926823fd9">XField::type</a>, <a class="el" href="structXField.html#a0f61d63b009d0880a89c843bd50d8d76">XField::value</a>, <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a849c7ccb02f63d8554323a889a3d8b4d">X_DOUBLE</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#a99605e05158426b1b44e924e42a1162c">X_FLOAT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>, <a class="el" href="xchange_8h.html#adb72c72467963a6ace1632638a8a6a7b">X_RAW</a>, <a class="el" href="xchange_8h.html#a2443dd783d2728a3559361fba845e533">X_STRING</a>, <a class="el" href="xchange_8c.html#a9b61b8b8b3ef0f7cc0b96ab499265c74">x_trace()</a>, <a class="el" href="xchange_8c.html#af5ec26d18b20fc0da9ec9032af73fa9e">xElementSizeOf()</a>, <a class="el" href="xstruct_8c.html#ae683dbdc302ce2ce78f77c5301e09386">xGetElementAtIndex()</a>, and <a class="el" href="xchange_8c.html#adcc86baacb3ddebcc529e269223274b8">xIsCharSequence()</a>.</p>
 
 </div>
 </div>
@@ -2179,7 +2216,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dd>
 <a class="el" href="xstruct_8c.html#ae9fbb705ce77cec34188dd1baf596797">xGetAsLong()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="xjson_8c.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, <a class="el" href="xjson_8c.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a4003d7fe06200f77805c52cc7db56784">X_INT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, and <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>.</p>
+<p class="reference">References <a class="el" href="xjson_8c.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>, <a class="el" href="xjson_8c.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>, <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, and <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>.</p>
 
 </div>
 </div>
@@ -2714,7 +2751,7 @@ xGetDoubleAtIndex() </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Same as strtod() on C99, but with explicit parsing of NaN and Infinity values on older platforms also.</p>
+<p>Parses a double-precision floating point value from its decimal string representation. Effectively the same as strtod() on C99, but it checks the input string for NULL, resets errno before parsing so you don't have to, and will parse Infinity values even on older platforms that do not have built-in support for these.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">str</td><td>String to parse floating-point value from </td></tr>
@@ -2722,9 +2759,56 @@ xGetDoubleAtIndex() </dd></dl>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the floating-point value at the head of the string, or NAN if the input string is NULL. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the floating-point value at the head of the string, or NAN if the input string is NULL, or 0.0 if the string does not start with a numerical value, or is a value near zero that cannot be represented by a float (underflow) or +/- <code>INFINITY</code> (or <code>HUGE_VAL</code> if <code>INFINITY</code> is not defined in math.h) if the value exceeds the float range (overflow). In cases of underflow or overflow errno will be set to ERANGE.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="xchange_8c.html#a13f9a2ea37f70545aeda01069a8e068c">xParseFloat()</a> </dd>
+<dd>
+<a class="el" href="xchange_8c.html#a3eb8c827cfc2139687d175649284f7be">xPrintDouble()</a> </dd></dl>
 
 <p class="reference">References <a class="el" href="xchange_8h.html#a956e2723d559858d08644ac99146e910">INFINITY</a>, <a class="el" href="xchange_8h.html#a8abfcc76130f3f991d124dd22d7e69bc">NAN</a>, and <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+
+</div>
+</div>
+<a id="a13f9a2ea37f70545aeda01069a8e068c" name="a13f9a2ea37f70545aeda01069a8e068c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13f9a2ea37f70545aeda01069a8e068c">&#9670;&#160;</a></span>xParseFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float xParseFloat </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>tail</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Parses a single-precision floating point value from its decimal string representation. Effectively the same as or similar to strtof(), but it checks the input string for NULL, resets errno before parsing so you don't have to, and will parse Infinity values even on older platforms that do not have built-in support for these.</p>
+<p>On older platforms, which do not have a builtin <code>strtof()</code> function, this will parse the string as as double, before checking for range and returning the result recast as a float. The conversion may result in a decimal rounding 'error' if the returned value is then printed, whereby the last decimal digit may differ by one from the original input string.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>String to parse floating-point value from </td></tr>
+    <tr><td class="paramname">tail</td><td>(optional) reference to pointed in which to return the parse position after successfully parsing a floating-point value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the floating-point value at the head of the string, or NAN if the input string is NULL, or 0.0F if the string does not start with a numerical value, or is a value near zero that cannot be represented by a float (underflow) or +/- <code>INFINITY</code> (or <code>HUGE_VAL</code> if <code>INFINITY</code> is not defined in math.h) if the value exceeds the float range (overflow). In cases of underflow or overflow errno will be set to ERANGE.</dd></dl>
+<dl class="section since"><dt>Since</dt><dd>1.1</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="xchange_8c.html#a7e2e177c11fe7f44ca5ce11f316c0ad9">xParseDouble()</a> </dd>
+<dd>
+<a class="el" href="xchange_8c.html#a9ee406a1c0c8d1076620ae4f77695216">xPrintFloat()</a> </dd></dl>
+
+<p class="reference">References <a class="el" href="xchange_8h.html#a956e2723d559858d08644ac99146e910">INFINITY</a>, <a class="el" href="xchange_8h.html#a8abfcc76130f3f991d124dd22d7e69bc">NAN</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xchange_8c.html#a7e2e177c11fe7f44ca5ce11f316c0ad9">xParseDouble()</a>.</p>
 
 </div>
 </div>
@@ -3405,7 +3489,7 @@ xGetDoubleAtIndex() </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters (including termination) required for the string representation of an element of the given variable, or 0 if the variable is of unknown type. </dd></dl>
 
-<p class="reference">References <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a849c7ccb02f63d8554323a889a3d8b4d">X_DOUBLE</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#a99605e05158426b1b44e924e42a1162c">X_FLOAT</a>, <a class="el" href="xchange_8h.html#a4003d7fe06200f77805c52cc7db56784">X_INT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, and <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>.</p>
+<p class="reference">References <a class="el" href="xchange_8h.html#abe0465f7669775b6129551a7ef3300bc">X_BOOLEAN</a>, <a class="el" href="xchange_8h.html#afb01219635d162589ae5aadb90702bb0">X_BYTE</a>, <a class="el" href="xchange_8h.html#a849c7ccb02f63d8554323a889a3d8b4d">X_DOUBLE</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#a99605e05158426b1b44e924e42a1162c">X_FLOAT</a>, <a class="el" href="xchange_8h.html#a3bb3051d3e40b57dc6ef5f1592cc8c75">X_INT16</a>, <a class="el" href="xchange_8h.html#a247a3094d14d18583d42abba83d0d9a5">X_INT32</a>, and <a class="el" href="xchange_8h.html#ad9343538ba7ef4aff10d4bed7353be9d">X_INT64</a>.</p>
 
 </div>
 </div>

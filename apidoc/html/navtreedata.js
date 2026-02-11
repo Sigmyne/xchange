@@ -26,32 +26,45 @@ var NAVTREE =
 [
   [ "xchange", "index.html", [
     [ "Changelog", "md_CHANGELOG.html", [
-      [ "Table of Contents", "index.html#autotoc_md3", null ],
-      [ "Introduction", "index.html#autotoc_md5", null ],
-      [ "Building", "index.html#autotoc_md7", null ],
-      [ "Linking your application against <tt>xchange</tt>", "index.html#autotoc_md9", null ],
-      [ "Structured data", "index.html#autotoc_md11", [
-        [ "Basic data types", "index.html#autotoc_md12", [
-          [ "Strings", "index.html#autotoc_md13", null ]
+      [ "Table of Contents", "index.html#autotoc_md12", null ],
+      [ "Introduction", "index.html#autotoc_md14", null ],
+      [ "Building", "index.html#autotoc_md16", null ],
+      [ "Linking your application against <tt>xchange</tt>", "index.html#autotoc_md18", null ],
+      [ "Structured data", "index.html#autotoc_md20", [
+        [ "Basic data types", "index.html#autotoc_md21", [
+          [ "Strings", "index.html#autotoc_md22", null ]
         ] ],
-        [ "Scalars", "index.html#autotoc_md14", null ],
-        [ "Arrays", "index.html#autotoc_md15", null ],
-        [ "Creating structure", "index.html#autotoc_md16", null ],
-        [ "Aggregate IDs", "index.html#autotoc_md17", null ],
-        [ "Accessing substructures and elements", "index.html#autotoc_md18", [
-          [ "Large structures", "index.html#autotoc_md19", null ],
-          [ "Iterating over elements", "index.html#autotoc_md20", null ]
+        [ "Scalars", "index.html#autotoc_md23", null ],
+        [ "Arrays", "index.html#autotoc_md24", null ],
+        [ "Creating structure", "index.html#autotoc_md25", null ],
+        [ "Aggregate IDs", "index.html#autotoc_md26", null ],
+        [ "Accessing substructures and elements", "index.html#autotoc_md27", [
+          [ "Large structures", "index.html#autotoc_md28", null ],
+          [ "Iterating over elements", "index.html#autotoc_md29", null ]
         ] ],
-        [ "Sorting fields", "index.html#autotoc_md21", null ]
+        [ "Sorting fields", "index.html#autotoc_md30", null ]
       ] ],
-      [ "JSON parser and emitter", "index.html#autotoc_md23", [
-        [ "Snippets", "index.html#autotoc_md24", null ],
-        [ "Escaped string representations", "index.html#autotoc_md25", null ]
+      [ "JSON parser and emitter", "index.html#autotoc_md32", [
+        [ "JSON fragments", "index.html#autotoc_md33", null ],
+        [ "Escaped string representations", "index.html#autotoc_md34", null ]
       ] ],
-      [ "Error handling", "index.html#autotoc_md27", null ],
-      [ "Debugging support", "index.html#autotoc_md29", null ],
-      [ "Future plans", "index.html#autotoc_md30", null ],
-      [ "[1.0.0-rc4] - 2025-02-24", "md_CHANGELOG.html#autotoc_md1", null ]
+      [ "Error handling", "index.html#autotoc_md36", null ],
+      [ "Debugging support", "index.html#autotoc_md38", null ],
+      [ "Future plans", "index.html#autotoc_md40", null ],
+      [ "Release schedule", "index.html#autotoc_md42", null ],
+      [ "[Unreleased]", "md_CHANGELOG.html#autotoc_md1", [
+        [ "Changed", "md_CHANGELOG.html#autotoc_md2", null ]
+      ] ],
+      [ "[1.1.0] - 2025-11-10", "md_CHANGELOG.html#autotoc_md3", [
+        [ "Fixed", "md_CHANGELOG.html#autotoc_md4", null ],
+        [ "Added", "md_CHANGELOG.html#autotoc_md5", null ]
+      ] ],
+      [ "[1.0.1] - 2025-07-01", "md_CHANGELOG.html#autotoc_md6", [
+        [ "Fixed", "md_CHANGELOG.html#autotoc_md7", null ],
+        [ "Added", "md_CHANGELOG.html#autotoc_md8", null ],
+        [ "Changed", "md_CHANGELOG.html#autotoc_md9", null ]
+      ] ],
+      [ "[1.0.0] - 2025-03-31", "md_CHANGELOG.html#autotoc_md10", null ]
     ] ],
     [ "Contributing to the xchange library", "md_CONTRIBUTING.html", null ],
     [ "Data Structures", "annotated.html", [
@@ -78,7 +91,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"xjson_8h.html#a01bc599d67f70636a813b103a20170ac"
+"xjson_8c.html#a29d259d7ac20ad3d5d9ce2af421a476e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

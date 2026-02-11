@@ -142,16 +142,16 @@
     </member>
     <member kind="define">
       <type>#define</type>
-      <name>X_INT</name>
+      <name>X_INT16</name>
       <anchorfile>xchange_8h.html</anchorfile>
-      <anchor>a4003d7fe06200f77805c52cc7db56784</anchor>
+      <anchor>a3bb3051d3e40b57dc6ef5f1592cc8c75</anchor>
       <arglist></arglist>
     </member>
     <member kind="define">
       <type>#define</type>
-      <name>X_INT16</name>
+      <name>X_INT16_MAX</name>
       <anchorfile>xchange_8h.html</anchorfile>
-      <anchor>a3bb3051d3e40b57dc6ef5f1592cc8c75</anchor>
+      <anchor>aabe0e9c885960aaa25b5f6344131546d</anchor>
       <arglist></arglist>
     </member>
     <member kind="define">
@@ -163,9 +163,23 @@
     </member>
     <member kind="define">
       <type>#define</type>
+      <name>X_INT32_MAX</name>
+      <anchorfile>xchange_8h.html</anchorfile>
+      <anchor>a805abf3832ea0c88ef3ed803eed95059</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
       <name>X_INT64</name>
       <anchorfile>xchange_8h.html</anchorfile>
       <anchor>ad9343538ba7ef4aff10d4bed7353be9d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>X_INT64_MAX</name>
+      <anchorfile>xchange_8h.html</anchorfile>
+      <anchor>a44937132e92cb7ae4ec2414db86d252e</anchor>
       <arglist></arglist>
     </member>
     <member kind="define">
@@ -180,13 +194,6 @@
       <name>X_LLONG</name>
       <anchorfile>xchange_8h.html</anchorfile>
       <anchor>a32d6187065d543d5d6fb6e1bcd33efdc</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="define">
-      <type>#define</type>
-      <name>X_LONG</name>
-      <anchorfile>xchange_8h.html</anchorfile>
-      <anchor>a36405f1834eb7cd51a17f103b2942e21</anchor>
       <arglist></arglist>
     </member>
     <member kind="define">
@@ -285,13 +292,6 @@
       <name>X_SEP_LENGTH</name>
       <anchorfile>xchange_8h.html</anchorfile>
       <anchor>a28120364666ec6054159012a58ba27af</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="define">
-      <type>#define</type>
-      <name>X_SHORT</name>
-      <anchorfile>xchange_8h.html</anchorfile>
-      <anchor>adfdc22097b12d42c040dcce8700d64b8</anchor>
       <arglist></arglist>
     </member>
     <member kind="define">
@@ -590,6 +590,13 @@
     </member>
     <member kind="function">
       <type>void</type>
+      <name>xDestroyLookupAndData</name>
+      <anchorfile>xchange_8h.html</anchorfile>
+      <anchor>a01f3e8af10b2ef8979eac5d7534648c1</anchor>
+      <arglist>(XLookupTable *tab)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
       <name>xDestroyStruct</name>
       <anchorfile>xchange_8h.html</anchorfile>
       <anchor>afe3fda2f392bae11e136e8c0c90f086d</anchor>
@@ -827,6 +834,13 @@
       <arglist>(const char *str, char **tail)</arglist>
     </member>
     <member kind="function">
+      <type>float</type>
+      <name>xParseFloat</name>
+      <anchorfile>xchange_8h.html</anchorfile>
+      <anchor>a13f9a2ea37f70545aeda01069a8e068c</anchor>
+      <arglist>(const char *str, char **tail)</arglist>
+    </member>
+    <member kind="function">
       <type>int</type>
       <name>xPrintDims</name>
       <anchorfile>xchange_8h.html</anchorfile>
@@ -1029,32 +1043,32 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>XStructure *</type>
-      <name>xjsonParseAt</name>
-      <anchorfile>xjson_8h.html</anchorfile>
-      <anchor>acdb7d242c80b4c9dbeedc62b479bfcc7</anchor>
-      <arglist>(char **src, int *lineNumber)</arglist>
-    </member>
-    <member kind="function">
       <type>XField *</type>
-      <name>xjsonParseFieldAt</name>
+      <name>xjsonParseField</name>
       <anchorfile>xjson_8h.html</anchorfile>
-      <anchor>ad27c7a065fa6c61354e3293606617889</anchor>
-      <arglist>(char **src, int *lineNumber)</arglist>
+      <anchor>a396bfc01249665592a3b377b77163171</anchor>
+      <arglist>(const char *src, char **tail)</arglist>
     </member>
     <member kind="function">
       <type>XStructure *</type>
       <name>xjsonParseFile</name>
       <anchorfile>xjson_8h.html</anchorfile>
-      <anchor>a5b542fdced2080503cdbf2cf9a071324</anchor>
-      <arglist>(FILE *file, size_t length, int *lineNumber)</arglist>
+      <anchor>af7e81009df5566ee81bcc676c3c67026</anchor>
+      <arglist>(FILE *file, size_t length)</arglist>
     </member>
     <member kind="function">
       <type>XStructure *</type>
       <name>xjsonParsePath</name>
       <anchorfile>xjson_8h.html</anchorfile>
-      <anchor>af5a54c0bbd41dcd4c82562c25769b398</anchor>
-      <arglist>(const char *fileName, int *lineNumber)</arglist>
+      <anchor>aa16eb28a96f3dfd329980bedb240f29a</anchor>
+      <arglist>(const char *fileName)</arglist>
+    </member>
+    <member kind="function">
+      <type>XStructure *</type>
+      <name>xjsonParseString</name>
+      <anchorfile>xjson_8h.html</anchorfile>
+      <anchor>ac5f731519191769307b8feefb56cf89c</anchor>
+      <arglist>(const char *src, char **tail)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -1099,9 +1113,9 @@
     </member>
     <member kind="define">
       <type>#define</type>
-      <name>EIXPLICIT_PARSE_SPECIAL_DOUBLES</name>
+      <name>EXPLICIT_PARSE_SPECIAL_DOUBLES</name>
       <anchorfile>xchange_8c.html</anchorfile>
-      <anchor>acc843123b41c0889b5b328a538b8c6ca</anchor>
+      <anchor>a644d78a042d0b3aab5e99ee884cd13a7</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
@@ -1221,6 +1235,13 @@
       <name>xParseDouble</name>
       <anchorfile>xchange_8c.html</anchorfile>
       <anchor>a7e2e177c11fe7f44ca5ce11f316c0ad9</anchor>
+      <arglist>(const char *str, char **tail)</arglist>
+    </member>
+    <member kind="function">
+      <type>float</type>
+      <name>xParseFloat</name>
+      <anchorfile>xchange_8c.html</anchorfile>
+      <anchor>a13f9a2ea37f70545aeda01069a8e068c</anchor>
       <arglist>(const char *str, char **tail)</arglist>
     </member>
     <member kind="function">
@@ -1356,32 +1377,32 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>XStructure *</type>
-      <name>xjsonParseAt</name>
-      <anchorfile>xjson_8c.html</anchorfile>
-      <anchor>af180900a4afeef713a3fdaeb77a9cba3</anchor>
-      <arglist>(char **pos, int *lineNumber)</arglist>
-    </member>
-    <member kind="function">
       <type>XField *</type>
-      <name>xjsonParseFieldAt</name>
+      <name>xjsonParseField</name>
       <anchorfile>xjson_8c.html</anchorfile>
-      <anchor>aacd36258562860dac1bcc8154cda47cf</anchor>
-      <arglist>(char **pos, int *lineNumber)</arglist>
+      <anchor>a49ceaf0db661ce9388af875d03320800</anchor>
+      <arglist>(const char *str, char **tail)</arglist>
     </member>
     <member kind="function">
       <type>XStructure *</type>
       <name>xjsonParseFile</name>
       <anchorfile>xjson_8c.html</anchorfile>
-      <anchor>a9bdaf6099829f03eb2658342e856f0ad</anchor>
-      <arglist>(FILE *fp, size_t length, int *lineNumber)</arglist>
+      <anchor>a29d259d7ac20ad3d5d9ce2af421a476e</anchor>
+      <arglist>(FILE *fp, size_t length)</arglist>
     </member>
     <member kind="function">
       <type>XStructure *</type>
       <name>xjsonParsePath</name>
       <anchorfile>xjson_8c.html</anchorfile>
-      <anchor>a10f821e34aeb56f02985ac6cc3a8be89</anchor>
-      <arglist>(const char *path, int *lineNumber)</arglist>
+      <anchor>a9a9cad9405eeff3a088e5f809fa50529</anchor>
+      <arglist>(const char *path)</arglist>
+    </member>
+    <member kind="function">
+      <type>XStructure *</type>
+      <name>xjsonParseString</name>
+      <anchorfile>xjson_8c.html</anchorfile>
+      <anchor>a5101534a5573eefbdbc584cb6bedfd8e</anchor>
+      <arglist>(const char *str, char **tail)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -1443,6 +1464,13 @@
       <name>xDestroyLookup</name>
       <anchorfile>xlookup_8c.html</anchorfile>
       <anchor>a02ea2d67e4c540ad706edcc1b3a0431e</anchor>
+      <arglist>(XLookupTable *tab)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>xDestroyLookupAndData</name>
+      <anchorfile>xlookup_8c.html</anchorfile>
+      <anchor>a01f3e8af10b2ef8979eac5d7534648c1</anchor>
       <arglist>(XLookupTable *tab)</arglist>
     </member>
     <member kind="function">
@@ -1950,5 +1978,6 @@
     <docanchor file="index.html">xchange-error-handling</docanchor>
     <docanchor file="index.html">xchange-debugging-support</docanchor>
     <docanchor file="index.html">xchange-future-plans</docanchor>
+    <docanchor file="index.html">xchange-release-schedule</docanchor>
   </compound>
 </tagfile>
