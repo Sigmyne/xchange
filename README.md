@@ -8,9 +8,10 @@
  ![Project page](https://github.com/Sigmyne/xchange/actions/workflows/pages/pages-build-deployment/badge.svg)
 </a>
 
+
 # xchange 
 
-[![DOI](resources/796202092.svg)](https://doi.org/10.5281/zenodo.14634824)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14634824.svg)](https://doi.org/10.5281/zenodo.14634824)
 
 Structured data representation and JSON support for C/C++.
 
