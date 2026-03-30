@@ -63,6 +63,9 @@ jobs:
       with:
         additional-packages: font-roboto
        
+    - name: Insert Google analytics tracker
+      run: for file in redisx/apidoc/html/*.html ; do sudo sed -i "/<\/head>/e cat resources/analytics.html" $file ; done
+
     - name: Checkout gh-pages
       uses: actions/checkout@v6
       with:
