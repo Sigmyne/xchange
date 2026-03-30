@@ -2,7 +2,7 @@
     <topic label="Table of Contents" href="index.html#autotoc_md12"/>
     <topic label="Introduction" href="index.html#autotoc_md14"/>
     <topic label="Building" href="index.html#autotoc_md16"/>
-    <topic label="Linking your application against &lt;tt&gt;xchange&lt;/tt&gt;" href="index.html#autotoc_md18"/>
+    <topic label="Linking your application against xchange" href="index.html#autotoc_md18"/>
     <topic label="Structured data" href="index.html#autotoc_md20">
       <topic label="Basic data types" href="index.html#autotoc_md21">
         <topic label="Strings" href="index.html#autotoc_md22"/>
@@ -283,8 +283,6 @@
         </topic>
         <topic label="xjson.c" href="xjson_8c.html">
           <topic label="__XCHANGE_INTERNAL_API__" href="xjson_8c.html#ac36bd75f87a1614fb477a0fbcd5df1f3"/>
-          <topic label="FALSE" href="xjson_8c.html#aa93f0eb578d23995850d61f7d61c55c1"/>
-          <topic label="TRUE" href="xjson_8c.html#aa8cecfc5c5c054d2875c03e77b7be15d"/>
           <topic label="xjsonEscape" href="xjson_8c.html#a92336f3031a90784e8667aaa7ad07ca2"/>
           <topic label="xjsonFieldToIndentedString" href="xjson_8c.html#a01bc599d67f70636a813b103a20170ac"/>
           <topic label="xjsonFieldToString" href="xjson_8c.html#a42101fa63cb1c6e265f317e9b8719d5f"/>

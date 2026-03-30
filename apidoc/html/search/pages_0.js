@@ -1,5 +1,11 @@
 var searchData=
 [
-  ['changelog_0',['Changelog',['../md_CHANGELOG.html',1,'']]],
-  ['contributing_20to_20the_20xchange_20library_1',['Contributing to the xchange library',['../md_CONTRIBUTING.html',1,'']]]
+  ['0_200_202025_2003_2031_0',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
+  ['0_201_202025_2007_2001_1',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]],
+  ['0_202025_2003_2031_2',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
+  ['0_202025_2011_2010_3',['[1.1.0] - 2025-11-10',['../md_CHANGELOG.html#autotoc_md3',1,'']]],
+  ['01_4',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]],
+  ['02_2016_5',['[1.1.1] - 2026-02-16',['../md_CHANGELOG.html#autotoc_md1',1,'']]],
+  ['03_2031_6',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
+  ['07_2001_7',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]]
 ];

@@ -7,8 +7,8 @@ var NAVTREEINDEX0 =
 "files.html":[3,0],
 "functions.html":[2,2,0],
 "functions_vars.html":[2,2,1],
-"globals.html":[3,1,0,0],
 "globals.html":[3,1,0],
+"globals.html":[3,1,0,0],
 "globals_b.html":[3,1,0,1],
 "globals_defs.html":[3,1,4],
 "globals_e.html":[3,1,0,2],
@@ -247,7 +247,7 @@ var NAVTREEINDEX0 =
 "xchange_8h.html#afdb31906269568772fdf63adb6685fbc":[3,0,0,0,68],
 "xchange_8h.html#afe3fda2f392bae11e136e8c0c90f086d":[3,0,0,0,87],
 "xjson_8c.html":[3,0,1,1],
-"xjson_8c.html#a01bc599d67f70636a813b103a20170ac":[3,0,1,1,4],
-"xjson_8c.html#a1f877c9790a53582cdda10659a3d033a":[3,0,1,1,12],
-"xjson_8c.html#a23a7bd364a80bc2bab9ce917ed5f22ea":[3,0,1,1,11]
+"xjson_8c.html#a01bc599d67f70636a813b103a20170ac":[3,0,1,1,2],
+"xjson_8c.html#a1f877c9790a53582cdda10659a3d033a":[3,0,1,1,10],
+"xjson_8c.html#a23a7bd364a80bc2bab9ce917ed5f22ea":[3,0,1,1,9]
 };

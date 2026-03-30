@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<tagfile doxygen_version="1.9.8">
+<tagfile doxygen_version="1.16.1">
   <compound kind="file">
     <name>xchange.h</name>
     <path>include/</path>
@@ -1332,20 +1332,6 @@
       <name>__XCHANGE_INTERNAL_API__</name>
       <anchorfile>xjson_8c.html</anchorfile>
       <anchor>ac36bd75f87a1614fb477a0fbcd5df1f3</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="define">
-      <type>#define</type>
-      <name>FALSE</name>
-      <anchorfile>xjson_8c.html</anchorfile>
-      <anchor>aa93f0eb578d23995850d61f7d61c55c1</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="define">
-      <type>#define</type>
-      <name>TRUE</name>
-      <anchorfile>xjson_8c.html</anchorfile>
-      <anchor>aa8cecfc5c5c054d2875c03e77b7be15d</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">

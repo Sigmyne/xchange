@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['positions_20the_20old_20way_0',['SuperNOVAS: Astrometric Positions the Old Way',['../md_LEGACY.html',1,'']]]
+  ['basic_20data_20types_0',['Basic data types',['../index.html#autotoc_md21',1,'']]],
+  ['building_1',['Building',['../index.html#autotoc_md16',1,'']]]
 ];

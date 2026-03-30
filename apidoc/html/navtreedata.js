@@ -29,7 +29,7 @@ var NAVTREE =
       [ "Table of Contents", "index.html#autotoc_md12", null ],
       [ "Introduction", "index.html#autotoc_md14", null ],
       [ "Building", "index.html#autotoc_md16", null ],
-      [ "Linking your application against <tt>xchange</tt>", "index.html#autotoc_md18", null ],
+      [ "Linking your application against <span class=\"tt\">xchange</span>", "index.html#autotoc_md18", null ],
       [ "Structured data", "index.html#autotoc_md20", [
         [ "Basic data types", "index.html#autotoc_md21", [
           [ "Strings", "index.html#autotoc_md22", null ]
@@ -94,5 +94,6 @@ var NAVTREEINDEX =
 "xjson_8c.html#a29d259d7ac20ad3d5d9ce2af421a476e"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['xchange_0',['xchange',['../index.html',1,'']]],
-  ['xchange_20library_1',['Contributing to the xchange library',['../md_CONTRIBUTING.html',1,'']]]
+  ['31_0',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]]
 ];
