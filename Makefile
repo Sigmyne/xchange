@@ -14,6 +14,12 @@ include config.mk
 # The version of the shared .so libraries
 SO_VERSION := 1
 
+# Output directory for libraries.
+LIB ?= lib
+
+# Add include/ directory
+CPPFLAGS += -Iinclude
+
 # Link with math libs (NAN) and pthread (mutex)
 LDFLAGS += -lm -lpthread
 
@@ -34,8 +40,6 @@ else
 endif
 
 INSTALL_TARGETS := install-headers
-
-export
 
 # Build for distribution
 .PHONY: distro
@@ -108,10 +112,9 @@ tests:
 # The nitty-gritty stuff below
 # ----------------------------------------------------------------------------
 
-SOURCES = $(SRC)/xchange.c $(SRC)/xstruct.c $(SRC)/xlookup.c $(SRC)/xjson.c
-
 # Generate a list of object (obj/*.o) files from the input sources
-OBJECTS := $(subst .c,.o,$(subst $(SRC),$(OBJ),$(SOURCES)))
+SOURCES := $(wildcard src/*.c)
+OBJECTS := $(subst .c,.o,$(subst src,$(OBJ),$(SOURCES)))
 
 $(LIB)/libxchange.so: $(LIB)/libxchange.so.$(SO_VERSION)
 
@@ -171,7 +174,7 @@ endif
 install-headers:
 	@echo "installing headers to $(DESTDIR)$(includedir)"
 	install -d $(DESTDIR)$(includedir)
-	$(INSTALL_DATA) -D include/* $(DESTDIR)$(includedir)/
+	$(INSTALL_DATA) -D include/xchange.h include/xjson.h $(DESTDIR)$(includedir)/
 
 .PHONY: install-html
 install-html:
@@ -216,4 +219,4 @@ Makefile: config.mk build.mk
 
 include build.mk
 
-vpath %.c test
+vpath %.c src

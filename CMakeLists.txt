@@ -115,6 +115,11 @@ endif()
 # ----------------------------------------------------------------------------
 # Install Runtime component
 
+install(FILES include/xchange.h include/xjson.h
+    TYPE INCLUDE
+    COMPONENT Development
+)
+
 set(INSTALL_TARGETS core)
 set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME Runtime)
 

@@ -5,20 +5,12 @@
 # You can include this snipplet in your Makefile also.
 # ============================================================================
 
-# Folders in which sources and header files are located, respectively
-SRC ?= src
-INC ?= include
-
 # Folders for compiled objects, libraries, and binaries, respectively 
 OBJ ?= obj
-LIB ?= lib
 BIN ?= bin
 
 # Compiler: use gcc by default
 CC ?= gcc
-
-# Add include/ directory
-CPPFLAGS += -I$(INC)
 
 # Base compiler options (if not defined externally...)
 CFLAGS ?= -g -Os -Wall

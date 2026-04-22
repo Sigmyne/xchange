@@ -24,15 +24,22 @@ on:
 jobs:
 
   build:
-    name: Build library
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            cc: gcc
+          - os: macos-latest
+            cc: clang
     env:
-      CC: gcc
+      CC: ${{ matrix.cc }}
       CFLAGS: -Os -Wall -Werror
       CSTANDARD: c99
       WEXTRA: 1
       FORTIFY: 3
+
     steps:
     - uses: actions/checkout@v6
     
@@ -40,7 +47,25 @@ jobs:
       run: make static
       
     - name: Build shared library
-      run: make shared   
+      run: make shared
 
-      
-   
+    - name: Build examples
+      run: make examples
+
+  build-freebsd:
+    runs-on: ubuntu-latest
+    name: FreeBSD
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Build on FreeBSD
+        uses: vmactions/freebsd-vm@v1
+        with:
+          release: "14.0"
+          prepare: |
+            pkg install -y gmake
+          run: |
+            echo Building on FreeBSD $(uname -m)
+            gmake static
+            gmake shared
+            gmake examples

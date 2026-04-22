@@ -367,7 +367,7 @@ long xGetAsLongAtIndex(const XField *f, int idx, long defaultValue) {
 
   if(!f) return x_error(defaultValue, EINVAL, fn, "input field is NULL");
   if(!f->value) return x_error(defaultValue, EFAULT, fn, "field has NULL value");
-  if(f->isSerialized) return x_error(defaultValue, ENOSR, fn, "cannot convert serialized field");
+  if(f->isSerialized) return x_error(defaultValue, EINVAL, fn, "cannot convert serialized field");
 
   errno = 0;
 
@@ -477,7 +477,7 @@ double xGetAsDoubleAtIndex(const XField *f, int idx) {
   }
 
   if(f->isSerialized) {
-    x_error(0, ENOSR, fn, "cannot convert serialized field");
+    x_error(0, EINVAL, fn, "cannot convert serialized field");
     return NAN;
   }
 

@@ -14,6 +14,7 @@
 
 #include <stdint.h>
 #include <limits.h>
+#include <math.h>
 
 /// API major version
 #define XCHANGE_MAJOR_VERSION  1
@@ -152,23 +153,20 @@ typedef int XType;          ///< SMA-X data type.
 #define X_MAX_STRING_DIMS               (2 * X_MAX_DIMS + 1)    ///< \hideinitializer Maximum length of string representation of dimensions
 #define X_MAX_ELEMENTS                  (1<<X_MAX_DIMS)         ///< \hideinitializer Maximum number of array elements (~1 million).
 
-
-#ifndef _TYPEDEF_BOOLEAN
-#define _TYPEDEF_BOOLEAN           ///< Precompiler constant to indicate if boolean was defined.
-typedef int boolean;               ///< boolean TRUE/FALSE data type.
+#if defined(WIN32)
+#  include <windows.h>             // for boolean
+#elif !defined(_TYPEDEF_BOOLEAN)
+#  define _TYPEDEF_BOOLEAN         ///< Precompiler constant to indicate that we use the xchange definition of a boolean
+typedef int boolean;               ///< the xchange default boolean TRUE/FALSE data type.
 #endif
 
 #ifndef NAN
-#  ifdef _NAN
-#    define NAN _NAN               ///< Not-a-number in case it's not already defined in math.h
-#  else
-#    define NAN (0.0/0.0)          ///< Not-a-number in case it's not already defined in math.h
-#  endif
+#  define NAN (0.0/0.0)            ///< Not-a-number in case it's not already defined in math.h
 #endif
 
 #ifndef INFINITY
 #  ifdef _INFINITY
-#    define INFINITY _INFINITY     ///< Infinity in case it's not already defined in math.h
+#    define INFINITY _INFINITY     ///< Infinity in case it's defined otherwise.
 #  else
 #    define INFINITY HUGE_VAL      ///< Infinity in case it's not already defined in math.h (uses C89 `HUGE_VAL`)
 #  endif

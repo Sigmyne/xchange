@@ -14,6 +14,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <limits.h>
+#include <stdarg.h>
 #include <sys/stat.h>
 
 #define __XCHANGE_INTERNAL_API__        ///< Use internal definitions
@@ -42,12 +43,8 @@
 #define ERROR_PREFIX    "ERROR! XJSON "
 #define WARNING_PREFIX  "WARNING! XJSON "
 
-
 #define UNICODE_BYTES   6         ///< '\u####'
 
-
-#define Error(format, ARGS...)      fprintf(xerr ? xerr : stderr, ERROR_PREFIX format, ##ARGS)
-#define Warning(format, ARGS...)    fprintf(xerr ? xerr : stderr, WARNING_PREFIX format, ##ARGS)
 /// \endcond
 
 static XStructure *ParseObject(char **pos, int *lineNumber);
@@ -72,6 +69,33 @@ static FILE *xerr;     ///< File / stream, which errors are printed to. A NULL w
 
 static char *indent;   ///< use xjsonGetIndent() for non-null access.
 static int ilen = XJSON_DEFAULT_INDENT;
+
+
+static int Error(const char *format, ...) {
+  va_list varg;
+  FILE *fp = xerr ? xerr : stderr;
+  int n;
+
+  va_start(varg, format);
+  n = fprintf(fp, ERROR_PREFIX);
+  n += vfprintf(fp, format, varg);
+  va_end(varg);
+
+  return n;
+}
+
+static int Warning(const char *format, ...) {
+  va_list varg;
+  FILE *fp = xerr ? xerr : stderr;
+  int n;
+
+  va_start(varg, format);
+  n = fprintf(fp, WARNING_PREFIX);
+  n += vfprintf(fp, format, varg);
+  va_end(varg);
+
+  return n;
+}
 
 /**
  * Sets the number of spaces per indentation when emitting JSON formatted output.
@@ -1103,12 +1127,12 @@ static int PrintField(const char *prefix, const XField *f, char *str) {
 }
 
 
-static __inline__ int IsNewLine(XType type, int ndim) {
+static int IsNewLine(XType type, int ndim) {
   return (ndim > 1 || type == X_STRUCT || type == X_FIELD);
 }
 
 
-static __inline__ int SizeOf(XType type, int ndim, const int *sizes) {
+static int SizeOf(XType type, int ndim, const int *sizes) {
   return xElementSizeOf(type) * xGetElementCount(ndim, sizes);
 }
 
