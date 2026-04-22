@@ -26,7 +26,7 @@ endif
 
 # If there is doxygen, build the API documentation also by default
 ifeq ($(.SHELLSTATUS),0)
-  DOC_TARGETS += local-dox
+  DOC_TARGETS += dox
 else
   ifneq ($(DOXYGEN),none)
     $(info WARNING! Doxygen is not available. Will skip 'dox' target) 
@@ -55,11 +55,27 @@ all: $(LIBXCHANGE) $(DOC_TARGETS) check
 
 # Run regression tests
 .PHONY: test
-test: tests run
+test:
+	$(MAKE) -C test run
+
+.PHONY: coverage
+coverage:
+	$(MAKE) -C test coverage
+
+# Buld example programs
+.PHONY: examples
+examples: shared
+	$(MAKE) -C examples
+
+# Build HTML documentation
+.PHONY: dox
+dox: 
+	$(MAKE) -C doc
 
 # 'test" + 'analyze'
 .PHONY: check
-check: test analyze
+check: 
+	$(MAKE) -C test analyze
 
 # Static code analysis via Facebook's infer
 .PHONY: infer
@@ -69,37 +85,24 @@ infer: clean
 # Remove intermediates
 .PHONY: clean
 clean:
-	rm -f $(OBJECTS) README-xchange.md gmon.out
+	@rm -f $(OBJECTS) README-xchange.md gmon.out
+	@$(MAKE) -s -C test clean
+	@$(MAKE) -s -C examples clean
+	@$(MAKE) -s -C doc clean 
 
 # Remove all generated files
 .PHONY: distclean
 distclean: clean
-	rm -f $(LIB)/libxchange.so* $(LIB)/libxchange.a
+	@rm -f $(LIB)/libxchange.so* $(LIB)/libxchange.a
+	@rm -rf build
+	@$(MAKE) -s -C test distclean
+	@$(MAKE) -s -C examples distclean
+	@$(MAKE) -s -C doc distclean 
 
 # Test programs
 .PHONY: tests
-tests: $(BIN)/test-parse $(BIN)/test-struct $(BIN)/test-lookup $(BIN)/test-json
-
-# Run tests
-.PHONY: run
-run: LD_LIBRARY_PATH := $(LIB)
-run: $(LIBXCHANGE) tests
-	$(BIN)/test-parse
-	$(BIN)/test-struct
-	$(BIN)/test-lookup
-	$(BIN)/test-json
-
-# Compile tests
-$(BIN)/test-%: LDFLAGS := $(LDFLAGS) -L$(LIB)
-$(BIN)/test-%: $(OBJ)/test-%.o $(LIBXCHANGE)
-	$(MAKE) $(BIN)
-	$(CC) -o $@ $^ $(LDFLAGS) -lxchange
-
-.PHONY: clean-test
-clean-test:
-	rm -rf bin
-
-clean: clean-test
+tests: 
+	$(MAKE) -C test
 
 # ----------------------------------------------------------------------------
 # The nitty-gritty stuff below
@@ -110,7 +113,6 @@ SOURCES = $(SRC)/xchange.c $(SRC)/xstruct.c $(SRC)/xlookup.c $(SRC)/xjson.c
 # Generate a list of object (obj/*.o) files from the input sources
 OBJECTS := $(subst .c,.o,$(subst $(SRC),$(OBJ),$(SOURCES)))
 
-
 $(LIB)/libxchange.so: $(LIB)/libxchange.so.$(SO_VERSION)
 
 # Shared library
@@ -119,24 +121,10 @@ $(LIB)/libxchange.so.$(SO_VERSION): $(SOURCES)
 # Static library
 $(LIB)/libxchange.a: $(OBJECTS)
 
-README-xchange.md: README.md
-	LINE=`sed -n '/\# /{=;q;}' $<` && tail -n +$$((LINE+2)) $< > $@
-
-dox: README-xchange.md
-
-.INTERMEDIATE: Doxyfile.local
-Doxyfile.local: Doxyfile Makefile
-	sed "s:^TAGFILES.*$$:TAGFILES = :g" $< > $@
-
-# Local documentation without specialized headers. The resulting HTML documents do not have
-# Google Search or Analytics tracking info.
-.PHONY: local-dox
-local-dox: README-xchange.md Doxyfile.local
-	doxygen Doxyfile.local
 
 # Some standard GNU targets, that should always exist...
 .PHONY: html
-html: local-dox
+html: dox
 
 .PHONY: dvi
 dvi:
@@ -187,16 +175,16 @@ install-headers:
 
 .PHONY: install-html
 install-html:
-ifneq ($(wildcard apidoc/html/search/*),)
+ifneq ($(wildcard doc/html/search/*),)
 	@echo "installing API documentation to $(DESTDIR)$(htmldir)"
 	install -d $(DESTDIR)$(htmldir)/search
-	$(INSTALL_DATA) -D apidoc/html/search/* $(DESTDIR)$(htmldir)/search/
-	$(INSTALL_DATA) -D apidoc/html/*.* $(DESTDIR)$(htmldir)/
+	$(INSTALL_DATA) -D doc/html/search/* $(DESTDIR)$(htmldir)/search/
+	$(INSTALL_DATA) -D doc/html/*.* $(DESTDIR)$(htmldir)/
 	@echo "installing Doxygen tag file to $(DESTDIR)$(docdir)"
 	install -d $(DESTDIR)$(docdir)
-	$(INSTALL_DATA) -D apidoc/*.tag $(DESTDIR)$(docdir)/
+	$(INSTALL_DATA) -D doc/*.tag $(DESTDIR)$(docdir)/
 else
-	@echo "WARNING! Skipping apidoc install: needs doxygen and 'local-dox'"
+	@echo "WARNING! Skipping apidoc install: needs doxygen and 'dox'"
 endif
 
 
@@ -209,8 +197,8 @@ help:
 	@echo "The following targets are available:"
 	@echo
 	@echo "  shared        Builds the shared 'libxchange.so' (linked to versioned)."
-	@echo "  static        Builds the static 'lib/libxchange.a' library."
-	@echo "  local-dox     Compiles local HTML API documentation using 'doxygen'."
+	@echo "  static        Builds the static 'libxchange.a' library."
+	@echo "  dox           Compiles local HTML API documentation using 'doxygen'."
 	@echo "  analyze       Performs static analysis with 'cppcheck'."
 	@echo "  all           All of the above."
 	@echo "  distro        shared libs and documentation (default target)."

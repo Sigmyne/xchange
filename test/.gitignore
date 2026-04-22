@@ -1,0 +1,8 @@
+test-json
+test-lookup
+test-parse
+test-struct
+*.gcno
+*.gcda
+*cov.info
+cov
