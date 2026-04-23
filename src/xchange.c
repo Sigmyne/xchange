@@ -15,8 +15,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>      // isspace()
-#include <unistd.h>     // sleep()
-#include <pthread.h>
 #include <float.h>
 #include <math.h>
 #include <errno.h>

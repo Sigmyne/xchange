@@ -5,20 +5,12 @@
 # You can include this snipplet in your Makefile also.
 # ============================================================================
 
-# Folders in which sources and header files are located, respectively
-SRC ?= src
-INC ?= include
-
 # Folders for compiled objects, libraries, and binaries, respectively 
 OBJ ?= obj
-LIB ?= lib
 BIN ?= bin
 
 # Compiler: use gcc by default
 CC ?= gcc
-
-# Add include/ directory
-CPPFLAGS += -I$(INC)
 
 # Base compiler options (if not defined externally...)
 CFLAGS ?= -g -Os -Wall
@@ -63,6 +55,24 @@ ifeq ($(STATICLINK),1)
   LIBXCHANGE = $(LIB)/libxchange.a
 else
   LIBXCHANGE = $(LIB)/libxchange.so
+endif
+
+# By default determine the build platform (OS type)
+PLATFORM ?= $(shell uname -s)
+
+# Platform-specific configurations
+ifeq ($(PLATFORM),Darwin)
+  # macOS specific
+  SOEXT := dylib
+  SHARED_FLAGS := -dynamiclib -fPIC
+  SONAME_FLAG := -Wl,-install_name,@rpath/
+  LIB_PATH_VAR := DYLD_LIBRARY_PATH
+else
+  # Linux/Unix specific
+  SOEXT := so
+  SHARED_FLAGS := -shared -fPIC
+  SONAME_FLAG := -Wl,-soname,
+  LIB_PATH_VAR := LD_LIBRARY_PATH
 endif
 
 

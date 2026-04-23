@@ -11,12 +11,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include <pthread.h>
+
+/// \cond PRIVATE
 
 #define __XCHANGE_INTERNAL_API__      ///< Use internal definitions
 #include "xchange.h"
-
-/// \cond PRIVATE
+#include "xmutex.h"
 
 typedef struct LookupEntry {
   long hash;
@@ -29,7 +29,7 @@ typedef struct {
   XLookupEntry **table;
   int nBins;
   int nEntries;
-  pthread_mutex_t mutex;
+  lock_type mutex;
 } XLookupPrivate;
 
 /// \endcond
@@ -141,6 +141,7 @@ long xLookupCount(const XLookupTable *tab) {
 int xLookupPut(XLookupTable *tab, const char *prefix, const XField *field, XField **oldValue) {
   static const char *fn = "xLookupPut";
 
+  // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
   int res;
 
@@ -150,10 +151,9 @@ int xLookupPut(XLookupTable *tab, const char *prefix, const XField *field, XFiel
   p = (XLookupPrivate *) tab->priv;
   if(!p) return x_error(0, EINVAL, "xGetLookupEntryAsync", "lookup table not initialized");
 
-  if(pthread_mutex_lock(&p->mutex) != 0) return x_error(X_FAILURE, errno, fn, "sem_wait() error");
-
+  xmut_lock(&p->mutex);
   res = xLookupPutAsync(tab, prefix, field, oldValue);
-  pthread_mutex_unlock(&p->mutex);
+  xmut_unlock(&p->mutex);
 
   return res;
 }
@@ -171,6 +171,7 @@ int xLookupPut(XLookupTable *tab, const char *prefix, const XField *field, XFiel
 XField *xLookupRemove(XLookupTable *tab, const char *id) {
   static const char *fn = "xLookupRemove";
 
+  // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
   XField *f;
 
@@ -181,17 +182,13 @@ XField *xLookupRemove(XLookupTable *tab, const char *id) {
 
   p = (XLookupPrivate *) tab->priv;
   if(!p) {
-    x_error(0, EINVAL, "xGetLookupEntryAsync", "lookup table not initialized");
+    x_error(0, EINVAL, fn, "lookup table not initialized");
     return NULL;
   }
 
-  if(pthread_mutex_lock(&p->mutex) != 0) {
-    x_error(0, errno, fn, "sem_wait() error");
-    return NULL;
-  }
-
+  xmut_lock(&p->mutex);
   f = xLookupRemoveAsync(tab, id);
-  pthread_mutex_unlock(&p->mutex);
+  xmut_unlock(&p->mutex);
 
   return f;
 }
@@ -288,6 +285,7 @@ static int xLookupRemoveAllAsync(XLookupTable *tab, const char *prefix, const XS
 int xLookupPutAll(XLookupTable *tab, const char *prefix, const XStructure *s, boolean recursive) {
   static const char *fn = "xLookupPutAll";
 
+  // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
   int n;
 
@@ -297,10 +295,9 @@ int xLookupPutAll(XLookupTable *tab, const char *prefix, const XStructure *s, bo
   p = (XLookupPrivate *) tab->priv;
   if(!p) return x_error(0, EINVAL, "xGetLookupEntryAsync", "lookup table not initialized");
 
-  if(pthread_mutex_lock(&p->mutex) != 0) return x_error(X_FAILURE, errno, fn, "sem_wait() error");
-
+  xmut_lock(&p->mutex);
   n = xLookupPutAllAsync(tab, prefix, s, recursive);
-  pthread_mutex_unlock(&p->mutex);
+  xmut_unlock(&p->mutex);
 
   prop_error(fn, n);
   return n;
@@ -323,6 +320,7 @@ int xLookupPutAll(XLookupTable *tab, const char *prefix, const XStructure *s, bo
 int xLookupRemoveAll(XLookupTable *tab, const char *prefix, const XStructure *s, boolean recursive) {
   static const char *fn = "xLookupRemoveAll";
 
+  // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
   int n;
 
@@ -332,10 +330,9 @@ int xLookupRemoveAll(XLookupTable *tab, const char *prefix, const XStructure *s,
   p = (XLookupPrivate *) tab->priv;
   if(!p) return x_error(0, EINVAL, "xGetLookupEntryAsync", "lookup table not initialized");
 
-  if(pthread_mutex_lock(&p->mutex) != 0) return x_error(X_FAILURE, errno, fn, "sem_wait() error");
-
+  xmut_lock(&p->mutex);
   n = xLookupRemoveAllAsync(tab, prefix, s, recursive);
-  pthread_mutex_unlock(&p->mutex);
+  xmut_unlock(&p->mutex);
 
   prop_error(fn, n);
   return n;
@@ -355,6 +352,7 @@ int xLookupRemoveAll(XLookupTable *tab, const char *prefix, const XStructure *s,
  */
 XLookupTable *xAllocLookup(unsigned int size) {
   XLookupTable *tab;
+  // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
 
   unsigned int n = 2;
@@ -373,7 +371,10 @@ XLookupTable *xAllocLookup(unsigned int size) {
   x_check_alloc(p->table);
 
   p->nBins = n;
-  pthread_mutex_init(&p->mutex, NULL);
+
+#if THREAD_SAFE
+  xmut_init(&p->mutex, NULL);
+#endif
 
   tab = (XLookupTable *) calloc(1, sizeof(XLookupTable));
   x_check_alloc(tab);
@@ -442,6 +443,7 @@ XField *xLookupField(const XLookupTable *tab, const char *id) {
   static const char *fn = "xLookupField";
 
   XLookupEntry *e;
+  // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
 
   if(!tab || !id) {
@@ -451,17 +453,13 @@ XField *xLookupField(const XLookupTable *tab, const char *id) {
 
   p = (XLookupPrivate *) tab->priv;
   if(!p) {
-    x_error(0, EINVAL, "xGetLookupEntryAsync", "lookup table not initialized");
+    x_error(0, EINVAL, fn, "lookup table not initialized");
     return NULL;
   }
 
-  if(pthread_mutex_lock(&p->mutex) != 0) {
-    x_error(0, errno, fn, "sem_wait() error");
-    return NULL;
-  }
-
+  xmut_lock(&p->mutex);
   e = xGetLookupEntryAsync(tab, id, xGetHash(id));
-  pthread_mutex_unlock(&p->mutex);
+  xmut_unlock(&p->mutex);
 
   return e ? e->field : NULL;
 }
@@ -482,6 +480,7 @@ XField *xLookupField(const XLookupTable *tab, const char *id) {
  * @sa xCreateLookup()
  */
 static void xDestroyLookupOption(XLookupTable *tab, boolean destroyFields) {
+  // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
 
   if(!tab) return;
@@ -505,7 +504,7 @@ static void xDestroyLookupOption(XLookupTable *tab, boolean destroyFields) {
     }
 
     free(p->table);
-    pthread_mutex_destroy(&p->mutex);
+    xmut_destroy(&p->mutex);
   }
 
   free(tab);

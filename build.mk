@@ -9,15 +9,14 @@
 $(OBJ)/%.o: %.c $(OBJ) Makefile
 	$(CC) -o $@ -c $(CPPFLAGS) $(CFLAGS) $<
 
-# Share library recipe
-$(LIB)/%.so.$(SO_VERSION):
-	@$(MAKE) $(LIB)
-	$(CC) -o $@ $(CPPFLAGS) $(CFLAGS) $^ -shared -fPIC -Wl,-soname,$(subst $(LIB)/,,$@) $(LDFLAGS)
+# Shared library recipe
+$(LIB)/%.$(SOEXT).$(SO_VERSION): | $(LIB)
+	$(CC) -o $@ $(CPPFLAGS) $(CFLAGS) $^ $(SHARED_FLAGS) $(SONAME_FLAG)$(notdir $@) $(LDFLAGS)
 
 # Unversioned shared libs (for linking against)
-$(LIB)/lib%.so:
+$(LIB)/lib%.$(SOEXT):
 	@rm -f $@
-	ln -sr $< $@
+	( cd $(dir $@); ln -s $(notdir $<) $(notdir $@) )
 
 # Static library: *.a
 $(LIB)/%.a:
@@ -32,13 +31,13 @@ $(OBJ) $(LIB) $(BIN) apidoc:
 # Remove intermediate files locally
 .PHONY: clean-local
 clean-local:
-	rm -rf obj
+	@rm -rf obj
 
 # Remove all locally built files, effectively restoring the repo to its 
 # pristine state
 .PHONY: distclean-local
 distclean-local: clean-local
-	rm -rf bin lib apidoc infer-out
+	@rm -rf bin lib infer-out
 
 # Remove intermediate files (general)
 .PHONY: clean
@@ -54,10 +53,5 @@ analyze:
 	@echo "   [analyze]"
 	@cppcheck $(CPPFLAGS) $(CHECKOPTS) src
 
-# Doxygen documentation (HTML and man pages) under apidocs/
-.PHONY: dox
-dox: README.md Doxyfile apidoc $(SRC) $(INC)
-	@echo "   [doxygen]"
-	@$(DOXYGEN)
 
 

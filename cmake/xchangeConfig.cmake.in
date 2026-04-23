@@ -1,0 +1,24 @@
+@PACKAGE_INIT@
+
+# xchange CMake configuration file
+
+include(CMakeFindDependencyMacro)
+
+# Include targets
+include("${CMAKE_CURRENT_LIST_DIR}/xchangeTargets.cmake")
+
+# Find math library if needed
+if(NOT WIN32)
+    find_library(MATH_LIBRARY m)
+    if(NOT MATH_LIBRARY)
+        message(FATAL_ERROR "Math library not found")
+    endif()
+endif()
+
+# Get include directories from target properties
+get_target_property(xchange_INCLUDE_DIRS xchange::core INTERFACE_INCLUDE_DIRECTORIES)
+
+# Check if optional components are available
+check_required_components(xchange)
+
+

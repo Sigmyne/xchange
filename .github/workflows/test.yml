@@ -71,5 +71,24 @@ jobs:
             apt-get install -q -y make gcc
           run: make test
 
+  test-macos:
+    name: Test on MacOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build and test on macOS
+        run: make test
+
+  test-cmake:
+    name: Test with CMake (Ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
       
-   
+      - name: Build
+        run: |
+          cmake -B build -DBUILD_TESTING=ON -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=ON
+          cmake --build build
+          
+      - name: Test
+        run: ctest --test-dir build
