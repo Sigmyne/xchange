@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['release_20schedule_0',['Release schedule',['../index.html#autotoc_md42',1,'']]],
-  ['representations_1',['Escaped string representations',['../index.html#autotoc_md34',1,'']]]
+  ['table_20of_20contents_0',['Table of Contents',['../index.html#autotoc_md1',1,'']]],
+  ['types_1',['Basic data types',['../index.html#autotoc_md12',1,'']]]
 ];

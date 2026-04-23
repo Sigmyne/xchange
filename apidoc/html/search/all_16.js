@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_0',['value',['../structXField.html#a0f61d63b009d0880a89c843bd50d8d76',1,'XField']]]
+  ['your_20application_20against_20xchange_0',['Linking your application against &lt;span class=&quot;tt&quot;&gt;xchange&lt;/span&gt;',['../index.html#autotoc_md9',1,'']]]
 ];

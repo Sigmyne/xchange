@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['elements_0',['elements',['../index.html#autotoc_md27',1,'Accessing substructures and elements'],['../index.html#autotoc_md29',1,'Iterating over elements']]],
-  ['emitter_1',['JSON parser and emitter',['../index.html#autotoc_md32',1,'']]],
-  ['error_20handling_2',['Error handling',['../index.html#autotoc_md36',1,'']]],
-  ['escaped_20string_20representations_3',['Escaped string representations',['../index.html#autotoc_md34',1,'']]]
+  ['ids_0',['Aggregate IDs',['../index.html#autotoc_md17',1,'']]],
+  ['install_20using_20cmake_1',['Build / install using CMake',['../index.html#autotoc_md7',1,'']]],
+  ['install_20using_20gnu_20make_2',['Build / install using GNU make',['../index.html#autotoc_md6',1,'']]],
+  ['installation_3',['Building and installation',['../index.html#autotoc_md5',1,'']]],
+  ['introduction_4',['Introduction',['../index.html#autotoc_md3',1,'']]],
+  ['iterating_20over_20elements_5',['Iterating over elements',['../index.html#autotoc_md20',1,'']]]
 ];

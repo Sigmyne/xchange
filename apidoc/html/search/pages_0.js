@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['0_200_202025_2003_2031_0',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
-  ['0_201_202025_2007_2001_1',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]],
-  ['0_202025_2003_2031_2',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
-  ['0_202025_2011_2010_3',['[1.1.0] - 2025-11-10',['../md_CHANGELOG.html#autotoc_md3',1,'']]],
-  ['01_4',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]],
-  ['02_2016_5',['[1.1.1] - 2026-02-16',['../md_CHANGELOG.html#autotoc_md1',1,'']]],
-  ['03_2031_6',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
-  ['07_2001_7',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]]
+  ['accessing_20substructures_20and_20elements_0',['Accessing substructures and elements',['../index.html#autotoc_md18',1,'']]],
+  ['against_20xchange_1',['Linking your application against &lt;span class=&quot;tt&quot;&gt;xchange&lt;/span&gt;',['../index.html#autotoc_md9',1,'']]],
+  ['aggregate_20ids_2',['Aggregate IDs',['../index.html#autotoc_md17',1,'']]],
+  ['and_20elements_3',['Accessing substructures and elements',['../index.html#autotoc_md18',1,'']]],
+  ['and_20emitter_4',['JSON parser and emitter',['../index.html#autotoc_md23',1,'']]],
+  ['and_20installation_5',['Building and installation',['../index.html#autotoc_md5',1,'']]],
+  ['application_20against_20xchange_6',['Linking your application against &lt;span class=&quot;tt&quot;&gt;xchange&lt;/span&gt;',['../index.html#autotoc_md9',1,'']]],
+  ['arrays_7',['Arrays',['../index.html#autotoc_md15',1,'']]]
 ];

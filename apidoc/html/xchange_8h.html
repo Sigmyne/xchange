@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>xchange: include/xchange.h File Reference</title>
+<title>xchange: /github/workspace/include/xchange.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -117,7 +117,7 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:adbb2c6827fb22c643243e54992da6c70" id="r_adbb2c6827fb22c643243e54992da6c70"><td class="memItemLeft"><a id="adbb2c6827fb22c643243e54992da6c70" name="adbb2c6827fb22c643243e54992da6c70"></a>
 #define&#160;</td><td class="memItemRight"><b>_TYPEDEF_BOOLEAN</b></td></tr>
-<tr class="memdesc:adbb2c6827fb22c643243e54992da6c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Precompiler constant to indicate if boolean was defined. <br /></td></tr>
+<tr class="memdesc:adbb2c6827fb22c643243e54992da6c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Precompiler constant to indicate that we use the xchange definition of a boolean. <br /></td></tr>
 <tr class="memitem:aa93f0eb578d23995850d61f7d61c55c1" id="r_aa93f0eb578d23995850d61f7d61c55c1"><td class="memItemLeft"><a id="aa93f0eb578d23995850d61f7d61c55c1" name="aa93f0eb578d23995850d61f7d61c55c1"></a>
 #define&#160;</td><td class="memItemRight"><b>FALSE</b>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:aa93f0eb578d23995850d61f7d61c55c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean 'false' value, if not already defined. <br /></td></tr>
@@ -269,10 +269,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight"><b>XCHANGE_MINOR_VERSION</b>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:a52519844e66bcff3ed17e4feaab76b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">API minor version. <br /></td></tr>
 <tr class="memitem:aef108c611a8388c435502dfd89c41a5f" id="r_aef108c611a8388c435502dfd89c41a5f"><td class="memItemLeft"><a id="aef108c611a8388c435502dfd89c41a5f" name="aef108c611a8388c435502dfd89c41a5f"></a>
-#define&#160;</td><td class="memItemRight"><b>XCHANGE_PATCHLEVEL</b>&#160;&#160;&#160;1</td></tr>
+#define&#160;</td><td class="memItemRight"><b>XCHANGE_PATCHLEVEL</b>&#160;&#160;&#160;2</td></tr>
 <tr class="memdesc:aef108c611a8388c435502dfd89c41a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer sub version of the release. <br /></td></tr>
 <tr class="memitem:a1cda2967190e2d61c5560bf6b43d930d" id="r_a1cda2967190e2d61c5560bf6b43d930d"><td class="memItemLeft"><a id="a1cda2967190e2d61c5560bf6b43d930d" name="a1cda2967190e2d61c5560bf6b43d930d"></a>
-#define&#160;</td><td class="memItemRight"><b>XCHANGE_RELEASE_STRING</b>&#160;&#160;&#160;&quot;&quot;</td></tr>
+#define&#160;</td><td class="memItemRight"><b>XCHANGE_RELEASE_STRING</b>&#160;&#160;&#160;&quot;-rc1&quot;</td></tr>
 <tr class="memdesc:a1cda2967190e2d61c5560bf6b43d930d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional release information in version, e.g. "-1", or "-rc1". <br /></td></tr>
 <tr class="memitem:a2e8ac004db0f6cb82e1b7a13b79380c5" id="r_a2e8ac004db0f6cb82e1b7a13b79380c5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e8ac004db0f6cb82e1b7a13b79380c5">XCHANGE_VERSION_STRING</a></td></tr>
 <tr class="memdesc:a2e8ac004db0f6cb82e1b7a13b79380c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The version string for this library.  <br /></td></tr>
@@ -287,7 +287,7 @@ Macros</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a621c38f1f10a1c565d897e3178b16d6e" id="r_a621c38f1f10a1c565d897e3178b16d6e"><td class="memItemLeft"><a id="a621c38f1f10a1c565d897e3178b16d6e" name="a621c38f1f10a1c565d897e3178b16d6e"></a>
 typedef int&#160;</td><td class="memItemRight"><b>boolean</b></td></tr>
-<tr class="memdesc:a621c38f1f10a1c565d897e3178b16d6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">boolean TRUE/FALSE data type. <br /></td></tr>
+<tr class="memdesc:a621c38f1f10a1c565d897e3178b16d6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the xchange default boolean TRUE/FALSE data type. <br /></td></tr>
 <tr class="memitem:a1c7e02eda23566a7891310fd09307a70" id="r_a1c7e02eda23566a7891310fd09307a70"><td class="memItemLeft"><a id="a1c7e02eda23566a7891310fd09307a70" name="a1c7e02eda23566a7891310fd09307a70"></a>
 typedef int&#160;</td><td class="memItemRight"><b>XType</b></td></tr>
 <tr class="memdesc:a1c7e02eda23566a7891310fd09307a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">SMA-X data type. <br /></td></tr>
@@ -424,7 +424,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a1f298f5039a547cea57a36c2ef616522">str_1</a>(s)</div>
-<div class="ttc" id="axchange_8h_html_a1f298f5039a547cea57a36c2ef616522"><div class="ttname"><a href="#a1f298f5039a547cea57a36c2ef616522">str_1</a></div><div class="ttdeci">#define str_1(s)</div><div class="ttdoc">Stringify level 1 macro.</div><div class="ttdef"><b>Definition</b> xchange.h:43</div></div>
+<div class="ttc" id="axchange_8h_html_a1f298f5039a547cea57a36c2ef616522"><div class="ttname"><a href="#a1f298f5039a547cea57a36c2ef616522">str_1</a></div><div class="ttdeci">#define str_1(s)</div><div class="ttdoc">Stringify level 1 macro.</div><div class="ttdef"><b>Definition</b> xchange.h:44</div></div>
 </div><!-- fragment -->
 <p>Stringify level 2 macro. </p>
 
@@ -473,11 +473,11 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a03b3076533e6967aaa48dcccf9ded4a0">str_2</a>(<a class="code hl_define" href="#a13ea68e798d0cd9cab06667707737055">XCHANGE_MAJOR_VERSION</a>) <span class="stringliteral">&quot;.&quot;</span> <a class="code hl_define" href="#a03b3076533e6967aaa48dcccf9ded4a0">str_2</a>(<a class="code hl_define" href="#a52519844e66bcff3ed17e4feaab76b2f">XCHANGE_MINOR_VERSION</a>) \</div>
 <div class="line"><span class="stringliteral">&quot;.&quot;</span> <a class="code hl_define" href="#a03b3076533e6967aaa48dcccf9ded4a0">str_2</a>(<a class="code hl_define" href="#aef108c611a8388c435502dfd89c41a5f">XCHANGE_PATCHLEVEL</a>) <a class="code hl_define" href="#a1cda2967190e2d61c5560bf6b43d930d">XCHANGE_RELEASE_STRING</a></div>
-<div class="ttc" id="axchange_8h_html_a03b3076533e6967aaa48dcccf9ded4a0"><div class="ttname"><a href="#a03b3076533e6967aaa48dcccf9ded4a0">str_2</a></div><div class="ttdeci">#define str_2(s)</div><div class="ttdoc">Stringify level 2 macro.</div><div class="ttdef"><b>Definition</b> xchange.h:36</div></div>
-<div class="ttc" id="axchange_8h_html_a13ea68e798d0cd9cab06667707737055"><div class="ttname"><a href="#a13ea68e798d0cd9cab06667707737055">XCHANGE_MAJOR_VERSION</a></div><div class="ttdeci">#define XCHANGE_MAJOR_VERSION</div><div class="ttdoc">API major version.</div><div class="ttdef"><b>Definition</b> xchange.h:19</div></div>
-<div class="ttc" id="axchange_8h_html_a1cda2967190e2d61c5560bf6b43d930d"><div class="ttname"><a href="#a1cda2967190e2d61c5560bf6b43d930d">XCHANGE_RELEASE_STRING</a></div><div class="ttdeci">#define XCHANGE_RELEASE_STRING</div><div class="ttdoc">Additional release information in version, e.g. &quot;-1&quot;, or &quot;-rc1&quot;.</div><div class="ttdef"><b>Definition</b> xchange.h:28</div></div>
-<div class="ttc" id="axchange_8h_html_a52519844e66bcff3ed17e4feaab76b2f"><div class="ttname"><a href="#a52519844e66bcff3ed17e4feaab76b2f">XCHANGE_MINOR_VERSION</a></div><div class="ttdeci">#define XCHANGE_MINOR_VERSION</div><div class="ttdoc">API minor version.</div><div class="ttdef"><b>Definition</b> xchange.h:22</div></div>
-<div class="ttc" id="axchange_8h_html_aef108c611a8388c435502dfd89c41a5f"><div class="ttname"><a href="#aef108c611a8388c435502dfd89c41a5f">XCHANGE_PATCHLEVEL</a></div><div class="ttdeci">#define XCHANGE_PATCHLEVEL</div><div class="ttdoc">Integer sub version of the release.</div><div class="ttdef"><b>Definition</b> xchange.h:25</div></div>
+<div class="ttc" id="axchange_8h_html_a03b3076533e6967aaa48dcccf9ded4a0"><div class="ttname"><a href="#a03b3076533e6967aaa48dcccf9ded4a0">str_2</a></div><div class="ttdeci">#define str_2(s)</div><div class="ttdoc">Stringify level 2 macro.</div><div class="ttdef"><b>Definition</b> xchange.h:37</div></div>
+<div class="ttc" id="axchange_8h_html_a13ea68e798d0cd9cab06667707737055"><div class="ttname"><a href="#a13ea68e798d0cd9cab06667707737055">XCHANGE_MAJOR_VERSION</a></div><div class="ttdeci">#define XCHANGE_MAJOR_VERSION</div><div class="ttdoc">API major version.</div><div class="ttdef"><b>Definition</b> xchange.h:20</div></div>
+<div class="ttc" id="axchange_8h_html_a1cda2967190e2d61c5560bf6b43d930d"><div class="ttname"><a href="#a1cda2967190e2d61c5560bf6b43d930d">XCHANGE_RELEASE_STRING</a></div><div class="ttdeci">#define XCHANGE_RELEASE_STRING</div><div class="ttdoc">Additional release information in version, e.g. &quot;-1&quot;, or &quot;-rc1&quot;.</div><div class="ttdef"><b>Definition</b> xchange.h:29</div></div>
+<div class="ttc" id="axchange_8h_html_a52519844e66bcff3ed17e4feaab76b2f"><div class="ttname"><a href="#a52519844e66bcff3ed17e4feaab76b2f">XCHANGE_MINOR_VERSION</a></div><div class="ttdeci">#define XCHANGE_MINOR_VERSION</div><div class="ttdoc">API minor version.</div><div class="ttdef"><b>Definition</b> xchange.h:23</div></div>
+<div class="ttc" id="axchange_8h_html_aef108c611a8388c435502dfd89c41a5f"><div class="ttname"><a href="#aef108c611a8388c435502dfd89c41a5f">XCHANGE_PATCHLEVEL</a></div><div class="ttdeci">#define XCHANGE_PATCHLEVEL</div><div class="ttdoc">Integer sub version of the release.</div><div class="ttdef"><b>Definition</b> xchange.h:26</div></div>
 </div><!-- fragment -->
 <p>The version string for this library. </p>
 
@@ -2101,7 +2101,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dd>
 <a class="el" href="xlookup_8c.html#a85f2c5443ebef48499398453a39710da">xLookupRemove()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#a1d4a0c99f979fd0ecf0e9dcb7191a8d7">X_FAILURE</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
 
 </div>
 </div>
@@ -2146,7 +2146,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of fields added (&lt;=0), or else X_NULL if either of the arguments were NULL, or X_NO_INIT if the table was not initialized, or else X_FAILURE if some other error.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xlookup_8c.html#add4a6ffa5866d770bd21636d00b9d3d7">xLookupRemoveAll()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#a1d4a0c99f979fd0ecf0e9dcb7191a8d7">X_FAILURE</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
 
 </div>
 </div>
@@ -2226,7 +2226,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of fields removed (&lt;=0), or else X_NULL if either of the arguments were NULL, or X_NO_INIT if the table was not initialized, or else X_FAILURE if some other error.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xlookup_8c.html#add4a6ffa5866d770bd21636d00b9d3d7">xLookupRemoveAll()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#a1d4a0c99f979fd0ecf0e9dcb7191a8d7">X_FAILURE</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['31_0',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]]
+  ['data_0',['Structured data',['../index.html#autotoc_md11',1,'']]],
+  ['data_20types_1',['Basic data types',['../index.html#autotoc_md12',1,'']]],
+  ['debugging_20support_2',['Debugging support',['../index.html#autotoc_md29',1,'']]]
 ];

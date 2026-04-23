@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['changed_0',['Changed',['../md_CHANGELOG.html#autotoc_md2',1,'Changed'],['../md_CHANGELOG.html#autotoc_md9',1,'Changed']]],
-  ['changelog_1',['Changelog',['../md_CHANGELOG.html',1,'']]],
-  ['contents_2',['Table of Contents',['../index.html#autotoc_md12',1,'']]],
-  ['contributing_20to_20the_20xchange_20library_3',['Contributing to the xchange library',['../md_CONTRIBUTING.html',1,'']]],
-  ['creating_20structure_4',['Creating structure',['../index.html#autotoc_md25',1,'']]]
+  ['gnu_20make_0',['Build / install using GNU make',['../index.html#autotoc_md6',1,'']]],
+  ['guide_1',['User&apos;s guide',['../index.html',1,'']]]
 ];

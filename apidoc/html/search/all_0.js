@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['0_200_202025_2003_2031_0',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
-  ['0_201_202025_2007_2001_1',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]],
-  ['0_202025_2003_2031_2',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
-  ['0_202025_2011_2010_3',['[1.1.0] - 2025-11-10',['../md_CHANGELOG.html#autotoc_md3',1,'']]],
-  ['01_4',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]],
-  ['02_2016_5',['[1.1.1] - 2026-02-16',['../md_CHANGELOG.html#autotoc_md1',1,'']]],
-  ['03_2031_6',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
-  ['07_2001_7',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]]
+  ['_5f_5fxchange_5finternal_5fapi_5f_5f_0',['__XCHANGE_INTERNAL_API__',['../xchange_8c.html#ac36bd75f87a1614fb477a0fbcd5df1f3',1,'__XCHANGE_INTERNAL_API__:&#160;xchange.c'],['../xjson_8c.html#ac36bd75f87a1614fb477a0fbcd5df1f3',1,'__XCHANGE_INTERNAL_API__:&#160;xjson.c'],['../xstruct_8c.html#ac36bd75f87a1614fb477a0fbcd5df1f3',1,'__XCHANGE_INTERNAL_API__:&#160;xstruct.c']]],
+  ['_5ftypedef_5fboolean_1',['_TYPEDEF_BOOLEAN',['../xchange_8h.html#adbb2c6827fb22c643243e54992da6c70',1,'xchange.h']]]
 ];

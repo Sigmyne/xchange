@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['of_20contents_0',['Table of Contents',['../index.html#autotoc_md12',1,'']]],
-  ['over_20elements_1',['Iterating over elements',['../index.html#autotoc_md29',1,'']]]
+  ['release_20schedule_0',['Release schedule',['../index.html#autotoc_md33',1,'']]],
+  ['representations_1',['Escaped string representations',['../index.html#autotoc_md25',1,'']]]
 ];

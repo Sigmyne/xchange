@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['ids_0',['Aggregate IDs',['../index.html#autotoc_md26',1,'']]],
-  ['infinity_1',['INFINITY',['../xchange_8h.html#a956e2723d559858d08644ac99146e910',1,'xchange.h']]],
-  ['introduction_2',['Introduction',['../index.html#autotoc_md14',1,'']]],
-  ['isserialized_3',['isSerialized',['../structXField.html#aaa68a7e140a5370ed0eb52710744c341',1,'XField']]],
-  ['iterating_20over_20elements_4',['Iterating over elements',['../index.html#autotoc_md29',1,'']]]
+  ['make_0',['Build / install using GNU make',['../index.html#autotoc_md6',1,'']]],
+  ['max_5fdebug_5ferror_5fcount_1',['MAX_DEBUG_ERROR_COUNT',['../xchange_8h.html#a73012d5991cc49ef05bf1d621a1cde55',1,'xchange.h']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['release_20schedule_0',['Release schedule',['../index.html#autotoc_md42',1,'']]],
-  ['representations_1',['Escaped string representations',['../index.html#autotoc_md34',1,'']]]
+  ['user_20s_20guide_0',['User&apos;s guide',['../index.html',1,'']]],
+  ['using_20cmake_1',['Build / install using CMake',['../index.html#autotoc_md7',1,'']]],
+  ['using_20gnu_20make_2',['Build / install using GNU make',['../index.html#autotoc_md6',1,'']]]
 ];

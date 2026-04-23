@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['2025_2003_2031_0',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
-  ['2025_2007_2001_1',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]],
-  ['2025_2011_2010_2',['[1.1.0] - 2025-11-10',['../md_CHANGELOG.html#autotoc_md3',1,'']]],
-  ['2026_2002_2016_3',['[1.1.1] - 2026-02-16',['../md_CHANGELOG.html#autotoc_md1',1,'']]]
+  ['basic_20data_20types_0',['Basic data types',['../index.html#autotoc_md12',1,'']]],
+  ['boolean_1',['boolean',['../xchange_8h.html#a621c38f1f10a1c565d897e3178b16d6e',1,'xchange.h']]],
+  ['build_20install_20using_20cmake_2',['Build / install using CMake',['../index.html#autotoc_md7',1,'']]],
+  ['build_20install_20using_20gnu_20make_3',['Build / install using GNU make',['../index.html#autotoc_md6',1,'']]],
+  ['building_20and_20installation_4',['Building and installation',['../index.html#autotoc_md5',1,'']]]
 ];

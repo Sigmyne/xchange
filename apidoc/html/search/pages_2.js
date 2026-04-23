@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['2025_2003_2031_0',['[1.0.0] - 2025-03-31',['../md_CHANGELOG.html#autotoc_md10',1,'']]],
-  ['2025_2007_2001_1',['[1.0.1] - 2025-07-01',['../md_CHANGELOG.html#autotoc_md6',1,'']]],
-  ['2025_2011_2010_2',['[1.1.0] - 2025-11-10',['../md_CHANGELOG.html#autotoc_md3',1,'']]],
-  ['2026_2002_2016_3',['[1.1.1] - 2026-02-16',['../md_CHANGELOG.html#autotoc_md1',1,'']]]
+  ['cmake_0',['Build / install using CMake',['../index.html#autotoc_md7',1,'']]],
+  ['contents_1',['Table of Contents',['../index.html#autotoc_md1',1,'']]],
+  ['creating_20structure_2',['Creating structure',['../index.html#autotoc_md16',1,'']]]
 ];
