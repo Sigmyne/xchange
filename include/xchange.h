@@ -23,10 +23,10 @@
 #define XCHANGE_MINOR_VERSION  1
 
 /// Integer sub version of the release
-#define XCHANGE_PATCHLEVEL     1
+#define XCHANGE_PATCHLEVEL     2
 
 /// Additional release information in version, e.g. "-1", or "-rc1".
-#define XCHANGE_RELEASE_STRING ""
+#define XCHANGE_RELEASE_STRING "-rc1"
 
 
 #ifdef str_2

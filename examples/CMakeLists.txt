@@ -12,7 +12,7 @@ cmake_minimum_required(VERSION 3.20...4.3)
 # Configuration in case this is a standalone project....
 if(NOT PROJECT_NAME)
     project(xchange-examples
-        VERSION 1.0.2
+        VERSION 1.1.2
         DESCRIPTION "xchange example programs"
         HOMEPAGE_URL "https://sigmyne.github.io/xchange/"
         LANGUAGES C

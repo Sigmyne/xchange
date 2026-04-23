@@ -20,7 +20,7 @@ cmake_minimum_required(VERSION 3.24...4.3)
 
 # Project definition
 project(xchange
-    VERSION 1.0.2
+    VERSION 1.1.2
     DESCRIPTION "Structured data exchange library for C/C++"
     HOMEPAGE_URL "https://sigmyne.github.io/xchange/"
     LANGUAGES C
