@@ -194,6 +194,15 @@ the `Runtime` component:
 <a name="xchange-linking"></a>
 ## Linking your application against `xchange`
 
+ - [Using a GNU `Makefile`](#xchange-makefile-application)
+ - [Using CMake](#xchange-cmake-application)
+
+
+<a name="xchange-makefile-application"></a>
+### Using a GNU `Makefile`
+
+<details>
+
 Provided you have installed the shared (`libxchange.so`) or static (`libxchange.a`) library in a location that is
 in your `LD_LIBRARY_PATH` (e.g. in `/usr/lib` or `/usr/local/lib`) you can simply link your program using the 
 `-lxchange` flag. Your `Makefile` may look like: 
@@ -206,6 +215,22 @@ myprog: ...
 (Or, you might simply add `-lxchange` to `LDFLAGS` and use a more standard recipe.) And, in if you installed the 
 __xchange__ library elsewhere, you can simply add the location to `LD_LIBRARY_PATH` prior to linking.
 
+</details>
+
+<a name="xchange-cmake-application"></a>
+### Using CMake
+
+<details>
+
+Add the appropriate bits from below to the `CMakeLists.txt` file of your application (`my-application`):
+
+```cmake
+  find_package(xchange REQUIRED)
+  target_include_directories(my-application PRIVATE ${xchange_INCLUDE_DIRS})
+  target_link_libraries(my-application PRIVATE ${xchange_LIBRARIES})
+```
+
+</details>
 
 -----------------------------------------------------------------------------
 
