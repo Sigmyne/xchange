@@ -19,7 +19,7 @@ Structured data representation and JSON support for C/C++.
 
 Author: Attila Kovacs
 
-Updated for 1.0 and later releases.
+Updated for 1.0.2 and later releases.
 
 ## Table of Contents
 
@@ -51,7 +51,19 @@ the [Sigmyne/xchange](https://github.com/Sigmyne/xchange) repository on GitHub.
 -----------------------------------------------------------------------------
 
 <a name="building-xchange"></a>
-## Building
+## Building and installation
+
+ - [Build SuperNOVAS using GNU make](#xchange-gnu-build)
+ - [Build SuperNOVAS using CMake](#xchange-cmake-build)
+
+<a name="xchange-gnu-build"></a>
+### Build / install using GNU make
+
+The __xchange__ distribution contains a GNU `Makefile`, which is suitable for compiling the library (as well as local 
+documentation, and tests, etc.) on POSIX systems such as Linux, Mac OS X, BSD, Cygwin or WSL -- using 
+[GNU `make`](https://www.gnu.org/software/make/).
+
+<details>
 
 The __xchange__ library can be built either as a shared (`libxchange.so[.1]`) and as a static (`libxchange.a`) library, 
 depending on what suits your needs best.
@@ -108,6 +120,69 @@ Or, to stage the installation (to `/usr`) under a 'build root':
   $ make DESTDIR="/tmp/stage" install
 ```
 
+</details>
+
+<a name="xchange-cmake-build"></a>
+### Build / install using CMake 
+
+As of v1.0.2, __xchange__ can be built using [CMake](https://cmake.org/) also. CMake allows for greater portability 
+than the regular GNU `Makefile`. Note, however, that the CMake configuration does not support all of the build options 
+of the GNU `Makefile`, such as code coverage tracking. 
+
+<details>
+
+The basic build recipe for CMake is:
+
+```bash
+  $ cmake -B build
+  $ cmake --build build
+```
+
+The __SuperNOVAS__ CMake build supports the following options (in addition to the standard CMake options):
+
+ - `BUILD_SHARED_LIBS=ON|OFF` (default: OFF) - Build shared libraries instead of static
+ - `BUILD_DOC=ON|OFF` (default: OFF) - Compile HTML documentation. Requires `doxygen`.
+ - `BUILD_EXAMPLES=ON|OFF` (default: OFF) - Build the included examples
+ - `BUILD_TESTING=ON|OFF` (default: ON - Build regression tests
+
+For example, to configure the build of __xchange__ with shared libraries and build local documentations
+
+```bash
+  $ cmake -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_DOC=ON
+```
+
+and then perform the build:
+
+```bash 
+  $ cmake --build build
+```
+
+Or, on Windows (Microsoft Visual C) you will want:
+
+```bash
+  $ cmake --build build --config Release
+```
+
+If a `CMAKE_BUILD_TYPE` is not set, the build will only use the `CFLAGS` (if any) that were set in the environment.
+This is ideal for those who want to have full control of the compiler flags used in the build. Specifying
+`Release` or `Debug` will append a particular set of appropriate compiler options which are suited for the given 
+build type. (If you want to use the MinGW compiler on Windows, you'll want to set 
+`-DCMAKE_C_COMPILER=gcc -G "MinGW Makefiles"` options also.)
+
+After a successful build, you can install the `Runtime` (libraries), and `Development` (headers, CMake config, and 
+`pkg-config`) components, e.g. under `/usr/local`, as:
+
+```bash
+  $ cmake --install build --prefix /usr/local 
+```
+
+Or, you can use the `--component` option to install just the selected components. For example to install just
+the `Runtime` component:
+
+```bash
+  $ cmake --install build --component Runtime --prefix /usr/local
+```
+</details>
 
 
 -----------------------------------------------------------------------------
@@ -609,4 +684,4 @@ release.
 
 
 -----------------------------------------------------------------------------
-Copyright (C) 2025 Attila Kovács
+Copyright (C) 2026 Attila Kovács
