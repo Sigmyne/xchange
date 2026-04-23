@@ -54,7 +54,6 @@ The __xchange__ distribution contains a GNU `Makefile`, which is suitable for co
 documentation, and tests, etc.) on POSIX systems such as Linux, Mac OS X, BSD, Cygwin or WSL -- using 
 [GNU `make`](https://www.gnu.org/software/make/).
 
-<details>
 
 The __xchange__ library can be built either as a shared (`libxchange.so[.1]`) and as a static (`libxchange.a`) library, 
 depending on what suits your needs best.
@@ -111,7 +110,6 @@ Or, to stage the installation (to `/usr`) under a 'build root':
   $ make DESTDIR="/tmp/stage" install
 ```
 
-</details>
 
 <a name="xchange-cmake-build"></a>
 ### Build / install using CMake 
@@ -120,7 +118,6 @@ As of v1.0.2, __xchange__ can be built using [CMake](https://cmake.org/) also. C
 than the regular GNU `Makefile`. Note, however, that the CMake configuration does not support all of the build options 
 of the GNU `Makefile`, such as code coverage tracking. 
 
-<details>
 
 The basic build recipe for CMake is:
 
@@ -173,7 +170,6 @@ the `Runtime` component:
 ```bash
   $ cmake --install build --component Runtime --prefix /usr/local
 ```
-</details>
 
 
 -----------------------------------------------------------------------------
