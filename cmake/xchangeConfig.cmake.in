@@ -1,6 +1,6 @@
 @PACKAGE_INIT@
 
-# supernovas CMake configuration file
+# xchange CMake configuration file
 
 include(CMakeFindDependencyMacro)
 

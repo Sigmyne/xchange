@@ -1,4 +1,4 @@
-# Part of SuperNOVAS
+# Part of xchange
 #
 # Build exammple programs
 #

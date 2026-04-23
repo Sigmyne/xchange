@@ -29,7 +29,7 @@ clean:
 
 .PHONY: distclean
 distclean: clean
-	rm -rf html *.tag
+	rm -rf html *.tag README.md README-undecorated.md
 
 .INTERMEDIATE: docedit
 docedit: src/docedit.c

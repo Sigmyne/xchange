@@ -29,7 +29,7 @@ set_package_properties(Doxygen PROPERTIES
     URL "https://doxygen.nl/"
     DESCRIPTION  "is a widely-used documentation generator tool in software development"
     TYPE OPTIONAL
-    PURPOSE "Enables HTML documentation for supernovas"
+    PURPOSE "Enables HTML documentation for xchange"
 )
 
 # ----------------------------------------------------------------------------

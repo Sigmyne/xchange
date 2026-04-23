@@ -1,8 +1,8 @@
 # Additional CMake configuration file for building the C++ regression testing 
-# programs of the SuperNOVAS library. The programs are added to the test suite.
+# programs of the xchange library. The programs are added to the test suite.
 #
-# To invoke simply configure the cmake build in the supernovas directory with
-# the -DBUILD_TESTING=ON -DENABLE_CPP=ON options.
+# To invoke simply configure the cmake build in the xchange root directory with
+# the -DBUILD_TESTING=ON options.
 #
 # Author: Attila Kovacs
 

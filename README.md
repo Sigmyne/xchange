@@ -53,8 +53,8 @@ the [Sigmyne/xchange](https://github.com/Sigmyne/xchange) repository on GitHub.
 <a name="building-xchange"></a>
 ## Building and installation
 
- - [Build SuperNOVAS using GNU make](#xchange-gnu-build)
- - [Build SuperNOVAS using CMake](#xchange-cmake-build)
+ - [Build / install using GNU make](#xchange-gnu-build)
+ - [Build / install using CMake](#xchange-cmake-build)
 
 <a name="xchange-gnu-build"></a>
 ### Build / install using GNU make
@@ -138,7 +138,7 @@ The basic build recipe for CMake is:
   $ cmake --build build
 ```
 
-The __SuperNOVAS__ CMake build supports the following options (in addition to the standard CMake options):
+The __xchange__ CMake build supports the following options (in addition to the standard CMake options):
 
  - `BUILD_SHARED_LIBS=ON|OFF` (default: OFF) - Build shared libraries instead of static
  - `BUILD_DOC=ON|OFF` (default: OFF) - Compile HTML documentation. Requires `doxygen`.
