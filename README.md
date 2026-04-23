@@ -71,6 +71,9 @@ depending on what suits your needs best.
 You can configure the build, either by editing `config.mk` or else by defining the relevant environment variables 
 prior to invoking `make`. The following build variables can be configured:
 
+ - `PACKAGE_NAME`: Use a different name for the 'package' (default: `xchange`). This setting selects the name of the
+   directory in which documentation is installed (e.g. under `/usr/share/doc/`).  
+
  - `CC`: The C compiler to use (default: `gcc`).
 
  - `CPPFLAGS`: C preprocessor flags, such as externally defined compiler constants.
@@ -125,7 +128,7 @@ Or, to stage the installation (to `/usr`) under a 'build root':
 <a name="xchange-cmake-build"></a>
 ### Build / install using CMake 
 
-As of v1.0.2, __xchange__ can be built using [CMake](https://cmake.org/) also. CMake allows for greater portability 
+As of v1.1.2, __xchange__ can be built using [CMake](https://cmake.org/) also. CMake allows for greater portability 
 than the regular GNU `Makefile`. Note, however, that the CMake configuration does not support all of the build options 
 of the GNU `Makefile`, such as code coverage tracking. 
 
@@ -140,6 +143,7 @@ The basic build recipe for CMake is:
 
 The __xchange__ CMake build supports the following options (in addition to the standard CMake options):
 
+ - `PACKAGE_NAME=<name>` - Sets the package name (default: `xchange`).
  - `BUILD_SHARED_LIBS=ON|OFF` (default: OFF) - Build shared libraries instead of static
  - `BUILD_DOC=ON|OFF` (default: OFF) - Compile HTML documentation. Requires `doxygen`.
  - `BUILD_EXAMPLES=ON|OFF` (default: OFF) - Build the included examples
@@ -299,7 +303,7 @@ You can create scalar fields easily, e.g.:
 Under the hood, scalar values are a special case of arrays containing a single element. Scalars have dimension zero 
 i.e., a shape defined by an empty integer array, e.g. `int shape[0]` in a corresponding `XField` element. 
 
-In this way scalars are distinguished from true arrays containing just a single elements, which have dimensionality 
+In this way scalars are distinguished from true arrays containing just a single element, which have dimensionality 
 &lt;=1 and shapes e.g., `int shape[1] = {1}` or `int shape[2] = {1, 1}`. The difference, while subtle, becomes more 
 obvious when serializing the array, e.g. to JSON. A scalar floating point value of 1.04, for example, will appear as 
 `1.04` in JSON, whereas the 1D and 2D single-element arrays will be serialized as `{ 1.04 }` or `{{ 1.04 }}`, 
@@ -443,7 +447,7 @@ You can also remove existing fields from structures using `xRemoveField()`, e.g.
 
 #### Large structures
 
-The normal `xGetField()` and `xGetSubstruct()` functions have computational costs that scale linearly with the number 
+The normal `xGetField()` and `xGetSubstruct()` functions have data access costs that scale linearly with the number 
 of direct fields in the structure. It is not much of an issue for structures that contain dozens of, or even a couple 
 hundred, fields (per layer). For much larger structures, which have a fixed layout, there is an option for a 
 potentially much more efficient hash-based lookup also. E.g. instead of `xGetField()` you may use `xLookupField()`:

@@ -18,8 +18,12 @@
 
 cmake_minimum_required(VERSION 3.24...4.3)
 
+if(NOT PACKAGE_NAME)
+    set(PACKAGE_NAME xchange)
+endif()
+
 # Project definition
-project(xchange
+project(${PACKAGE_NAME}
     VERSION 1.1.2
     DESCRIPTION "Structured data exchange library for C/C++"
     HOMEPAGE_URL "https://sigmyne.github.io/xchange/"
