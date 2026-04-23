@@ -7,6 +7,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased]
+
+Maintenance release with improved portability (esp. Windows, MacOS, and BSD).
+
+### Fixed
+
+ - #23: Removed unneeded includes of UNIX-specific `unistd.h` (blocking portability). 
+ 
+### Added
+
+ - #23: Portability to Windows, MacOS, and BSD.
+
+ - #23: CMake build configuration, alongside the GNU make config.
+ 
+ - #23: New GitHub Actions workflows for multi-platform checks
+
+### Changed
+ 
+ - #23: Use portable mutexes in `xlookup.c`.
+ 
+ - #23: `xjson` error/warning reporting via `static` functions instead of niche macros that Windows does not support.
+
+ - #23: `xGetAsLongAtIndex()` and `xGetAsDoubleAtIndex()` switch to setting errno to `EINVAL` instead of `ENOSR`, as
+   the latter is not defined on BSD.
+
+
 ## [1.1.1] - 2026-02-16
 
 Maintenance release with minor code style improvements.
@@ -14,7 +40,7 @@ Maintenance release with minor code style improvements.
 ### Changed
 
  - #18: A few code style improvements, spotted by cppcheck.
-
+ 
 
 ## [1.1.0] - 2025-11-10
 
