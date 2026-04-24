@@ -34,6 +34,7 @@ project(${PACKAGE_NAME}
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 include(FeatureSummary)
+include(CheckLibraryExists)
 
 # Build options
 option(BUILD_SHARED_LIBS "Build as shared libraries instead of static" OFF)
@@ -78,10 +79,8 @@ if(WIN32)
     add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
 endif()
 
-if(WIN32)
-    set(MATHLIB "")
-else()
-    find_library(MATH_LIBRARY m REQUIRED)
+check_library_exists(m exp "" HAS_MATHLIB)
+if(HAS_MATHLIB)
     set(MATHLIB m)
     
     # [.pc] Link applications against math lib...

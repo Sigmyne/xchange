@@ -19,17 +19,13 @@ if(NOT PROJECT_NAME)
     )
     
     include(GNUInstallDirs)
+    include(CheckLibraryExists)
         
     find_package(xchange)
     
-    if(WIN32)
-        set(MATHLIB "")
-    else()
-        find_library(MATH_LIBRARY m REQUIRED)
+    check_library_exists(m exp "" HAS_MATHLIB)
+    if(HAS_MATHLIB)
         set(MATHLIB m)
-    
-        # [.pc] Link applications against math lib...
-        string(APPEND PC_LIBS_PRIVATE -l${MATHLIB} " ")
     endif()
 endif()
 
