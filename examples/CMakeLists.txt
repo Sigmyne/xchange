@@ -18,9 +18,9 @@ if(NOT PROJECT_NAME)
         LANGUAGES C
     )
     
-    include(GNUInstallDirs)
     include(CheckLibraryExists)
-        
+    include(GNUInstallDirs)
+    
     find_package(xchange)
     
     check_library_exists(m exp "" HAS_MATHLIB)

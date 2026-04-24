@@ -31,10 +31,11 @@ project(${PACKAGE_NAME}
 )
 
 # Include required modules
+include(CheckLibraryExists)
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 include(FeatureSummary)
-include(CheckLibraryExists)
+
 
 # Build options
 option(BUILD_SHARED_LIBS "Build as shared libraries instead of static" OFF)
