@@ -7,9 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [1.1.2-rc2] - 2026-04-24
+## [1.1.2] - 2026-04-27
 
-Maintenance release with improved portability (esp. Windows, MacOS, and BSD).
+Maintenance release with improved portability (esp. Windows, MacOS, and BSD). It also enables ports to
+vcpkg and Homebrew (coming very soon...).
 
 ### Fixed
 
@@ -21,7 +22,7 @@ Maintenance release with improved portability (esp. Windows, MacOS, and BSD).
 
  - #23: CMake build configuration, alongside the GNU make config.
  
- - #23: New GitHub Actions workflows for multi-platform checks
+ - #23: New GitHub Actions workflows for multi-platform checks.
 
 ### Changed
  

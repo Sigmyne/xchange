@@ -25,7 +25,7 @@ endif()
 # Project definition
 project(${PACKAGE_NAME}
     VERSION 1.1.2
-    DESCRIPTION "Structured data exchange library for C/C++"
+    DESCRIPTION "Structured data exchange and JSON support for C/C++"
     HOMEPAGE_URL "https://sigmyne.github.io/xchange/"
     LANGUAGES C
 )
@@ -215,7 +215,7 @@ message("   RelWithDebInfo:    ${CMAKE_C_FLAGS_RELWITHDEBINFO}")
 message("   MinSizeRel:        ${CMAKE_C_FLAGS_MINSIZEREL}")
 message("")
 
-message(" - supernovas Configuration Summary:")
+message(" - xchange Configuration Summary:")
 message("   Version:           ${PROJECT_VERSION}")
 if(CMAKE_BUILD_TYPE)
     message("   Build type:        ${CMAKE_BUILD_TYPE}")
