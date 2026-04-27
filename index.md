@@ -44,3 +44,26 @@ non-bloated installations of just the parts that are needed for the particular u
  | `libxchange-doc`                      | HTML Developer documentation                 |
  
 
+__vcpkg Registry__
+
+You can also install the __xchange__ library with `vcpkg` on Linux, MacOS, Windows, and Android as:
+
+```bash
+  $ vcpkg install xchange
+```
+
+__Homebrew__ 
+
+Or, install via the Homebrew package manager (MacOS and Linux) through the maintainer's own Tap:
+
+```bash
+  $ brew tap attipaci/pub
+  $ brew install xchange
+```
+
+For more customized installations, you can add the following options also:
+
+ | Option                 | Description                                                                    |
+ |:---------------------- |:------------------------------------------------------------------------------ |
+ | `--with-doxygen`       | Install local HTML documentation, compiled with Doxygen, also                  |
+
