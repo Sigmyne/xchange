@@ -176,6 +176,22 @@ install-headers:
 	install -d $(DESTDIR)$(includedir)
 	$(INSTALL_DATA) -D include/xchange.h include/xjson.h $(DESTDIR)$(includedir)/
 
+.PHONY: install-docs
+install-docs: install-markdown install-html install-examples
+
+.PHONY: install-markdown
+install-markdown:
+	@echo "installing Markdown documentation to $(DESTDIR)$(docdir)"
+	install -d $(DESTDIR)$(docdir)
+	$(INSTALL_DATA) CHANGELOG.md $(DESTDIR)$(docdir)/
+	$(INSTALL_DATA) CONTRIBUTING.md $(DESTDIR)$(docdir)/
+
+.PHONY: install-examples
+install-examples:
+	@echo "installing examples to $(DESTDIR)$(docdir)"
+	install -d $(DESTDIR)$(docdir)/examples
+	$(INSTALL_DATA) -D examples/*.c examples/CMakeLists.txt examples/Makefile $(DESTDIR)$(docdir)/examples
+
 .PHONY: install-html
 install-html:
 ifneq ($(wildcard doc/html/search/*),)

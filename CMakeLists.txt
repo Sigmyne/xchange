@@ -141,6 +141,7 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/examples
     TYPE DOC
     MESSAGE_NEVER
     COMPONENT Development
+    PATTERN .gitignore EXCLUDE
 )
 
 install(EXPORT xchangeTargets
