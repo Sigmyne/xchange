@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['xchange_0',['Linking your application against &lt;span class=&quot;tt&quot;&gt;xchange&lt;/span&gt;',['../index.html#autotoc_md9',1,'']]]
+  ['vcpkg_0',['Install xchange via &lt;span class=&quot;tt&quot;&gt;vcpkg&lt;/span&gt;',['../index.html#autotoc_md8',1,'']]],
+  ['via_20vcpkg_1',['Install xchange via &lt;span class=&quot;tt&quot;&gt;vcpkg&lt;/span&gt;',['../index.html#autotoc_md8',1,'']]]
 ];

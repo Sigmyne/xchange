@@ -46,6 +46,9 @@ the [Sigmyne/xchange](https://github.com/Sigmyne/xchange) repository on GitHub.
 
  - [Build / install using GNU make](#xchange-gnu-build)
  - [Build / install using CMake](#xchange-cmake-build)
+ - [Install xchange via `vcpkg`](#xchange-vcpkg-port)
+ - [Linux packages](#xchange-linux)
+ - [Homebrew package](#xchange-homebrew)
 
 <a name="xchange-gnu-build"></a>
 ### Build / install using GNU make
@@ -174,6 +177,59 @@ the `Runtime` component:
 ```bash
   $ cmake --install build --component Runtime --prefix /usr/local
 ```
+
+<a name="xchange-vcpkg-port"></a>
+### Install xchange via `vcpkg`
+
+As of version 1.1.2, __xchange__ is available through the [vcpkg](https://vcpkg.io/en/) registry. The `vcpkg` port 
+supports a wide range of platforms, including Linux, Windows, MacOS, and Android -- for both `arm64` and `x64` 
+architectures (and in case of Windows also `x86`). It is effectively the same as the CMake build (above), only with 
+more simplicity, convenience, and dependency resolution.
+
+
+You can install just the __xchange__ libvrary with `vcpkg` as:
+
+```bash
+  $ vcpkg install xchange
+```
+
+
+
+<a name="xchange-linux"></a>
+### Linux packages
+
+__xchange__ is packaged for Fedora / EPEL and derivative Linux distros as `libxchange` (since there is an existing 
+unrelated package with the name `xchange` already).
+
+
+To install __xchange__ Fedora / EPEL based distributions as:
+
+```bash
+  $ sudo dnf install libxchange libxchange-doc libxchange-devel
+```
+
+The first package is the runtime library, the second is documentation, and the last one is for files needed for 
+application development.
+
+
+<a name="xchange-homebrew"></a>
+### Homebrew package
+
+As of version 1.1.2, there is also a [Homebrew](https://brew.sh/) package through the maintainer's own Tap.
+
+
+To install `xchange` via Homebrew:
+
+```bash
+  $ brew tap attipaci/pub
+  $ brew install xchange
+```
+
+The above will build and install the __xchange__ runtime library and development files (headers and unversioned shared 
+library). However, you may add further options to customize your build:
+
+ - `--with-doxygen` -- Install with local HTML documentation.
+
 
 
 -----------------------------------------------------------------------------

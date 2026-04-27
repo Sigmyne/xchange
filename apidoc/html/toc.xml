@@ -5,33 +5,36 @@
     <topic label="Building and installation" href="index.html#autotoc_md5">
       <topic label="Build / install using GNU make" href="index.html#autotoc_md6"/>
       <topic label="Build / install using CMake" href="index.html#autotoc_md7"/>
+      <topic label="Install xchange via vcpkg" href="index.html#autotoc_md8"/>
+      <topic label="Linux packages" href="index.html#autotoc_md9"/>
+      <topic label="Homebrew package" href="index.html#autotoc_md10"/>
     </topic>
-    <topic label="Linking your application against xchange" href="index.html#autotoc_md9">
-      <topic label="Using a GNU Makefile" href="index.html#autotoc_md10"/>
-      <topic label="Using CMake" href="index.html#autotoc_md11"/>
+    <topic label="Linking your application against xchange" href="index.html#autotoc_md12">
+      <topic label="Using a GNU Makefile" href="index.html#autotoc_md13"/>
+      <topic label="Using CMake" href="index.html#autotoc_md14"/>
     </topic>
-    <topic label="Structured data" href="index.html#autotoc_md13">
-      <topic label="Basic data types" href="index.html#autotoc_md14">
-        <topic label="Strings" href="index.html#autotoc_md15"/>
+    <topic label="Structured data" href="index.html#autotoc_md16">
+      <topic label="Basic data types" href="index.html#autotoc_md17">
+        <topic label="Strings" href="index.html#autotoc_md18"/>
       </topic>
-      <topic label="Scalars" href="index.html#autotoc_md16"/>
-      <topic label="Arrays" href="index.html#autotoc_md17"/>
-      <topic label="Creating structure" href="index.html#autotoc_md18"/>
-      <topic label="Aggregate IDs" href="index.html#autotoc_md19"/>
-      <topic label="Accessing substructures and elements" href="index.html#autotoc_md20">
-        <topic label="Large structures" href="index.html#autotoc_md21"/>
-        <topic label="Iterating over elements" href="index.html#autotoc_md22"/>
+      <topic label="Scalars" href="index.html#autotoc_md19"/>
+      <topic label="Arrays" href="index.html#autotoc_md20"/>
+      <topic label="Creating structure" href="index.html#autotoc_md21"/>
+      <topic label="Aggregate IDs" href="index.html#autotoc_md22"/>
+      <topic label="Accessing substructures and elements" href="index.html#autotoc_md23">
+        <topic label="Large structures" href="index.html#autotoc_md24"/>
+        <topic label="Iterating over elements" href="index.html#autotoc_md25"/>
       </topic>
-      <topic label="Sorting fields" href="index.html#autotoc_md23"/>
+      <topic label="Sorting fields" href="index.html#autotoc_md26"/>
     </topic>
-    <topic label="JSON parser and emitter" href="index.html#autotoc_md25">
-      <topic label="JSON fragments" href="index.html#autotoc_md26"/>
-      <topic label="Escaped string representations" href="index.html#autotoc_md27"/>
+    <topic label="JSON parser and emitter" href="index.html#autotoc_md28">
+      <topic label="JSON fragments" href="index.html#autotoc_md29"/>
+      <topic label="Escaped string representations" href="index.html#autotoc_md30"/>
     </topic>
-    <topic label="Error handling" href="index.html#autotoc_md29"/>
-    <topic label="Debugging support" href="index.html#autotoc_md31"/>
-    <topic label="Future plans" href="index.html#autotoc_md33"/>
-    <topic label="Release schedule" href="index.html#autotoc_md35"/>
+    <topic label="Error handling" href="index.html#autotoc_md32"/>
+    <topic label="Debugging support" href="index.html#autotoc_md34"/>
+    <topic label="Future plans" href="index.html#autotoc_md36"/>
+    <topic label="Release schedule" href="index.html#autotoc_md38"/>
   </topic>
   <topic label="Data Structures" href="annotated.html">
     <topic label="Data Structures" href="annotated.html">
