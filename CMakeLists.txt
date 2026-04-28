@@ -203,6 +203,7 @@ endif()
 # Export the package for use from the build-tree
 # (this registers the build-tree with a global CMake-registry)
 export(PACKAGE xchange)
+export(EXPORT xchangeTargets NAMESPACE xchange:: FILE xchangeTargets.cmake)
 
 
 # ----------------------------------------------------------------------------

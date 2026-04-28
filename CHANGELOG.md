@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
  
  - `Makefile` doc install to match CMake. 
 
+ - CMake export targets from build-directory (for dependent builds)
+
 
 ## [1.1.2] - 2026-04-27
 
