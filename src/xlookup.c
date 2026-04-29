@@ -373,7 +373,7 @@ XLookupTable *xAllocLookup(unsigned int size) {
   p->nBins = n;
 
 #if THREAD_SAFE
-  xmut_init(&p->mutex, NULL);
+  xmut_init(&p->mutex);
 #endif
 
   tab = (XLookupTable *) calloc(1, sizeof(XLookupTable));
