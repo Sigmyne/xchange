@@ -97,19 +97,3 @@ jobs:
         run: |
           cmake --install build --prefix install
           ls -la install/
-
-#  build-calceph:
-#    runs-on: ubuntu-latest
-#    name: Build with CALCEPH support (Ubuntu)
-#    steps:
-#      - uses: actions/checkout@v6
-#
-#      - name: Install libcalceph-dev
-#        run: |
-#          sudo apt-get update -q -y
-#          sudo apt-get install -y libcalceph-dev
-#
-#      - name: Build with CALCEPH support enabled
-#        run: |
-#          cmake -B build -DENABLE_CALCEPH=ON
-#          cmake --build build
