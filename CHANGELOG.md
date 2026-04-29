@@ -9,6 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+Upcoming feature release, possibly around 1 August 2026.
+
+### Added
+
+ - Now installing `xmutex.h` containing portable mutex macros.
+
 ### Changed
 
  - CMake install to skip `.gitignore` in `examples/`.
