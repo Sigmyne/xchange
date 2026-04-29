@@ -132,7 +132,7 @@ var searchData=
   ['xlookuptable_129',['XLookupTable',['../structXLookupTable.html',1,'']]],
   ['xmatchnextid_130',['xMatchNextID',['../xstruct_8c.html#a90aae0dafd1d461877eef63c9c730592',1,'xMatchNextID(const char *token, const char *id):&#160;xstruct.c'],['../xchange_8h.html#a90aae0dafd1d461877eef63c9c730592',1,'xMatchNextID(const char *token, const char *id):&#160;xstruct.c']]],
   ['xmut_5fdestroy_131',['xmut_destroy',['../xmutex_8h.html#a39f2eb090fc7f3bd126fdf9b86f20a43',1,'xmutex.h']]],
-  ['xmut_5finit_132',['xmut_init',['../xmutex_8h.html#abba08da74db5ad10827a30372d739622',1,'xmutex.h']]],
+  ['xmut_5finit_132',['xmut_init',['../xmutex_8h.html#a9250181b4b092f539a9774e750ae7165',1,'xmutex.h']]],
   ['xmut_5flock_133',['xmut_lock',['../xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59',1,'xmutex.h']]],
   ['xmut_5funlock_134',['xmut_unlock',['../xmutex_8h.html#a99acab377e324320e23681c165e50ae0',1,'xmutex.h']]],
   ['xmutex_2eh_135',['xmutex.h',['../xmutex_8h.html',1,'']]],
