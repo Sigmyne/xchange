@@ -20,10 +20,10 @@
 #define XCHANGE_MAJOR_VERSION  1
 
 /// API minor version
-#define XCHANGE_MINOR_VERSION  1
+#define XCHANGE_MINOR_VERSION  2
 
 /// Integer sub version of the release
-#define XCHANGE_PATCHLEVEL     3
+#define XCHANGE_PATCHLEVEL     0
 
 /// Additional release information in version, e.g. "-1", or "-rc1".
 #define XCHANGE_RELEASE_STRING "-devel"

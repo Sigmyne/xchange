@@ -119,7 +119,7 @@ endif()
 # ----------------------------------------------------------------------------
 # Install Runtime component
 
-install(FILES include/xchange.h include/xjson.h
+install(FILES include/xchange.h include/xjson.h include/xmutex.h
     TYPE INCLUDE
     COMPONENT Development
 )

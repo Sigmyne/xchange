@@ -174,7 +174,7 @@ endif
 install-headers:
 	@echo "installing headers to $(DESTDIR)$(includedir)"
 	install -d $(DESTDIR)$(includedir)
-	$(INSTALL_DATA) -D include/xchange.h include/xjson.h $(DESTDIR)$(includedir)/
+	$(INSTALL_DATA) -D include/*.h $(DESTDIR)$(includedir)/
 
 .PHONY: install-docs
 install-docs: install-markdown install-html install-examples
