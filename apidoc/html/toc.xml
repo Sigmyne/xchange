@@ -241,7 +241,14 @@
           <topic label="xjsonToString" href="xjson_8h.html#a53128045970e973134867c96a6465abc"/>
           <topic label="xjsonUnescape" href="xjson_8h.html#a6a6e84911afbf9ff6e8c0ffaf228bbcb"/>
         </topic>
-        <topic label="xmutex.h" href="xmutex_8h.html"/>
+        <topic label="xmutex.h" href="xmutex_8h.html">
+          <topic label="THREAD_SAFE" href="xmutex_8h.html#acb0b22a01885ebdb9ac572343bbc4dab"/>
+          <topic label="xmut_destroy" href="xmutex_8h.html#a39f2eb090fc7f3bd126fdf9b86f20a43"/>
+          <topic label="xmut_init" href="xmutex_8h.html#abba08da74db5ad10827a30372d739622"/>
+          <topic label="xmut_lock" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59"/>
+          <topic label="xmut_unlock" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0"/>
+          <topic label="lock_type" href="xmutex_8h.html#a9aa70cd98f817aa872fbb981a30e2e01"/>
+        </topic>
       </topic>
       <topic label="src" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">
         <topic label="xchange.c" href="xchange_8c.html">
@@ -363,6 +370,7 @@
         <topic label="e" href="globals_e.html"/>
         <topic label="f" href="globals_f.html"/>
         <topic label="i" href="globals_i.html"/>
+        <topic label="l" href="globals_l.html"/>
         <topic label="m" href="globals_m.html"/>
         <topic label="n" href="globals_n.html"/>
         <topic label="s" href="globals_s.html"/>

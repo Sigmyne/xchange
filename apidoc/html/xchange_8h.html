@@ -266,13 +266,13 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight"><b>XCHANGE_MAJOR_VERSION</b>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:a13ea68e798d0cd9cab06667707737055"><td class="mdescLeft">&#160;</td><td class="mdescRight">API major version. <br /></td></tr>
 <tr class="memitem:a52519844e66bcff3ed17e4feaab76b2f" id="r_a52519844e66bcff3ed17e4feaab76b2f"><td class="memItemLeft"><a id="a52519844e66bcff3ed17e4feaab76b2f" name="a52519844e66bcff3ed17e4feaab76b2f"></a>
-#define&#160;</td><td class="memItemRight"><b>XCHANGE_MINOR_VERSION</b>&#160;&#160;&#160;1</td></tr>
+#define&#160;</td><td class="memItemRight"><b>XCHANGE_MINOR_VERSION</b>&#160;&#160;&#160;2</td></tr>
 <tr class="memdesc:a52519844e66bcff3ed17e4feaab76b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">API minor version. <br /></td></tr>
 <tr class="memitem:aef108c611a8388c435502dfd89c41a5f" id="r_aef108c611a8388c435502dfd89c41a5f"><td class="memItemLeft"><a id="aef108c611a8388c435502dfd89c41a5f" name="aef108c611a8388c435502dfd89c41a5f"></a>
-#define&#160;</td><td class="memItemRight"><b>XCHANGE_PATCHLEVEL</b>&#160;&#160;&#160;2</td></tr>
+#define&#160;</td><td class="memItemRight"><b>XCHANGE_PATCHLEVEL</b>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:aef108c611a8388c435502dfd89c41a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer sub version of the release. <br /></td></tr>
 <tr class="memitem:a1cda2967190e2d61c5560bf6b43d930d" id="r_a1cda2967190e2d61c5560bf6b43d930d"><td class="memItemLeft"><a id="a1cda2967190e2d61c5560bf6b43d930d" name="a1cda2967190e2d61c5560bf6b43d930d"></a>
-#define&#160;</td><td class="memItemRight"><b>XCHANGE_RELEASE_STRING</b>&#160;&#160;&#160;&quot;&quot;</td></tr>
+#define&#160;</td><td class="memItemRight"><b>XCHANGE_RELEASE_STRING</b>&#160;&#160;&#160;&quot;-devel&quot;</td></tr>
 <tr class="memdesc:a1cda2967190e2d61c5560bf6b43d930d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional release information in version, e.g. "-1", or "-rc1". <br /></td></tr>
 <tr class="memitem:a2e8ac004db0f6cb82e1b7a13b79380c5" id="r_a2e8ac004db0f6cb82e1b7a13b79380c5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e8ac004db0f6cb82e1b7a13b79380c5">XCHANGE_VERSION_STRING</a></td></tr>
 <tr class="memdesc:a2e8ac004db0f6cb82e1b7a13b79380c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The version string for this library.  <br /></td></tr>
@@ -542,7 +542,7 @@ Variables</h2></td></tr>
 <dd>
 <a class="el" href="xlookup_8c.html#a02ea2d67e4c540ad706edcc1b3a0431e">xDestroyLookup()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, and <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xmutex_8h.html#abba08da74db5ad10827a30372d739622">xmut_init</a>.</p>
 
 </div>
 </div>
@@ -2054,7 +2054,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dd>
 <a class="el" href="xstruct_8c.html#a442f155b0c6549549737510ce42bb66d">xGetField()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, and <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
@@ -2101,7 +2101,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dd>
 <a class="el" href="xlookup_8c.html#a85f2c5443ebef48499398453a39710da">xLookupRemove()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
@@ -2146,7 +2146,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of fields added (&lt;=0), or else X_NULL if either of the arguments were NULL, or X_NO_INIT if the table was not initialized, or else X_FAILURE if some other error.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xlookup_8c.html#add4a6ffa5866d770bd21636d00b9d3d7">xLookupRemoveAll()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
@@ -2181,7 +2181,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dd>
 <a class="el" href="xlookup_8c.html#a3b423bf135d2ed42319abff99fda78e4">xLookupPut()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
@@ -2226,7 +2226,7 @@ xGetDoubleAtIndex() </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of fields removed (&lt;=0), or else X_NULL if either of the arguments were NULL, or X_NO_INIT if the table was not initialized, or else X_FAILURE if some other error.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xlookup_8c.html#add4a6ffa5866d770bd21636d00b9d3d7">xLookupRemoveAll()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>

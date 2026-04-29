@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xtype_0',['XType',['../xchange_8h.html#a1c7e02eda23566a7891310fd09307a70',1,'xchange.h']]]
+  ['lock_5ftype_0',['lock_type',['../xmutex_8h.html#a9aa70cd98f817aa872fbb981a30e2e01',1,'xmutex.h']]]
 ];

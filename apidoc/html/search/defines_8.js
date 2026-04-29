@@ -50,5 +50,9 @@ var searchData=
   ['xchange_5fversion_5fstring_47',['XCHANGE_VERSION_STRING',['../xchange_8h.html#a2e8ac004db0f6cb82e1b7a13b79380c5',1,'xchange.h']]],
   ['xdprintf_48',['xdprintf',['../xchange_8h.html#a2b0edfea798e9e08122f09dba5f189f8',1,'xchange.h']]],
   ['xjson_5fdefault_5findent_49',['XJSON_DEFAULT_INDENT',['../xjson_8h.html#a2c3bb6f2c4cfef06527f0a66c855b6cc',1,'xjson.h']]],
-  ['xvprintf_50',['xvprintf',['../xchange_8h.html#a1f038bf7ddb58819805cfc44162cb403',1,'xchange.h']]]
+  ['xmut_5fdestroy_50',['xmut_destroy',['../xmutex_8h.html#a39f2eb090fc7f3bd126fdf9b86f20a43',1,'xmutex.h']]],
+  ['xmut_5finit_51',['xmut_init',['../xmutex_8h.html#abba08da74db5ad10827a30372d739622',1,'xmutex.h']]],
+  ['xmut_5flock_52',['xmut_lock',['../xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59',1,'xmutex.h']]],
+  ['xmut_5funlock_53',['xmut_unlock',['../xmutex_8h.html#a99acab377e324320e23681c165e50ae0',1,'xmutex.h']]],
+  ['xvprintf_54',['xvprintf',['../xchange_8h.html#a1f038bf7ddb58819805cfc44162cb403',1,'xchange.h']]]
 ];

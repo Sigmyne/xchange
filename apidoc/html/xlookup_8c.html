@@ -149,7 +149,7 @@ Functions</h2></td></tr>
 <dd>
 <a class="el" href="#a02ea2d67e4c540ad706edcc1b3a0431e">xDestroyLookup()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, and <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xmutex_8h.html#abba08da74db5ad10827a30372d739622">xmut_init</a>.</p>
 
 </div>
 </div>
@@ -308,7 +308,7 @@ Functions</h2></td></tr>
 <dd>
 <a class="el" href="xstruct_8c.html#a442f155b0c6549549737510ce42bb66d">xGetField()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, and <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
@@ -355,7 +355,7 @@ Functions</h2></td></tr>
 <dd>
 <a class="el" href="#a85f2c5443ebef48499398453a39710da">xLookupRemove()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xchange_8h.html#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
@@ -400,7 +400,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>the number of fields added (&lt;=0), or else X_NULL if either of the arguments were NULL, or X_NO_INIT if the table was not initialized, or else X_FAILURE if some other error.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#add4a6ffa5866d770bd21636d00b9d3d7">xLookupRemoveAll()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xchange_8h.html#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
@@ -435,7 +435,7 @@ Functions</h2></td></tr>
 <dd>
 <a class="el" href="#a3b423bf135d2ed42319abff99fda78e4">xLookupPut()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xchange_8h.html#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
@@ -480,7 +480,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>the number of fields removed (&lt;=0), or else X_NULL if either of the arguments were NULL, or X_NO_INIT if the table was not initialized, or else X_FAILURE if some other error.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#add4a6ffa5866d770bd21636d00b9d3d7">xLookupRemoveAll()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xchange_8h.html#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>.</p>
+<p class="reference">References <a class="el" href="structXLookupTable.html#a8b6505c37d4ff95854b8b00527e4d9fa">XLookupTable::priv</a>, <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#aadbbe3ae01369cbddf4d57d430b33133">X_NULL</a>, <a class="el" href="xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59">xmut_lock</a>, and <a class="el" href="xmutex_8h.html#a99acab377e324320e23681c165e50ae0">xmut_unlock</a>.</p>
 
 </div>
 </div>
