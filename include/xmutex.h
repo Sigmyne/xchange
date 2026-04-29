@@ -4,13 +4,12 @@
  * @date Created  on Apr 22, 2026
  * @author Attila Kovacs
  *
- *  Portable mutex definitions
+ *  Portable mutex macros
  */
 
 #ifndef XMUTEX_H_
 #define XMUTEX_H_
 
-/// \cond PRIVATE
 #if defined(_USE_PTHREAD) || defined(__unix__) || defined(__unix) || defined(__APPLE__)
 #  include <pthread.h>
 
@@ -45,7 +44,7 @@ typedef mtx_t                 lock_type;                ///< the mutex type
 typedef SRWLOCK               lock_type;                ///< the mutex type
 
 #else
-#  define xmut_init(x)                                  ///< dummy initialze mutex
+#  define xmut_init(x, t)                               ///< dummy initialze mutex
 #  define xmut_lock(x)                                  ///< dummy lock mutex
 #  define xmut_unlock(x)                                ///< dummy unlock mutex
 #  define xmut_destroy(x)                               ///< dummy destroy mutex
@@ -54,6 +53,6 @@ typedef int                   lock_type;                ///< dummy mutex type
 
 #endif
 
-/// \endcond
+
 
 #endif /* XMUTEX_H_ */
