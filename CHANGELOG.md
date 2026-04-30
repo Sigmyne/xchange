@@ -22,6 +22,8 @@ Upcoming feature release, possibly around 1 August 2026.
  - `Makefile` doc install to match CMake. 
 
  - CMake export targets from build-directory (for dependent builds)
+ 
+ - `examples/Makefile` to work standalone, without `config.mk`.
 
 
 ## [1.1.2] - 2026-04-27
