@@ -65,6 +65,7 @@ static int xLookupPutAsync(XLookupTable *tab, const char *prefix, const XField *
   int idx;
 
   if(e) {
+    free((char *) id);
     if(oldValue) *oldValue = e->field;
     e->field = (XField *) field;
     return 1;

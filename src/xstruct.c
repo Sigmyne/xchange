@@ -1429,7 +1429,7 @@ char *xNextIDToken(const char *id) {
   // Ignore leading separator.
   if(!strncmp(id, X_SEP, X_SEP_LENGTH)) id += X_SEP_LENGTH;
 
-  next = strstr(id, X_SEP);
+  next = (char *) strstr(id, X_SEP);
   return next ? next + X_SEP_LENGTH : NULL;
 }
 
