@@ -105,7 +105,7 @@ $(function(){initNavTree('index.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
-<p><a href="https://doi.org/10.5281/zenodo.14634824"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.14634824.svg" alt="DOI" style="pointer-events: none;" class="inline"/></a></p>
+<p><a href="https://doi.org/10.5281/zenodo.14634824"><img src="zenodo.14634824.svg" alt="DOI: 10.5281/zenodo.14634824" style="pointer-events: none;" class="inline"/> </a></p>
 <p>Structured data representation and JSON support for C/C++.</p>
 <ul>
 <li><a href="https://sigmyne.github.io/xchange/apidoc/html/files.html">API documentation</a></li>
@@ -469,7 +469,7 @@ Large structures</h3>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Once done with the lookup, destroy it.</span></div>
 <div class="line">xDestroyLookup(l);</div>
-<div class="ttc" id="axlookup_8c_html_a5e3a316b7d0c5c40ed079f3df2d9fcc9"><div class="ttname"><a href="xlookup_8c.html#a5e3a316b7d0c5c40ed079f3df2d9fcc9">xLookupField</a></div><div class="ttdeci">XField * xLookupField(const XLookupTable *tab, const char *id)</div><div class="ttdef"><b>Definition</b> xlookup.c:442</div></div>
+<div class="ttc" id="axlookup_8c_html_a5e3a316b7d0c5c40ed079f3df2d9fcc9"><div class="ttname"><a href="xlookup_8c.html#a5e3a316b7d0c5c40ed079f3df2d9fcc9">xLookupField</a></div><div class="ttdeci">XField * xLookupField(const XLookupTable *tab, const char *id)</div><div class="ttdef"><b>Definition</b> xlookup.c:443</div></div>
 </div><!-- fragment --><p>Note however, that preparing the lookup table has significant <em>O(N)</em> computational cost also. Therefore, a lookup table is practical only if you are going to use it repeatedly, many times over. As a rule of thumb, lookups may have the advantage if accessing fields in a structure by name hundreds of times, or more.</p>
 <p>The same performance limitation also applies to building large structures, since the <span class="tt"><a class="el" href="xstruct_8c.html#ab1cb91bd6aa14c0dae9d24bfbe7b76f4">xSetField()</a></span> and <span class="tt"><a class="el" href="xstruct_8c.html#ad84cbb4639f2fbfb604b698a86caf944">xSetSubstruct()</a></span> functions iterate over the existing fields to check if a prior field by the same name was already present, and which should be removed before the new field is set (hence the time to build up a structure with <em>N</em> fields will scale as _O(N<sup>2</sup>)_ in general). The user may consider using <span class="tt"><a class="el" href="xstruct_8c.html#ad6249db6da0a1294d5621cd9fd829f7a">xInsertField()</a></span> instead, which is much more scalable for building large structures, since it does not check for duplicates (hence scales as <em>O(N)</em> overall). However, <span class="tt"><a class="el" href="xstruct_8c.html#ad6249db6da0a1294d5621cd9fd829f7a">xInsertField()</a></span> also makes the ordering of fields less intuitive, and it is left up to the caller to ensure that field names added this way are never duplicated. (Tip: if you used <span class="tt">InsertField()</span> consistently, you may call <span class="tt"><a class="el" href="xstruct_8c.html#ad32d8a3f211a3b101142879ae31146ec">xReverseFieldOrder()</a></span> at the end, so the fields will appear in the same order in which they were inserted.)</p>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md25"></a>

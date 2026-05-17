@@ -1,7 +1,9 @@
 # User's guide
 
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14634824.svg)](https://doi.org/10.5281/zenodo.14634824)
+<a href="https://doi.org/10.5281/zenodo.14634824">
+ <img src="zenodo.14634824.svg" alt="DOI: 10.5281/zenodo.14634824"/>
+</a>
 
 Structured data representation and JSON support for C/C++.
 
