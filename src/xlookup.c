@@ -210,7 +210,7 @@ static int xLookupPutAllAsync(XLookupTable *tab, const char *prefix, const XStru
       char *p1;
       int count;
 
-      p1 = (char *) malloc(lp + strlen(f->value) + 2 * sizeof(X_SEP) + 12);
+      p1 = (char *) malloc(lp + strlen(f->name) + 2 * sizeof(X_SEP) + 12);
       x_check_alloc(p1);
 
       count = xGetFieldCount(f);
@@ -247,7 +247,7 @@ static int xLookupRemoveAllAsync(XLookupTable *tab, const char *prefix, const XS
       char *p1;
       int count;
 
-      p1 = (char *) malloc(lp + strlen(f->value) + 2 * sizeof(X_SEP) + 12);
+      p1 = (char *) malloc(lp + strlen(f->name) + 2 * sizeof(X_SEP) + 12);
       x_check_alloc(p1);
 
       count = xGetFieldCount(f);
@@ -341,7 +341,7 @@ int xLookupRemoveAll(XLookupTable *tab, const char *prefix, const XStructure *s,
 
 /**
  * Allocates a new lookup with the specified hash size. The hash size should correspond to the number of elements
- * stored in the lookup. If it's larger or roughtly equal to the number of elements to be stored, then the lookup
+ * stored in the lookup. If it's larger or roughly equal to the number of elements to be stored, then the lookup
  * time will stay approximately constant with the number of elements. If the size is much smaller than the number
  * of elements _N_ stored, then the lookup time will scale as _O(N/size)_ typically.
  *
@@ -487,8 +487,6 @@ static void xDestroyLookupOption(XLookupTable *tab, boolean destroyFields) {
   if(!tab) return;
 
   p = (XLookupPrivate *) tab->priv;
-  p->nEntries = 0;
-  p->nBins = 0;
 
   if(p->table) {
     int i;
@@ -507,6 +505,9 @@ static void xDestroyLookupOption(XLookupTable *tab, boolean destroyFields) {
     free(p->table);
     xmut_destroy(&p->mutex);
   }
+
+  p->nEntries = 0;
+  p->nBins = 0;
 
   free(tab);
 }
