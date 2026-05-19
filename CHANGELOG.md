@@ -14,6 +14,8 @@ Upcoming feature release, possibly around 1 August 2026.
 ### Fixed
 
  - #26: Fixed space allocation in in `xLookupPutAllAsync()` / `xLookupRemoveAllAsync()`.
+ 
+ - Fixed memleak in `xLookupRemove()`.
 
  - Fix potential buffer overflow at build time in `docedit.c` (`sprintf()` to `snprintf()`).
 

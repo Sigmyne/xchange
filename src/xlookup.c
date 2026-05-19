@@ -95,10 +95,15 @@ static XField *xLookupRemoveAsync(XLookupTable *tab, const char *id) {
 
   for(e = p->table[idx]; e != NULL; e=e->next) {
     if(strcmp(e->key, id) == 0) {
+      XField *f = e->field;
+
       p->nEntries--;
       if(last) last->next = e->next;
       else p->table[idx] = e->next;
-      return e->field;
+
+      free(e->key);
+      free(e);
+      return f;
     }
     last = e;
   }
@@ -484,7 +489,7 @@ static void xDestroyLookupOption(XLookupTable *tab, boolean destroyFields) {
   // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
 
-  if(!tab) return;
+  if(!tab || !tab->priv) return;
 
   p = (XLookupPrivate *) tab->priv;
 
