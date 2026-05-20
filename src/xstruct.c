@@ -53,7 +53,7 @@ XField *xCreateMixedArrayField(const char *name, int ndim, const int *sizes, XFi
 
   while(--count >= 0) {
     char idx[20];
-    sprintf(idx, ".%d", (count+1));
+    snprintf(idx, sizeof(idx), ".%d", (count+1));
     array[count].name = xStringCopyOf(idx);
   }
 
@@ -379,10 +379,10 @@ long xGetAsLongAtIndex(const XField *f, int idx, long defaultValue) {
     long l = defaultValue;
     char fmt[20];
 
-    sprintf(fmt, "%%%dd", xElementSizeOf(f->type));
+    snprintf(fmt, sizeof(fmt), "%%%dd", xElementSizeOf(f->type));
     if(sscanf((char *) ptr, fmt, &l) != 1) {
       double d = NAN;
-      sprintf(fmt, "%%%dlf", xElementSizeOf(f->type));
+      snprintf(fmt, sizeof(fmt), "%%%dlf", xElementSizeOf(f->type));
       if(sscanf((char *) ptr, fmt, &d) == 1) return (long) floor(d + 0.5);
     }
 
@@ -490,7 +490,7 @@ double xGetAsDoubleAtIndex(const XField *f, int idx) {
   if(xIsCharSequence(f->type)) {
     char fmt[20];
     double d = NAN;
-    sprintf(fmt, "%%%dlf", xElementSizeOf(f->type));
+    snprintf(fmt, sizeof(fmt), "%%%dlf", xElementSizeOf(f->type));
     sscanf((char *) ptr, fmt, &d);
     return d;
   }
@@ -1495,6 +1495,7 @@ char *xGetAggregateID(const char *table, const char *key) {
   static const char *fn = "xGetAggregateID";
 
   char *id;
+  size_t len;
 
   if(table == NULL && key == NULL) {
     x_error(0, EINVAL, fn, "both inputs are NULL");
@@ -1504,12 +1505,13 @@ char *xGetAggregateID(const char *table, const char *key) {
   if(table == NULL) return xStringCopyOf(key);
   if(key == NULL) return xStringCopyOf(table);
 
-  id = (char *) malloc(strlen(table) + X_SEP_LENGTH + strlen(key) + 1); // <group>:<key>
+  len = strlen(table) + X_SEP_LENGTH + strlen(key) + 1;
+  id = (char *) malloc(len); // <group>:<key>
   if(!id) {
     x_error(0, errno, fn, "malloc error");
     return NULL;
   }
-  sprintf(id, "%s" X_SEP "%s", table, key);
+  snprintf(id, len, "%s" X_SEP "%s", table, key);
 
   return id;
 }
