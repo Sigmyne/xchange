@@ -771,3 +771,23 @@ const char *xErrorDescription(int code) {
   }
   return "unknown error";
 }
+
+#ifdef snprintf
+
+/**
+ * Default snprintf implementation for older platform, which do not have it, it behaves
+ * just like sprintf(), ignoring the len parameter altogether.
+ *
+ */
+int x_snprintf(char *buf, size_t len, const char *fmt, ...) {
+  va_list varg;
+  int n;
+
+  (void) len; // unused
+
+  va_start(varg, fmt);
+  n = vsprintf(buf, fmt, varg);
+  va_end(varg);
+  return n;
+}
+#endif

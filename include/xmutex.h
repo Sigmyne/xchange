@@ -14,7 +14,7 @@
 #  include <pthread.h>
 #  include <stdlib.h>         // for NULL
 
-#  define xmut_init(x)        pthread_mutex_init(x, NULL)  ///< initialize mutex (not return)
+#  define xmut_init(x)        pthread_mutex_init(x, NULL)  ///< initialize mutex (ignoes return value)
 #  define xmut_lock           pthread_mutex_lock           ///< lock mutex
 #  define xmut_unlock         pthread_mutex_unlock         ///< unlock mutex
 #  define xmut_destroy        pthread_mutex_destroy        ///< destroy mutex
@@ -25,7 +25,7 @@ typedef pthread_mutex_t       xmut_type;                   ///< the mutex type
 #elif __STDC_VERSION__ >= 201112L
 #  include <threads.h>
 
-#  define xmut_init(x)        mtx_init(x, mtx_plain)       ///< initialize mutex (not return)
+#  define xmut_init(x)        mtx_init(x, mtx_plain)       ///< initialize mutex (ignores return value)
 #  define xmut_lock           mtx_lock                     ///< lock mutex
 #  define xmut_unlock         mtx_unlock                   ///< unlock mutex
 #  define xmut_destroy        mtx_destroy                  ///< destroy mutex
@@ -36,7 +36,7 @@ typedef mtx_t                 xmut_type;                   ///< the mutex type
 #elif defined(_MSC_VER)
 #  include <windows.h>
 
-#  define xmut_init(x)        InitializeSRWLock(x)         ///< initialize mutex (not return)
+#  define xmut_init(x)        InitializeSRWLock(x)         ///< initialize mutex
 #  define xmut_lock           AcquireSRWLockExclusive      ///< lock mutex
 #  define xmut_unlock         ReleaseSRWLockExclusive      ///< unlock mutex
 #  define xmut_destroy(x)                                  ///< destroy mutex

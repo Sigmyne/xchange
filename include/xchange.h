@@ -186,7 +186,7 @@ typedef struct XField {
                             ///< NOTE: it should normally be dynamically allocated, to work with xClearField() / xDestroyField().
   void *value;              ///< Pointer to designated local string content (or structure)...
                             ///< NOTE: it should normally be dynamically allocated, to work with xClearField() / xDestroyField().
-  XType type;               ///< The underlyng data type
+  XType type;               ///< The underlying data type
   char *subtype;            ///< (optional) Descriptive subtype, such a a mime type or encoding (if any). It is
                             ///< entirely up to the user / application to assign meaning to this field.
                             ///< NOTE: it should normally be dynamically allocated, to work with xClearField() / xDestroyField().
@@ -349,6 +349,12 @@ int x_error(int ret, int en, const char *from, const char *desc, ...);
 int x_warn(const char *from, const char *desc, ...);
 int x_trace(const char *loc, const char *op, int n);
 void *x_trace_null(const char *loc, const char *op);
+
+#if !__cplusplus && !(__STDC_VERSION__ >= 200809L)
+#  define snprintf    x_snprintf      ///< Dummy snprintf() implementation, which defaults snprintf().
+
+int x_snprintf(char *buf, size_t len, const char *fmt, ...);
+#endif
 
 /**
  * Propagates an error (if any) with an offset. If the error is non-zero, it returns with the offset

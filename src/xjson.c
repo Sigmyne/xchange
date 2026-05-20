@@ -181,7 +181,7 @@ char *xjsonToString(const XStructure *s) {
     return NULL;
   }
 
-  sprintf(&str[n], "\n");
+  snprintf(&str[n], 2, "\n");
 
   return str;
 }
@@ -644,7 +644,7 @@ static char *json2raw(const char *json, int maxlen, char *dst) {
          int advance = 0;
          if(sscanf(&json[i+1], "%hx%n", &unicode, &advance) >= 1) {
            if(unicode <= 0xFF) dst[l++] = (char) unicode;   // -> ASCII
-           else l += sprintf(&dst[l], "\\u%04hx", unicode); // -> keep as is
+           else l += snprintf(&dst[l], maxlen - l, "\\u%04hx", unicode); // -> keep as is
            i += advance;
          }
          else return "Unicode \\u without 4 digit hex";
@@ -941,7 +941,7 @@ static void *ParseArray(char **pos, XType *type, int *ndim, int sizes[X_MAX_DIMS
       XField *nextField = e->next;
 
       // Name is . + 1-based index, e.g. ".1", ".2"...
-      sprintf(idx, ".%d", (i + 1));
+      snprintf(idx, sizeof(idx), ".%d", (i + 1));
 
       array[i] = *e;
       array[i].name = xStringCopyOf(idx);
@@ -1050,6 +1050,7 @@ static int GetObjectStringSize(int prefixSize, const XStructure *s) {
 static int PrintObject(const char *prefix, const XStructure *s, char *str) {
   static const char *fn = "PrintObject";
 
+  size_t plen;
   char *fieldPrefix;
   const XField *f;
   int n = 0;
@@ -1060,10 +1061,11 @@ static int PrintObject(const char *prefix, const XStructure *s, char *str) {
 
   if(!s->firstField) return sprintf(&str[n], "{ }");
 
-  fieldPrefix = (char *) malloc(strlen(prefix) + xjsonGetIndent() + 1);
+  plen = strlen(prefix) + xjsonGetIndent() + 1;
+  fieldPrefix = (char *) malloc(plen);
   x_check_alloc(fieldPrefix);
 
-  sprintf(fieldPrefix, "%s%s", prefix, GetIndent());
+  snprintf(fieldPrefix, plen, "%s%s", prefix, GetIndent());
 
   n += sprintf(str, "{\n");
 
@@ -1229,6 +1231,7 @@ static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const
     const boolean newLine = ptr ? IsNewLine(type, ndim) : FALSE;
 
     int k;
+    size_t plen;
     char *rowPrefix;
 
     // Special case: empty array
@@ -1240,10 +1243,11 @@ static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const
     }
 
     // Indentation for elements...
-    rowPrefix = (char *) malloc(strlen(prefix) + xjsonGetIndent() + 2);
+    plen = strlen(prefix) + xjsonGetIndent() + 2;
+    rowPrefix = (char *) malloc(plen);
     x_check_alloc(rowPrefix);
 
-    sprintf(rowPrefix, "%s%s", prefix, GetIndent());
+    snprintf(rowPrefix, plen, "%s%s", prefix, GetIndent());
 
     *(str++) = '[';                                     // Opening bracket at current position...
 
@@ -1366,7 +1370,7 @@ static int raw2json(const char *src, int maxlen, char *json) {
     case UNICODE_BYTES:
       *(next++) = '\\';
       *(next++) = 'u';
-      next += sprintf(next, "00%02hhx", (unsigned char) src[i]);
+      next += snprintf(next, (size_t) maxlen - (next - json), "00%02hhx", (unsigned char) src[i]);
       break;
     case 2:
       *(next++) = '\\';

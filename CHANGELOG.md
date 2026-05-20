@@ -52,6 +52,9 @@ Upcoming feature release, possibly around 1 August 2026.
  - Changed `xlookup` hash algorithm to FNV-1a.
  
  - Rounding instead of downcast from double in `xGetAsLongAtIndex()`.
+ 
+ - Use `snprintf()` instead of `sprintf()` wherever possible. For older platforms that do not have `snprintf()`, 
+   define a dummy version, which behaves just like `sprintf()`.
 
  - CMake install to skip `.gitignore` in `examples/`.
  
