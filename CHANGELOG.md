@@ -29,6 +29,13 @@ Upcoming feature release, possibly around 1 August 2026.
  - Fixed max string size for 8-byte signed integer (-> 20 bytes + termination).
  
  - Fixed insufficient checking in `xIsFieldValid()`.
+ 
+ - Fixed botched read loop in `xjsonParseFile()`.
+ 
+ - Unwanted `fclose()` in `xjsonParseFile()`. Caller is responsible for closing the file after the call, as 
+   appropriate.
+   
+ - Extra comma when printing `X_FLOAT` value to JSON.
 
 ### Added
 

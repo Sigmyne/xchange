@@ -144,7 +144,7 @@ static char *GetIndent() {
 
 /**
  * Converts structured data into its JSON representation. Conversion errors are reported to stderr
- * or the altenate stream set by xjsonSetErrorStream().
+ * or the alternate stream set by xjsonSetErrorStream().
  *
  * @param s     Pointer to structured data
  * @return      String JSON representation, or NULL if there was an error (errno set to EINVAL).
@@ -188,7 +188,7 @@ char *xjsonToString(const XStructure *s) {
 
 /**
  * Converts an XField into its JSON representation, with the specified indentation of white spaces
- * in front of every line. Conversion errors are reported to stderr or the altenate stream set by
+ * in front of every line. Conversion errors are reported to stderr or the alternate stream set by
  * xjsonSetErrorStream().
  *
  * @param indent  Number of white spaces to insert in front of each line.
@@ -242,7 +242,7 @@ char *xjsonFieldToIndentedString(int indent, const XField *f) {
 
 /**
  * Converts an XField into its JSON representation. Conversion errors are reported to stderr
- * or the altenate stream set by xjsonSetErrorStream().
+ * or the alternate stream set by xjsonSetErrorStream().
  *
  * @param f     Pointer to field
  * @return      String JSON representation, or NULL if there was an error (errno set to EINVAL).
@@ -281,7 +281,7 @@ XStructure *xjsonParseString(const char *str, char **tail) {
   XStructure *s;
 
   if(!pos) {
-    x_error(0, EINVAL, "xjsonParseAt", "'pos' parameter is NULL");
+    x_error(0, EINVAL, "xjsonParseString", "'pos' parameter is NULL");
     return NULL;
   }
 
@@ -316,7 +316,7 @@ XField *xjsonParseField(const char *str, char **tail) {
   XField *f;
 
   if(!pos) {
-    x_error(0, EINVAL, "xjsonParseAt", "'pos' parameter is NULL");
+    x_error(0, EINVAL, "xjsonParseField", "'pos' parameter is NULL");
     return NULL;
   }
 
@@ -367,7 +367,6 @@ XStructure *xjsonParsePath(const char *path) {
   return s;
 }
 
-
 /**
  * Parses a JSON object from the current position in a file, returning the described structured data.
  * Parse errors are reported to stderr or the alternate stream set by xjsonSetErrorStream().
@@ -390,7 +389,7 @@ XStructure *xjsonParseFile(FILE *fp, size_t length) {
 
   XStructure *s;
   int lineNumber = 0;
-  long L;
+  long L = 0;
   char *str;
   volatile char *pos;
 
@@ -404,12 +403,12 @@ XStructure *xjsonParseFile(FILE *fp, size_t length) {
   if(length == 0) {
     long p = ftell(fp);
     if(fseek(fp, 0, SEEK_END) != 0) {
-      x_error(0, errno, fn, "fseek() error");
+      x_error(0, errno, fn, "fseek() error: %s", strerror(errno));
       return NULL;
     }
     length = ftell(fp) - p;
     if(fseek(fp, p, SEEK_SET) != 0) {
-      x_error(0, errno, fn, "ftell() error");
+      x_error(0, errno, fn, "fseek() error: %s", strerror(errno));
       return NULL;
     }
   }
@@ -417,14 +416,13 @@ XStructure *xjsonParseFile(FILE *fp, size_t length) {
   pos = str = malloc(length + 1);
   if(!str){
     Error("Out of memory (read %ld bytes).\n", (long) (length + 1));
-    fclose(fp);
     return NULL;
   }
 
-  for(L=0; L < (long) length; L++) {
-    int m = fread(str, L, 1, fp);
+  while(L < (long) length) {
+    size_t m = fread(&str[L], 1, (size_t) length - L, fp);
 
-    if(m < 0) {
+    if(ferror(fp)) {
       Error("Read error: %s (pos = %ld).\n", strerror(errno), L);
       L = -1;
       break;
@@ -452,7 +450,6 @@ XStructure *xjsonParseFile(FILE *fp, size_t length) {
 
   return s;
 }
-
 
 /**
  * Change the file to which XJSON reports errors. By default it will use stderr.
@@ -794,7 +791,6 @@ static void *ParsePrimitive(char **pos, XType *type, int *lineNumber) {
   return NULL;
 }
 
-
 static void *ParseValue(char **pos, XType *type, int *ndim, int sizes[X_MAX_DIMS], int *lineNumber) {
   const char *next;
 
@@ -824,7 +820,6 @@ static void *ParseValue(char **pos, XType *type, int *ndim, int sizes[X_MAX_DIMS
   return ParsePrimitive(pos, type, lineNumber);
 }
 
-
 static XType GetCommonType(XType t1, XType t2) {
   if(t1 == X_UNKNOWN) return t2;
   if(t2 == X_UNKNOWN) return t1;
@@ -840,7 +835,6 @@ static XType GetCommonType(XType t1, XType t2) {
   if(t1 == X_BOOLEAN || t2 == X_BOOLEAN) return X_BOOLEAN;
   return X_UNKNOWN;
 }
-
 
 static void *ParseArray(char **pos, XType *type, int *ndim, int sizes[X_MAX_DIMS], int *lineNumber) {
   int n = 0;
@@ -966,7 +960,7 @@ static void *ParseArray(char **pos, XType *type, int *ndim, int sizes[X_MAX_DIMS
       return NULL;
     }
 
-    // Thus far suzes is the size of top-level entries
+    // Thus far sizes is the size of top-level entries
     eCount = xGetElementCount(*ndim, sizes);
     eSize = xElementSizeOf(*type);
     rowSize = eSize * eCount;
@@ -1023,7 +1017,6 @@ static void *ParseArray(char **pos, XType *type, int *ndim, int sizes[X_MAX_DIMS
   return NULL;
 }
 
-
 static int GetObjectStringSize(int prefixSize, const XStructure *s) {
   int n;
   const XField *f;
@@ -1077,7 +1070,6 @@ static int PrintObject(const char *prefix, const XStructure *s, char *str) {
   return n;
 }
 
-
 static int GetFieldStringSize(int prefixSize, const XField *f, boolean ignoreName) {
   static const char *fn = "GetFieldStringSize";
 
@@ -1099,7 +1091,6 @@ static int GetFieldStringSize(int prefixSize, const XField *f, boolean ignoreNam
 
   return n + m; // termination
 }
-
 
 static int PrintField(const char *prefix, const XField *f, char *str) {
   static const char *fn = "PrintField";
@@ -1126,16 +1117,13 @@ static int PrintField(const char *prefix, const XField *f, char *str) {
   return n;
 }
 
-
 static int IsNewLine(XType type, int ndim) {
   return (ndim > 1 || type == X_STRUCT || type == X_FIELD);
 }
 
-
 static int SizeOf(XType type, int ndim, const int *sizes) {
   return xElementSizeOf(type) * xGetElementCount(ndim, sizes);
 }
-
 
 static int GetArrayStringSize(int prefixSize, char *ptr, XType type, int ndim, const int *sizes) {
   static const char *fn = "GetArrayStringSize";
@@ -1193,7 +1181,6 @@ static int GetArrayStringSize(int prefixSize, char *ptr, XType type, int ndim, c
     return n;
   }
 }
-
 
 static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const int *sizes, char *str) {
   static const char *fn = "PrintArray";
@@ -1285,7 +1272,6 @@ static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const
   }
 }
 
-
 static int PrintPrimitive(const void *ptr, XType type, char *str) {
   static const char *fn = "PrintPrimitive";
 
@@ -1300,7 +1286,7 @@ static int PrintPrimitive(const void *ptr, XType type, char *str) {
     case X_UNKNOWN: return sprintf(str, JSON_NULL);
     case X_BOOLEAN: return sprintf(str, (*(boolean *)ptr ? JSON_TRUE : JSON_FALSE));
     case X_BYTE: return sprintf(str, "%hhu", *(unsigned char *) ptr);
-    case X_FLOAT: return sprintf(str, "%.8g , ", *(float *) ptr);
+    case X_FLOAT: return sprintf(str, "%.8g", *(float *) ptr);
     case X_DOUBLE: return xPrintDouble(str, *(double *) ptr);
     case X_STRING:
     case X_RAW: return PrintString(*(char **) ptr, TERMINATED_STRING, str);
@@ -1313,7 +1299,6 @@ static int PrintPrimitive(const void *ptr, XType type, char *str) {
       return x_error(X_TYPE_INVALID, EINVAL, fn, "invalid type: %d", type);
   }
 }
-
 
 static int GetJsonBytes(char c) {
   if(iscntrl(c)) switch(c) {
@@ -1333,7 +1318,6 @@ static int GetJsonBytes(char c) {
   return 1;
 }
 
-
 static int GetJsonStringSize(const char *src, int maxLength) {
   int i, n = 2; // ""
 
@@ -1346,7 +1330,6 @@ static int GetJsonStringSize(const char *src, int maxLength) {
 
   return n;
 }
-
 
 static char GetEscapedChar(char c) {
   switch(c) {
@@ -1361,7 +1344,6 @@ static char GetEscapedChar(char c) {
   }
   return c;
 }
-
 
 static int raw2json(const char *src, int maxlen, char *json) {
   char *next = json;
@@ -1401,7 +1383,6 @@ static int PrintString(const char *src, int maxLength, char *json) {
 
   return next - json - 1;
 }
-
 
 /**
  * Converts a native string to its JSON representation.
