@@ -35,7 +35,7 @@ endif
 
 # cppcheck options for 'check' target
 CHECKOPTS ?= --enable=performance,warning,portability,style --language=c \
-            --error-exitcode=1 --inline-suppr --std=c99 $(CHECKEXTRA)
+            --error-exitcode=1 --inline-suppr --std=c99 -DX_SNPRINTF=0 $(CHECKEXTRA)
 
 # Exhaustive checking for newer cppcheck
 #CHECKOPTS += --check-level=exhaustive

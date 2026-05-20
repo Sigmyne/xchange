@@ -308,9 +308,12 @@ boolean xParseBoolean(const char *str, char **end);
 float xParseFloat(const char *str, char **tail);
 double xParseDouble(const char *str, char **tail);
 int xPrintDouble(char *str, double value);
+int xPrintDoubleN(char *str, double value, size_t len);
 int xPrintFloat(char *str, float value);
+int xPrintFloatN(char *str, float value, size_t len);
 int xParseDims(const char *src, int *sizes);
 int xPrintDims(char *dst, int ndim, const int *sizes);
+int xPrintDimsN(char *dst, int ndim, const int *sizes, size_t len);
 
 // Low-level utilities ---------------------------------------->
 char xTypeChar(XType type);
@@ -350,7 +353,7 @@ int x_warn(const char *from, const char *desc, ...);
 int x_trace(const char *loc, const char *op, int n);
 void *x_trace_null(const char *loc, const char *op);
 
-#if !__cplusplus && !(__STDC_VERSION__ >= 200809L)
+#if X_SNPRINTF || (!defined(snprintf) && !__cplusplus && !(__STDC_VERSION__ >= 200809L))
 #  define snprintf    x_snprintf      ///< Dummy snprintf() implementation, which defaults snprintf().
 
 int x_snprintf(char *buf, size_t len, const char *fmt, ...);

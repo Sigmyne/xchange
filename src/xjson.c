@@ -59,11 +59,11 @@ static int GetFieldStringSize(int prefixSize, const XField *f, boolean ignoreNam
 static int GetArrayStringSize(int prefixSize, char *ptr, XType type, int ndim, const int *sizes);
 static int GetJsonStringSize(const char *src, int maxLength);
 
-static int PrintObject(const char *prefix, const XStructure *s, char *str);
-static int PrintField(const char *prefix, const XField *f, char *str);
-static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const int *sizes, char *str);
-static int PrintPrimitive(const void *ptr, XType type, char *str);
-static int PrintString(const char *src, int maxLength, char *json);
+static int PrintObject(const char *prefix, const XStructure *s, char *str, size_t len);
+static int PrintField(const char *prefix, const XField *f, char *str, size_t len);
+static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const int *sizes, char *str, size_t len);
+static int PrintPrimitive(const void *ptr, XType type, char *str, size_t len);
+static int PrintString(const char *src, int maxLength, char *json, size_t len);
 
 static FILE *xerr;     ///< File / stream, which errors are printed to. A NULL will print to stderr
 
@@ -175,7 +175,7 @@ char *xjsonToString(const XStructure *s) {
     return NULL;
   }
 
-  n = PrintObject("", s, str);
+  n = PrintObject("", s, str, n + 2);
   if (n < 0) {
     free(str);
     return NULL;
@@ -229,7 +229,7 @@ char *xjsonFieldToIndentedString(int indent, const XField *f) {
     return NULL;
   }
 
-  n = PrintField(prefix, f, str);
+  n = PrintField(prefix, f, str, n + 1);
   free(prefix);
 
   if (n < 0) {
@@ -1047,7 +1047,7 @@ static int GetObjectStringSize(int prefixSize, const XStructure *s) {
 }
 
 
-static int PrintObject(const char *prefix, const XStructure *s, char *str) {
+static int PrintObject(const char *prefix, const XStructure *s, char *str, size_t len) {
   static const char *fn = "PrintObject";
 
   size_t plen;
@@ -1059,7 +1059,7 @@ static int PrintObject(const char *prefix, const XStructure *s, char *str) {
   if(!str) return x_error(X_NULL, EINVAL, fn, "output string buffer is NULL");
   if(!prefix) return x_error(X_NULL, EINVAL, fn, "prefix is NULL");
 
-  if(!s->firstField) return sprintf(&str[n], "{ }");
+  if(!s->firstField) return snprintf(str, len, "{ }");
 
   plen = strlen(prefix) + xjsonGetIndent() + 1;
   fieldPrefix = (char *) malloc(plen);
@@ -1067,10 +1067,10 @@ static int PrintObject(const char *prefix, const XStructure *s, char *str) {
 
   snprintf(fieldPrefix, plen, "%s%s", prefix, GetIndent());
 
-  n += sprintf(str, "{\n");
+  n += snprintf(str, len, "{\n");
 
   for(f = s->firstField; f != NULL; f = f->next) {
-    int m = PrintField(fieldPrefix, f, &str[n]);
+    int m = PrintField(fieldPrefix, f, &str[n], len - n);
     if(m < 0) {
       free(fieldPrefix);
       return x_trace(fn, NULL, m);     // Error code;
@@ -1079,7 +1079,7 @@ static int PrintObject(const char *prefix, const XStructure *s, char *str) {
   }
 
   free(fieldPrefix);
-  n += sprintf(&str[n], "%s}", prefix);
+  n += snprintf(&str[n], len - n, "%s}", prefix);
 
   return n;
 }
@@ -1106,7 +1106,7 @@ static int GetFieldStringSize(int prefixSize, const XField *f, boolean ignoreNam
   return n + m; // termination
 }
 
-static int PrintField(const char *prefix, const XField *f, char *str) {
+static int PrintField(const char *prefix, const XField *f, char *str, size_t len) {
   static const char *fn = "PrintField";
 
   int n = 0, m;
@@ -1117,16 +1117,16 @@ static int PrintField(const char *prefix, const XField *f, char *str) {
   if(*f->name == '\0') return x_error(X_NAME_INVALID, EINVAL, fn, "field->name is empty");
   if(f->isSerialized) return x_error(X_PARSE_ERROR, ENOMSG, fn, "field is serialized (unknown format)");        // We don't know what format, so return an error
 
-  n = sprintf(str, "%s", prefix);
-  n += PrintString(f->name, -1, &str[n]);
-  n += sprintf(&str[n], ": ");
+  n = snprintf(str, len, "%s", prefix);
+  n += PrintString(f->name, -1, &str[n], len - n);
+  n += snprintf(&str[n], len - n, ": ");
 
-  m = PrintArray(prefix, f->value, f->type, f->ndim, f->sizes, &str[n]);
+  m = PrintArray(prefix, f->value, f->type, f->ndim, f->sizes, &str[n], len - n);
   prop_error(fn, m);
 
   n += m;
-  if(f->next) n += sprintf(&str[n], ",");
-  n += sprintf(&str[n], "\n");
+  if(f->next) n += snprintf(&str[n], len - n, ",");
+  n += snprintf(&str[n], len - n, "\n");
 
   return n;
 }
@@ -1196,10 +1196,11 @@ static int GetArrayStringSize(int prefixSize, char *ptr, XType type, int ndim, c
   }
 }
 
-static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const int *sizes, char *str) {
+static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const int *sizes, char *str, size_t len) {
   static const char *fn = "PrintArray";
 
   const char *str0 = str;
+  int n = 0;
 
   if(!str) return x_error(X_NULL, EINVAL, fn, "output string buffer is NULL");
   if(!prefix) return x_error(X_NULL, EINVAL, fn, "prefix is NULL");
@@ -1207,19 +1208,17 @@ static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const
   if(ndim < 0) return x_error(X_SIZE_INVALID, ERANGE, fn, "invalid ndim: %d", ndim);
 
   if(ndim == 0) {
-    int n;
-
     switch(type) {
       case X_STRUCT:
-        n = PrintObject(prefix, (XStructure *) ptr, str);
+        n = PrintObject(prefix, (XStructure *) ptr, str, len);
         break;
       case X_FIELD: {
         XField *f = (XField *) ptr;
-        n = PrintArray(prefix, f->value, f->type, f->ndim, f->sizes, str);
+        n = PrintArray(prefix, f->value, f->type, f->ndim, f->sizes, str, len);
         break;
       }
       default:
-        n = PrintPrimitive(ptr, type, str);
+        n = PrintPrimitive(ptr, type, str, len);
     }
 
     prop_error(fn, n);
@@ -1249,69 +1248,69 @@ static int PrintArray(const char *prefix, char *ptr, XType type, int ndim, const
 
     snprintf(rowPrefix, plen, "%s%s", prefix, GetIndent());
 
-    *(str++) = '[';                                     // Opening bracket at current position...
+    str[n++] = '[';                                     // Opening bracket at current position...
 
     // Print elements as required.
     for(k = 0; k < N; k++, ptr += rowSize) {
       int m;
 
       // " ,"
-      if(k) str += sprintf(str, ",");
+      if(k) n += snprintf(&str[n], len - n, ",");
 
       // " ", or row indented new line
-      if(newLine) str += sprintf(str, "\n%s", rowPrefix);
-      else *(str++) = ' ';
+      if(newLine) n += snprintf(&str[n], len - n,  "\n%s", rowPrefix);
+      else str[n++] = ' ';
 
       // The next element...
       if (type == X_STRUCT) {
-        m = PrintObject(rowPrefix, (XStructure *) ptr, str);
+        m = PrintObject(rowPrefix, (XStructure *) ptr, &str[n], len - n);
       }
       else {
-        m = PrintArray(rowPrefix, ptr, type, ndim-1, &sizes[1], str);
+        m = PrintArray(rowPrefix, ptr, type, ndim-1, &sizes[1], &str[n], len - n);
       }
       if(m < 0) {
         free(rowPrefix);
         return x_trace(fn, NULL, m);       // Error code
       }
-      str += m;
+      n += m;
     }
 
     // " ", or indented new line
-    if(newLine) str += sprintf(str, "\n%s", prefix);    // For newLine type elements, close on an indented new line....
-    else *(str++) = ' ';                                // Otherwise, just add a space...
+    if(newLine) n += snprintf(&str[n], len - n, "\n%s", prefix);    // For newLine type elements, close on an indented new line....
+    else str[n++] = ' ';                                // Otherwise, just add a space...
 
-    *(str++) = ']';                                     // Close bracket.
+    str[n++] = ']';                                     // Close bracket.
 
     free(rowPrefix);
 
-    return str - str0;
+    return n;
   }
 }
 
-static int PrintPrimitive(const void *ptr, XType type, char *str) {
+static int PrintPrimitive(const void *ptr, XType type, char *str, size_t len) {
   static const char *fn = "PrintPrimitive";
 
-  if(!ptr) return sprintf(str, JSON_NULL);
+  if(!ptr) return snprintf(str, len, JSON_NULL);
 
   if(xIsCharSequence(type)) {
-    int n = PrintString((char *) ptr, xElementSizeOf(type), str);
+    int n = PrintString((char *) ptr, xElementSizeOf(type), str, len);
     prop_error(fn, n);
     return n;
   }
 
   switch(type) {
-    case X_UNKNOWN: return sprintf(str, JSON_NULL);
-    case X_BOOLEAN: return sprintf(str, (*(boolean *)ptr ? JSON_TRUE : JSON_FALSE));
-    case X_BYTE: return sprintf(str, "%hhu", *(unsigned char *) ptr);
-    case X_FLOAT: return sprintf(str, "%.8g", *(float *) ptr);
-    case X_DOUBLE: return xPrintDouble(str, *(double *) ptr);
+    case X_UNKNOWN: return snprintf(str, len, JSON_NULL);
+    case X_BOOLEAN: return snprintf(str, len, (*(boolean *)ptr ? JSON_TRUE : JSON_FALSE));
+    case X_BYTE: return snprintf(str, len, "%hhu", *(unsigned char *) ptr);
+    case X_FLOAT: return xPrintFloatN(str, *(float *) ptr, len);
+    case X_DOUBLE: return xPrintDoubleN(str, *(double *) ptr, len);
     case X_STRING:
-    case X_RAW: return PrintString(*(char **) ptr, TERMINATED_STRING, str);
+    case X_RAW: return PrintString(*(char **) ptr, TERMINATED_STRING, str, len);
     default:
-      if(type == X_SHORT) return sprintf(str, "%hd", *(short *) ptr);
-      else if(type == X_INT) return sprintf(str, "%d", *(int *) ptr);
-      else if(type == X_LONG) return sprintf(str, "%ld", *(long *) ptr);
-      else if(type == X_LLONG) return sprintf(str, "%lld", *(long long *) ptr);
+      if(type == X_SHORT) return snprintf(str, len, "%hd", *(short *) ptr);
+      else if(type == X_INT) return snprintf(str, len, "%d", *(int *) ptr);
+      else if(type == X_LONG) return snprintf(str, len, "%ld", *(long *) ptr);
+      else if(type == X_LLONG) return snprintf(str, len, "%lld", *(long long *) ptr);
 
       return x_error(X_TYPE_INVALID, EINVAL, fn, "invalid type: %d", type);
   }
@@ -1362,38 +1361,38 @@ static char GetEscapedChar(char c) {
   return c;
 }
 
-static int raw2json(const char *src, int maxlen, char *json) {
-  char *next = json;
+static int raw2json(const char *src, int maxlen, char *json, size_t len) {
   int i;
+  size_t n = 0, last = len > 2 ? len - 2 : 0;
 
   for(i = 0; i < maxlen && src[i]; i++) switch(GetJsonBytes(src[i])) {
     case UNICODE_BYTES:
-      *(next++) = '\\';
-      *(next++) = 'u';
-      next += snprintf(next, (size_t) maxlen - (next - json), "00%02hhx", (unsigned char) src[i]);
+      if(n < last) json[n++] = '\\';
+      if(n < last) json[n++] = 'u';
+      n += snprintf(&json[n], len - n, "00%02hhx", (unsigned char) src[i]);
       break;
     case 2:
-      *(next++) = '\\';
-      *(next++) = GetEscapedChar(src[i]);
+      if(n < last) json[n++] = '\\';
+      if(n < last) json[n++] = GetEscapedChar(src[i]);
        break;
     case 1:
-      *(next++) = src[i];
+      if(n < last) json[n++] = src[i];
       break;
   }
 
-  *(next++) = '\0';
+  if(n < len) json[n++] = '\0';
 
-  return next - json - 1;
+  return n - 1;
 }
 
-static int PrintString(const char *src, int maxLength, char *json) {
+static int PrintString(const char *src, int maxLength, char *json, size_t len) {
   char *next = json;
 
   if(maxLength < 0) maxLength = INT_MAX;
 
   *(next++) = '"';
 
-  next += raw2json(src, maxLength, next);
+  next += raw2json(src, maxLength - 3, next, len);
 
   *(next++) = '"';
   *(next++) = '\0';
@@ -1433,7 +1432,7 @@ char *xjsonEscape(const char *src, int maxLength) {
     return NULL;
   }
 
-  raw2json(src, maxLength, json);
+  raw2json(src, maxLength, json, size + 1);
 
   return json;
 }

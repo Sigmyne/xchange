@@ -324,6 +324,44 @@ long xGetElementCount(int ndim, const int *sizes) {
 /**
  * Serializes the dimensions to a string as a space-separated list of integers.
  *
+ * \param[out]  dst       Pointer to a string buffer with at least `len` bytes size.
+ * \param[in]   ndim      Number of dimensions
+ * \param[in]   sizes     Sizes along each dimension.
+ * \param[in]   len       Maximum number of bytes to print into string buffer, including termination.
+ *
+ * \return          Number of characters written into the destination buffer, not counting the string
+ *                  termination, or -1 if an the essential pointer arguments is NULL.
+ *
+ * @since 1.2
+ */
+int xPrintDimsN(char *dst, int ndim, const int *sizes, size_t len) {
+  static const char *fn = "xPrintDims";
+
+  int i, n = 0;
+
+  if(!dst)
+    return x_error(-1, EINVAL, fn, "'dst' is NULL");
+
+  if(!len)
+    return x_error(-1, EINVAL, fn, "'len' is zero");
+
+  if(ndim > 0 && !sizes)
+    return x_error(-1, EINVAL, fn, "input 'sizes' is NULL (ndim = %d)", ndim);
+
+  if(ndim <= 0) return snprintf(dst, len, "1");           // default, will be overwritten with actual sizes, if any.
+  else if(ndim > X_MAX_DIMS) ndim = X_MAX_DIMS;
+
+  for(i = 0; i < ndim; i++) n += snprintf(&dst[n], len - n, "%d ", sizes[i]);       // Print the next dimension
+
+  if(n) n--;
+  dst[n] = '\0';    // Replace the last space with a string termination.
+
+  return n;
+}
+
+/**
+ * Serializes the dimensions to a string as a space-separated list of integers.
+ *
  * \param[out]  dst       Pointer to a string buffer with at least X_MAX_STRING_DIMS bytes size.
  * \param[in]   ndim      Number of dimensions
  * \param[in]   sizes     Sizes along each dimension.
@@ -331,28 +369,12 @@ long xGetElementCount(int ndim, const int *sizes) {
  * \return          Number of characters written into the destination buffer, not counting the string
  *                  termination, or -1 if an the essential pointer arguments is NULL.
  *
+ * @sa xPrintDimsN()
  */
 int xPrintDims(char *dst, int ndim, const int *sizes) {
-  static const char *fn = "xPrintDims";
-
-  int i;
-  char *next = dst;
-
-  if(!dst)
-    return x_error(-1, EINVAL, fn, "'dst' is NULL");
-
-  if(ndim > 0 && !sizes)
-    return x_error(-1, EINVAL, fn, "input 'sizes' is NULL (ndim = %d)", ndim);
-
-  if(ndim <= 0) return sprintf(dst, "1");           // default, will be overwritten with actual sizes, if any.
-  else if(ndim > X_MAX_DIMS) ndim = X_MAX_DIMS;
-
-  for(i = 0; i < ndim; i++) next += sprintf(next, "%d ", sizes[i]);       // Print the next dimension
-
-  if(next > dst) next--;
-  *next = '\0';    // Replace the last space with a string termination.
-
-  return next - dst;
+  int n = xPrintDimsN(dst, ndim, sizes, X_MAX_STRING_DIMS);
+  prop_error("xPrintDims", n);
+  return n;
 }
 
 /**
@@ -664,22 +686,81 @@ float xParseFloat(const char *str, char **tail) {
  * For values that exceed the legal double precision range, "-inf" or "inf" will be used as
  * appropriate, and NAN values will be printed as "nan".
  *
+ * @param str       Pointer to buffer for printed value. It should have at least `len` bytes of
+ *                  space allocated after the specified address.
+ * @param value     Value to print.
+ * @param len       Maximum number of bytes to print into string buffer, including termination.
+ * @return          Number of characters printed into the buffer, or -1 if there was an error.
+ *
+ * @since 1.2
+ */
+int xPrintDoubleN(char *str, double value, size_t len) {
+  static const char *fn = "xPrintDoubleN";
+
+  if(!str)
+    return x_error(-1, EINVAL, fn, "string is NULL");
+
+  if(!len)
+    return x_error(-1, EINVAL, fn, "'len' is zero");
+
+  // For double-precision restrict range to IEEE range
+  if(value > DBL_MAX) return snprintf(str, len, "inf");
+  else if(value < -DBL_MAX) return snprintf(str, len, "-inf");
+  else if(isnan(value)) return snprintf(str, len, "nan");
+  else if(value < DBL_MIN) if(value > -DBL_MIN) return snprintf(str, len, "0");
+
+  return snprintf(str, len, "%.16g", value);
+}
+
+/**
+ * Prints a double precision number, restricted to legal double-precision range. If the native
+ * value has absolute value smaller than the smallest non-zero value, then 0 will printed instead.
+ * For values that exceed the legal double precision range, "-inf" or "inf" will be used as
+ * appropriate, and NAN values will be printed as "nan".
+ *
  * @param str       Pointer to buffer for printed value. It should have at least 25 bytes of
  *                  space allocated after the specified address.
  * @param value     Value to print.
  * @return          Number of characters printed into the buffer, or -1 if there was an error.
+ *
+ * @sa xPrintDoubleN()
  */
 int xPrintDouble(char *str, double value) {
+  int n = xPrintDoubleN(str, value, 25);
+  prop_error("xPrintDouble", n);
+  return n;
+}
+
+/**
+ * Prints a single-precision number, restricted to the legal single-precision range. If the native
+ * value has absolute value smaller than the smallest non-zero value, then 0 will printed instead.
+ * For values that exceed the legal double precision range, "-inf" or "inf" will be used as
+ * appropriate, and NAN values will be printed as "nan".
+ *
+ * @param str       Pointer to buffer for printed value. It should have at least `len` bytes of
+ *                  space allocated after the specified address.
+ * @param value     Value to print.
+ * @param len       Maximum number of bytes to print into string buffer, including termination.
+ * @return          Number of characters printed into the buffer.
+ *
+ * @since 1.2
+ */
+int xPrintFloatN(char *str, float value, size_t len) {
+  static const char *fn = "xPrintFloatN";
+
   if(!str)
-    return x_error(-1, EINVAL, "xPrintDouble", "input string is NULL");
+    return x_error(-1, EINVAL, fn, "input string is NULL");
 
-  // For double-precision restrict range to IEEE range
-  if(value > DBL_MAX) return sprintf(str, "inf");
-  else if(value < -DBL_MAX) return sprintf(str, "-inf");
-  else if(isnan(value)) return sprintf(str, "nan");
-  else if(value < DBL_MIN) if(value > -DBL_MIN) return sprintf(str, "0");
+  if(!len)
+      return x_error(-1, EINVAL, fn, "'len' is zero");
 
-  return sprintf(str, "%.16g", value);
+  // For single-precision restrict range to IEEE range
+  if(value > FLT_MAX) return snprintf(str, len, "inf");
+  else if(value < -FLT_MAX) return snprintf(str, len, "-inf");
+  else if(isnan(value)) return snprintf(str, len, "nan");
+  else if(value < FLT_MIN) if(value > -FLT_MIN) return snprintf(str, len, "0");
+
+  return snprintf(str, len, "%.7g", value);
 }
 
 /**
@@ -692,18 +773,13 @@ int xPrintDouble(char *str, double value) {
  *                  space allocated after the specified address.
  * @param value     Value to print.
  * @return          Number of characters printed into the buffer.
+ *
+ * @sa xPrintFloatN()
  */
 int xPrintFloat(char *str, float value) {
-  if(!str)
-    return x_error(-1, EINVAL, "xPrintFloat", "input string is NULL");
-
-  // For single-precision restrict range to IEEE range
-  if(value > FLT_MAX) return sprintf(str, "inf");
-  else if(value < -FLT_MAX) return sprintf(str, "-inf");
-  else if(isnan(value)) return sprintf(str, "nan");
-  else if(value < FLT_MIN) if(value > -FLT_MIN) return sprintf(str, "0");
-
-  return sprintf(str, "%.7g", value);
+  int n = xPrintFloatN(str, value, 16);
+  prop_error("xPrintFloat", n);
+  return n;
 }
 
 /**
