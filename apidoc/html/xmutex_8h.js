@@ -5,5 +5,5 @@ var xmutex_8h =
     [ "xmut_init", "xmutex_8h.html#abba08da74db5ad10827a30372d739622", null ],
     [ "xmut_lock", "xmutex_8h.html#a41705a41d3bc6dbe2206350ac8cfbe59", null ],
     [ "xmut_unlock", "xmutex_8h.html#a99acab377e324320e23681c165e50ae0", null ],
-    [ "lock_type", "xmutex_8h.html#a9aa70cd98f817aa872fbb981a30e2e01", null ]
+    [ "xmut_type", "xmutex_8h.html#a2e4ef423d17fc8c235e655cdd083b4dc", null ]
 ];

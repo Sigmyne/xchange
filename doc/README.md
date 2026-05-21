@@ -12,7 +12,7 @@ Structured data representation and JSON support for C/C++.
 
 Author: Attila Kovacs
 
-Updated for 1.1.2 and later releases.
+Updated for 1.2.0 and later releases.
 
 ## Table of Contents
 

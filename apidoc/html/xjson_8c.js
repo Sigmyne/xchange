@@ -1,7 +1,7 @@
 var xjson_8c =
 [
     [ "__XCHANGE_INTERNAL_API__", "xjson_8c.html#ac36bd75f87a1614fb477a0fbcd5df1f3", null ],
-    [ "xjsonEscape", "xjson_8c.html#a92336f3031a90784e8667aaa7ad07ca2", null ],
+    [ "xjsonEscape", "xjson_8c.html#a380f77842e76ca8799a621c2181c1f06", null ],
     [ "xjsonFieldToIndentedString", "xjson_8c.html#a01bc599d67f70636a813b103a20170ac", null ],
     [ "xjsonFieldToString", "xjson_8c.html#a42101fa63cb1c6e265f317e9b8719d5f", null ],
     [ "xjsonGetIndent", "xjson_8c.html#a9f11227a58e797a4a335331d94c8e888", null ],
