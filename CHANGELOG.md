@@ -15,7 +15,7 @@ Upcoming feature release, possibly around 1 August 2026.
 
  - #26: Fixed space allocation in in `xLookupPutAllAsync()` / `xLookupRemoveAllAsync()`.
  
- - #29: `xGetAsDoubleAtIndex()` returned integer rounded values when the field stored `float` or `double` type data. 
+ - #28: `xGetAsDoubleAtIndex()` returned integer rounded values when the field stored `float` or `double` type data. 
    Now, it returns the floating-point value directly.
  
  - Fixed memleak in `xLookupRemove()`.
@@ -48,6 +48,9 @@ Upcoming feature release, possibly around 1 August 2026.
  - Now installing `xmutex.h` containing portable mutex macros.
 
 ### Changed
+
+ - #29: Use `snprintf()` instead of `sprintf()` provided it's available. (On older platforms prior to the C99 
+   standard, it defaults to `sprintf()`.)
 
  - Changed `xlookup` hash algorithm to FNV-1a.
  
