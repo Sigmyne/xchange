@@ -13,7 +13,7 @@ Upcoming feature release, possibly around 1 August 2026.
 
 ### Fixed
 
- - #26: Fixed space allocation in in `xLookupPutAllAsync()` / `xLookupRemoveAllAsync()`.
+ - #26: Fixed space allocation in `xLookupPutAllAsync()` / `xLookupRemoveAllAsync()`.
  
  - #28: `xGetAsDoubleAtIndex()` returned integer rounded values when the field stored `float` or `double` type data. 
    Now, it returns the floating-point value directly.
