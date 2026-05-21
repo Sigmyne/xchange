@@ -11,11 +11,55 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 Upcoming feature release, possibly around 1 August 2026.
 
+### Fixed
+
+ - #26: Fixed space allocation in in `xLookupPutAllAsync()` / `xLookupRemoveAllAsync()`.
+ 
+ - #28: `xGetAsDoubleAtIndex()` returned integer rounded values when the field stored `float` or `double` type data. 
+   Now, it returns the floating-point value directly.
+ 
+ - Fixed memleak in `xLookupRemove()`.
+ 
+ - Fixed memleak in `xDestroyLookup()`.
+ 
+ - `xLookupPut()` did not return `X_NO_INIT` as expected if lookup table was not initialized.
+
+ - Fix potential buffer overflow at build time in `docedit.c` (`sprintf()` to `snprintf()`).
+ 
+ - Fixed max string size for 8-byte signed integer (-> 20 bytes + termination).
+ 
+ - Fixed insufficient checking in `xIsFieldValid()`.
+ 
+ - Fixed botched read loop in `xjsonParseFile()`.
+ 
+ - Unwanted `fclose()` in `xjsonParseFile()`. Caller is responsible for closing the file after the call, as 
+   appropriate.
+   
+ - Extra comma when printing `X_FLOAT` value to JSON.
+ 
+ - Fixed JSON unicode processing.
+ 
+ - Fixed `PrintPrimitive()` return value for `X_CHAR(n)` types in `xjson.c`.
+ 
+ - `xGetAsLongAtIndex()` and `xGetAsDoubleAtIndex()` for string/raw types.
+
 ### Added
 
  - Now installing `xmutex.h` containing portable mutex macros.
 
 ### Changed
+
+ - #29: Use `snprintf()` instead of `sprintf()` provided it's available. (On older platforms prior to the C99 
+   standard, it defaults to `sprintf()`.)
+   
+ - #29: Use `size_t` or `long` (if needs to be signed) instead of `int` for string length parameters.
+
+ - Changed `xlookup` hash algorithm to FNV-1a.
+ 
+ - Rounding instead of downcast from double in `xGetAsLongAtIndex()`.
+ 
+ - Use `snprintf()` instead of `sprintf()` wherever possible. For older platforms that do not have `snprintf()`, 
+   define a dummy version, which behaves just like `sprintf()`.
 
  - CMake install to skip `.gitignore` in `examples/`.
  
