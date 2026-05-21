@@ -32,8 +32,8 @@ Upcoming feature release, possibly around 1 August 2026.
  
  - Fixed botched read loop in `xjsonParseFile()`.
  
- - Unwanted `fclose()` in `xjsonParseFile()`. Caller is responsible for closing the file after the call, as 
-   appropriate.
+ - Removed the unwanted `fclose()` in `xjsonParseFile()`. Caller is responsible for closing the file after the call, 
+   as appropriate.
    
  - Extra comma when printing `X_FLOAT` value to JSON.
  
@@ -57,9 +57,6 @@ Upcoming feature release, possibly around 1 August 2026.
  - Changed `xlookup` hash algorithm to FNV-1a.
  
  - Rounding instead of downcast from double in `xGetAsLongAtIndex()`.
- 
- - Use `snprintf()` instead of `sprintf()` wherever possible. For older platforms that do not have `snprintf()`, 
-   define a dummy version, which behaves just like `sprintf()`.
 
  - CMake install to skip `.gitignore` in `examples/`.
  
