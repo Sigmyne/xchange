@@ -849,7 +849,7 @@ const char *xErrorDescription(int code) {
   return "unknown error";
 }
 
-#ifdef X_SNPRINTF
+#ifdef X_NO_SNPRINTF
 /**
  * Default x_snprintf implementation for older platform, which do not have it. It behaves
  * just like sprintf(), ignoring the len parameter altogether.
@@ -866,4 +866,4 @@ int x_snprintf(char *buf, size_t len, const char *fmt, ...) {
   va_end(varg);
   return n;
 }
-#endif // X_SNPRINTF
+#endif // X_NO_SNPRINTF
