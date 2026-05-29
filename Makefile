@@ -33,17 +33,20 @@ endif
 # If there is doxygen, build the API documentation also by default
 ifeq ($(.SHELLSTATUS),0)
   DOC_TARGETS += dox
-else
-  ifneq ($(DOXYGEN),none)
-    $(info WARNING! Doxygen is not available. Will skip 'dox' target) 
-  endif
 endif
 
 INSTALL_TARGETS := install-headers
 
 # Build for distribution
 .PHONY: distro
-distro: $(LIBXCHANGE) $(DOC_TARGETS)
+distro: warn $(LIBXCHANGE) $(DOC_TARGETS)
+
+# Warn about limiting build options.
+.PHONY: warn
+warn:
+ifndef DOC_TARGETS
+	$(info WARNING! Doxygen is not available. Will skip 'dox' target)
+endif
 
 # Shared libraries (versioned and unversioned)
 .PHONY: shared
@@ -55,7 +58,7 @@ static: $(LIB)/libxchange.a
 
 # Build everything...
 .PHONY: all
-all: $(LIBXCHANGE) $(DOC_TARGETS) check
+all: distro check
 
 # Run regression tests
 .PHONY: test
