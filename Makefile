@@ -58,7 +58,7 @@ static: $(LIB)/libxchange.a
 
 # Build everything...
 .PHONY: all
-all: distro check
+all: warn static shared $(DOC_TARGETS) check
 
 # Run regression tests
 .PHONY: test
@@ -69,7 +69,7 @@ test:
 coverage:
 	$(MAKE) -C test coverage
 
-# Buld example programs
+# Build example programs
 .PHONY: examples
 examples: shared
 	$(MAKE) -C examples
@@ -79,7 +79,7 @@ examples: shared
 dox: 
 	$(MAKE) -C doc
 
-# 'test" + 'analyze'
+# 'test' + 'analyze'
 .PHONY: check
 check: 
 	$(MAKE) -C test analyze
