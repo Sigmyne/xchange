@@ -7,9 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [1.2.0-rc3] - 2026-05-31
+## [1.2.0] - 2026-06-08
 
-Release candidate for the upcoming feature release, expected between 15 June and 1 August 2026.
+High priority bug fixes and version bump.
 
 ### Fixed
 
