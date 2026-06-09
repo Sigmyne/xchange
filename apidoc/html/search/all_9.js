@@ -7,6 +7,6 @@ var searchData=
   ['install_20xchange_20via_20vcpkg_4',['Install xchange via &lt;span class=&quot;tt&quot;&gt;vcpkg&lt;/span&gt;',['../index.html#autotoc_md8',1,'']]],
   ['installation_5',['Building and installation',['../index.html#autotoc_md5',1,'']]],
   ['introduction_6',['Introduction',['../index.html#autotoc_md3',1,'']]],
-  ['isserialized_7',['isSerialized',['../structXField.html#aaa68a7e140a5370ed0eb52710744c341',1,'XField']]],
+  ['isserialized_7',['isSerialized',['../structXField.html#a65fb729ee95a5f9ba3d1ac9d6a1ca8e8',1,'XField']]],
   ['iterating_20over_20elements_8',['Iterating over elements',['../index.html#autotoc_md25',1,'']]]
 ];

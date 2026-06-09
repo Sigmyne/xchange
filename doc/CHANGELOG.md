@@ -7,6 +7,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased]
+
+Upcoming feature release, possbily as early as 1 August 2026.
+
+### Fixed
+
+ - CMake `xchangeConfig` to skip requiring math lib for non-Windows platforms in general, since it's can fail if the 
+   math library is in the build path, but not in the search path, such as in case of some cross builds (see e.g. the
+   vcpkg Android builds)
+
+### Added
+
+ - #32: Added `XBoolean` as the xchange-specific boolean type, replacing `boolean` in prior versions. (The `boolean`
+   type is still defined for compatibility, but can be disabled by defining `_TYPEDEF_BOOLEAN` prior to including
+   `xchange.h` in your source code.).
+
+ - Added `xIsDebug()` function to check on `xDebug`. While the global variable is fine in most cases, they are 
+   problematic for Windows DLLs. It's better to use purely functional access instead.
+   
+ - `xvprintf()` / `xdprintf()` macros to reference functions instead of global vars (see above comment on Windows
+   DLLs.
+   
+### Changed
+
+ - #32: Changed `boolean` parameter and return types to the equivalent `XBoolean`, to disambugiate the 
+   xchange-specific boolean type from other definitions. (Other header may define `boolean` also, and so by choosing
+   a more unique type name, we reduce the chance of namespace conflicts.)
+   
+
 ## [1.2.0] - 2026-06-08
 
 High priority bug fixes and version bump.
