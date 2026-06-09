@@ -15,24 +15,25 @@ var index =
     ] ],
     [ "Structured data", "index.html#autotoc_md16", [
       [ "Basic data types", "index.html#autotoc_md17", [
-        [ "Strings", "index.html#autotoc_md18", null ]
+        [ "Booleans", "index.html#autotoc_md18", null ],
+        [ "Strings", "index.html#autotoc_md19", null ]
       ] ],
-      [ "Scalars", "index.html#autotoc_md19", null ],
-      [ "Arrays", "index.html#autotoc_md20", null ],
-      [ "Creating structure", "index.html#autotoc_md21", null ],
-      [ "Aggregate IDs", "index.html#autotoc_md22", null ],
-      [ "Accessing substructures and elements", "index.html#autotoc_md23", [
-        [ "Large structures", "index.html#autotoc_md24", null ],
-        [ "Iterating over elements", "index.html#autotoc_md25", null ]
+      [ "Scalars", "index.html#autotoc_md20", null ],
+      [ "Arrays", "index.html#autotoc_md21", null ],
+      [ "Creating structure", "index.html#autotoc_md22", null ],
+      [ "Aggregate IDs", "index.html#autotoc_md23", null ],
+      [ "Accessing substructures and elements", "index.html#autotoc_md24", [
+        [ "Large structures", "index.html#autotoc_md25", null ],
+        [ "Iterating over elements", "index.html#autotoc_md26", null ]
       ] ],
-      [ "Sorting fields", "index.html#autotoc_md26", null ]
+      [ "Sorting fields", "index.html#autotoc_md27", null ]
     ] ],
-    [ "JSON parser and emitter", "index.html#autotoc_md28", [
-      [ "JSON fragments", "index.html#autotoc_md29", null ],
-      [ "Escaped string representations", "index.html#autotoc_md30", null ]
+    [ "JSON parser and emitter", "index.html#autotoc_md29", [
+      [ "JSON fragments", "index.html#autotoc_md30", null ],
+      [ "Escaped string representations", "index.html#autotoc_md31", null ]
     ] ],
-    [ "Error handling", "index.html#autotoc_md32", null ],
-    [ "Debugging support", "index.html#autotoc_md34", null ],
-    [ "Future plans", "index.html#autotoc_md36", null ],
-    [ "Release schedule", "index.html#autotoc_md38", null ]
+    [ "Error handling", "index.html#autotoc_md33", null ],
+    [ "Debugging support", "index.html#autotoc_md35", null ],
+    [ "Future plans", "index.html#autotoc_md37", null ],
+    [ "Release schedule", "index.html#autotoc_md39", null ]
 ];

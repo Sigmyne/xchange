@@ -347,10 +347,15 @@ preprocessor during compilation:
  | `X_LLONG`     | `long long`              |   &gt;= 64-bits  | typically `X_INT64`                        |
 
 
-By default, a `boolean` type (same as `XBoolean`) is also defined in `xchange.h` to maintain compatibility with 
-releases prior to __v1.3__. If you prefer to use a different `boolean` type, such as defined by another header, 
-simply define `_TYPEDEF_BOOLEAN` prior to including `xchange.h` in your source code to indicate that `xchange.h` 
-should avoid (re)defining `boolean`. E.g.:
+<a name="xchange-booleans"></a>
+#### Booleans
+
+In version 1.3, the xchange-defined type for a boolean variable was changed from `boolean` to `XBoolean`, to reduce 
+conflicts with other headers that might defined their own `boolean` type. By default, a `boolean` type (same as 
+`XBoolean`) remains defined in `xchange.h` also to maintain compatibility with releases prior to __v1.3__. However, 
+if you prefer to use a different `boolean` type, such as defined by another header, simply define `_TYPEDEF_BOOLEAN` 
+prior to including `xchange.h` in your source code to indicate that `xchange.h` should avoid (re)defining `boolean`. 
+E.g.:
 
 ```c
  #define _TYPEDEF_BOOLEAN   // indicates that we have a custom definition for a `boolean` type
