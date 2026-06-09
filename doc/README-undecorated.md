@@ -349,7 +349,6 @@ E.g.:
 ```
 
 
-
 <a name="xchange-strings"></a>
 #### Strings
 
