@@ -9,11 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-Upcoming feature release, possbily as early as 1 August 2026.
+Upcoming feature release, possibly as early as 1 August 2026.
 
 ### Fixed
 
- - CMake `xchangeConfig` to skip requiring math lib for non-Windows platforms in general, since it's can fail if the 
+ - CMake `xchangeConfig` to skip requiring math lib for non-Windows platforms in general, since it can fail if the 
    math library is in the build path, but not in the search path, such as for some cross builds (see e.g. the vcpkg 
    Android builds)
 
@@ -31,7 +31,7 @@ Upcoming feature release, possbily as early as 1 August 2026.
    
 ### Changed
 
- - #32: Changed `boolean` parameter and return types to the equivalent `XBoolean`, to disambugiate the 
+ - #32: Changed `boolean` parameter and return types to the equivalent `XBoolean`, to disambiguate the 
    xchange-specific boolean type from other definitions. (Other header may define `boolean` also, and so by choosing
    a more unique type name, we reduce the chance of namespace conflicts.)
    
