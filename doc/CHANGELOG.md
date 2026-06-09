@@ -14,8 +14,8 @@ Upcoming feature release, possbily as early as 1 August 2026.
 ### Fixed
 
  - CMake `xchangeConfig` to skip requiring math lib for non-Windows platforms in general, since it's can fail if the 
-   math library is in the build path, but not in the search path, such as in case of some cross builds (see e.g. the
-   vcpkg Android builds)
+   math library is in the build path, but not in the search path, such as for some cross builds (see e.g. the vcpkg 
+   Android builds)
 
 ### Added
 
