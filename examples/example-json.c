@@ -64,7 +64,7 @@ static XStructure *create_my_struct() {
 
   int i1[] = {1, 2};                    // 1D array of integers
   char *s2[] = {"aa", "bb", "cc"};      // 1D array of strings
-  boolean b3[] = {TRUE};                // boolean array
+  XBoolean b3[] = {TRUE};                // boolean array
 
   // -------------------------------------------------------------------------
   // Heterogeneous array...

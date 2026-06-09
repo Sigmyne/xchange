@@ -30,12 +30,12 @@
 #define __XCHANGE_INTERNAL_API__      ///< Use internal definitions
 #include "xchange.h"
 
-boolean xVerbose;
+XBoolean xVerbose;
 
 #ifdef DEBUG
-boolean xDebug = TRUE;
+XBoolean xDebug = TRUE;
 #else
-boolean xDebug = FALSE;
+XBoolean xDebug = FALSE;
 #endif
 
 /**
@@ -130,7 +130,7 @@ int x_warn(const char *from, const char *desc, ...) {
  *
  * @sa xSetVerbose()
  */
-boolean xIsVerbose() {
+XBoolean xIsVerbose() {
   return xVerbose;
 }
 
@@ -141,7 +141,7 @@ boolean xIsVerbose() {
  *
  * @sa xIsVerbose(), xSetDebug()
  */
-void xSetVerbose(boolean value) {
+void xSetVerbose(XBoolean value) {
   xVerbose = value ? TRUE : FALSE;
 }
 
@@ -150,11 +150,11 @@ void xSetVerbose(boolean value) {
  *
  * @return      TRUE (1) if debug output is enabled, otherwise FALSE (0).
  *
- * @since 1.2.1
+ * @since 1.3
  *
  * @sa xSetDebug()
  */
-boolean xIsDebug() {
+XBoolean xIsDebug() {
   return xDebug;
 }
 
@@ -165,7 +165,7 @@ boolean xIsDebug() {
  *
  * @sa xIsDebug(), xSetVerbose()
  */
-void xSetDebug(boolean value) {
+void xSetDebug(XBoolean value) {
   xDebug = value ? TRUE : FALSE;
 }
 
@@ -177,7 +177,7 @@ void xSetDebug(boolean value) {
  * \return          TRUE (1) if it is a type for a (fixed size) character array, otherwise FALSE (0).
  *
  */
-boolean xIsCharSequence(XType type) {
+XBoolean xIsCharSequence(XType type) {
   return type < 0;
 }
 
@@ -191,7 +191,7 @@ boolean xIsCharSequence(XType type) {
  * @sa xIsNumeric()
  * @sa xGetAsLong()
  */
-boolean xIsInteger(XType type) {
+XBoolean xIsInteger(XType type) {
   switch(type) {
     case X_BOOLEAN:
     case X_BYTE:
@@ -214,7 +214,7 @@ boolean xIsInteger(XType type) {
  * @sa xIsNumeric()
  * @sa xGetAsDouble()
  */
-boolean xIsDecimal(XType type) {
+XBoolean xIsDecimal(XType type) {
   return (type == X_FLOAT || type == X_DOUBLE);
 }
 
@@ -227,7 +227,7 @@ boolean xIsDecimal(XType type) {
  * @sa xIsInteger()
  * @sa xIsDecimal()
  */
-boolean xIsNumeric(XType type) {
+XBoolean xIsNumeric(XType type) {
   return (xIsInteger(type) || xIsDecimal(type));
 }
 
@@ -280,7 +280,7 @@ int xElementSizeOf(XType type) {
   if(type < 0) return -type;
   switch(type) {
     case X_RAW: return sizeof(char *);
-    case X_BOOLEAN: return sizeof(boolean);
+    case X_BOOLEAN: return sizeof(XBoolean);
     case X_BYTE: return sizeof(char);
     case X_INT16: return sizeof(int16_t);
     case X_INT32: return sizeof(int32_t);
@@ -429,10 +429,10 @@ int xParseDims(const char *src, int *sizes) {
 }
 
 /**
- * Allocates a buffer for a given SMA-X type and element count. The buffer is initialized
+ * Allocates a buffer for a given xchange type and element count. The buffer is initialized
  * with zeroes.
  *
- * \param type      SMA-X type
+ * \param type      xchange data type
  * \param count     number of elements.
  *
  * \return      Pointer to the initialized buffer or NULL if there was an error (errno will
@@ -459,10 +459,10 @@ void *xAlloc(XType type, int count) {
 }
 
 /**
- * Zeroes out the contents of an SMA-X buffer.
+ * Zeroes out the contents of an xchange typed data buffer.
  *
  * \param buf       Pointer to the buffer to fill with zeroes.
- * \param type      SMA-X type
+ * \param type      xchange data type
  * \param count     number of elements.
  */
 void xZero(void *buf, XType type, int count) {
@@ -515,7 +515,7 @@ static int TokenMatch(const char *a, const char *b) {
  * @param end   Where the pointer to after the successfully parsed token is returned, on NULL.
  * @return      TRUE (1) or FALSE (0).
  */
-boolean xParseBoolean(const char *str, char **end) {
+XBoolean xParseBoolean(const char *str, char **end) {
   static const char *fn = "xParseBoolean";
 
   static char *trues[] = { "true", "t", "on", "yes", "y", "enabled", "active", NULL };

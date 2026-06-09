@@ -24,7 +24,7 @@ static XStructure *createStruct() {
 
   int i1[] = {1, 2};
   char *s2[] = {"aa", "bb", "cc"};
-  boolean b3[] = {TRUE};
+  XBoolean b3[] = {TRUE};
 
   // Heterogeneous array...
   XField *f1 = xCreate1DField(".1", X_INT, 2, i1);

@@ -328,7 +328,7 @@ shows the unique __xchange__ types recognized by the library and the correspondi
 
  | `XType`       | element type             | Comment / example                                               |
  |:--------------|:------------------------:|:----------------------------------------------------------------|
- | `X_BOOLEAN`   | `boolean`                | `TRUE` (1 or non-zero) or `FALSE` (0)                           |
+ | `X_BOOLEAN`   | `XBoolean`               | `TRUE` (1 or non-zero) or `FALSE` (0)                           |
  | `X_BYTE`      | `char`                   | '`-128`' to  '`127`'                                            |
  | `X_INT16`     | `int16_t`                | '`-32768`' to '`32767`'                                         |
  | `X_INT32`     | `int32_t`                | '`-2,147,483,648`' to '`2,147,483,647`'                         |
@@ -340,9 +340,9 @@ shows the unique __xchange__ types recognized by the library and the correspondi
  | `X_FIELD`     | `XField`                 | For irregular and/or heterogeneous arrays                       |
  | `X_STRUCT`    | `XStructure`             | substructure                                                    |
 
-The `boolean` type is defined in `xchange.h`. The `XField.value` is a pointer / array of the given element type. So,
-an `XField` of type `X_DOUBLE` will have a `value` field that should be cast a `(double *)`, while for type `X_STRING`
-the value field shall be cast as `(char **)`.
+The `XField.value` is a pointer / array of the given element type. So, an `XField` of type `X_DOUBLE` will have a 
+`value` field that should be cast a `(double *)`, while for type `X_STRING` the value field shall be cast as 
+`(char **)`.
 
 Additionally, the __xchange__ also defines derivative `XType` values for native integer storage types, whose widths 
 depend on the particular CPU architecture. Hence, these are aliased to matching unique types (above) by the C 
@@ -354,6 +354,18 @@ preprocessor during compilation:
  | `X_INT`       | `int`                    |   &gt;= 16-bits  | often `X_INT32`                            |
  | `X_LONG`      | `long`                   |   &gt;= 32-bits  | typically `X_INT32` or `X_INT64`           |
  | `X_LLONG`     | `long long`              |   &gt;= 64-bits  | typically `X_INT64`                        |
+
+
+By default, a `boolean` type (same as `XBoolean`) is also defined in `xchange.h` to maintain compatibility with 
+releases prior to __v1.3__. If you prefer to use a different `boolean` type, such as defined by another header, 
+simply define `_TYPEDEF_BOOLEAN` prior to including `xchange.h` in your source code to indicate that `xchange.h` 
+should avoid (re)defining `boolean`. E.g.:
+
+```c
+ #define _TYPEDEF_BOOLEAN   // indicates that we have a custom definition for a `boolean` type
+ #include <xchange.h>       // xchange.h, without defining its own `boolean` type.
+```
+
 
 
 <a name="xchange-strings"></a>

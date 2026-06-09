@@ -205,7 +205,7 @@ XField *xLookupRemove(XLookupTable *tab, const char *id) {
 
 
 
-static int xLookupPutAllAsync(XLookupTable *tab, const char *prefix, const XStructure *s, boolean recursive) {
+static int xLookupPutAllAsync(XLookupTable *tab, const char *prefix, const XStructure *s, XBoolean recursive) {
   XField *f;
   int lp = prefix ? strlen(prefix) : 0;
   int N = 0;
@@ -242,7 +242,7 @@ static int xLookupPutAllAsync(XLookupTable *tab, const char *prefix, const XStru
   return N;
 }
 
-static int xLookupRemoveAllAsync(XLookupTable *tab, const char *prefix, const XStructure *s, boolean recursive) {
+static int xLookupRemoveAllAsync(XLookupTable *tab, const char *prefix, const XStructure *s, XBoolean recursive) {
   XField *f;
   int lp = prefix ? strlen(prefix) : 0;
   int N = 0;
@@ -296,7 +296,7 @@ static int xLookupRemoveAllAsync(XLookupTable *tab, const char *prefix, const XS
  *
  * @sa xLookupRemoveAll()
  */
-int xLookupPutAll(XLookupTable *tab, const char *prefix, const XStructure *s, boolean recursive) {
+int xLookupPutAll(XLookupTable *tab, const char *prefix, const XStructure *s, XBoolean recursive) {
   static const char *fn = "xLookupPutAll";
 
   // cppcheck-suppress constVariablePointer
@@ -331,7 +331,7 @@ int xLookupPutAll(XLookupTable *tab, const char *prefix, const XStructure *s, bo
  *
  * @sa xLookupRemoveAll()
  */
-int xLookupRemoveAll(XLookupTable *tab, const char *prefix, const XStructure *s, boolean recursive) {
+int xLookupRemoveAll(XLookupTable *tab, const char *prefix, const XStructure *s, XBoolean recursive) {
   static const char *fn = "xLookupRemoveAll";
 
   // cppcheck-suppress constVariablePointer
@@ -418,7 +418,7 @@ XLookupTable *xAllocLookup(unsigned int size) {
  * @sa xLookupField()
  * @sa xDestroyLookup()
  */
-XLookupTable *xCreateLookup(const XStructure *s, boolean recursive) {
+XLookupTable *xCreateLookup(const XStructure *s, XBoolean recursive) {
   static const char *fn = "xCreateLookup";
 
   XLookupTable *l;
@@ -493,7 +493,7 @@ XField *xLookupField(const XLookupTable *tab, const char *id) {
  * @sa xDestroyLookupAndData()
  * @sa xCreateLookup()
  */
-static void xDestroyLookupOption(XLookupTable *tab, boolean destroyFields) {
+static void xDestroyLookupOption(XLookupTable *tab, XBoolean destroyFields) {
   // cppcheck-suppress constVariablePointer
   XLookupPrivate *p;
 

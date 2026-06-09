@@ -21,7 +21,7 @@
 /**
  * Creates a new empty XStructure.
  *
- * \sa smaxDestroyStruct()
+ * \sa xDestroyStruct()
  *
  */
 XStructure *xCreateStruct() {
@@ -396,7 +396,7 @@ long xGetAsLongAtIndex(const XField *f, int idx, long defaultValue) {
   }
 
   switch(f->type) {
-    case X_BOOLEAN: return *(boolean *) ptr;
+    case X_BOOLEAN: return *(XBoolean *) ptr;
     case X_BYTE: return *(int8_t *) ptr;
     case X_INT16: return *(int16_t *) ptr;
     case X_INT32: return *(int32_t *) ptr;
@@ -509,7 +509,7 @@ double xGetAsDoubleAtIndex(const XField *f, int idx) {
   }
 
   switch(f->type) {
-    case X_BOOLEAN: return *(boolean *) ptr;
+    case X_BOOLEAN: return *(XBoolean *) ptr;
     case X_BYTE: return *(int8_t *) ptr;
     case X_INT16: return *(int16_t *) ptr;
     case X_INT32: return *(int32_t *) ptr;
@@ -832,7 +832,7 @@ XField *xCreateLongField(const char *name, long long value) {
  *
  * \return          A newly created field with the supplied data, or NULL if there was an error.
  */
-XField *xCreateBooleanField(const char *name, boolean value) {
+XField *xCreateBooleanField(const char *name, XBoolean value) {
   XField *f = xCreateScalarField(name, X_BOOLEAN, &value);
   if(!f) return x_trace_null("xCreateBooleanField", NULL);
   return f;
@@ -880,7 +880,7 @@ int xSetSubtype(XField *f, const char *type) {
  * \return          TRUE is the field seems to contain valid data, otherwise FALSE.
  *
  */
-boolean xIsFieldValid(const XField *f) {
+XBoolean xIsFieldValid(const XField *f) {
   int i;
   if(f->name == NULL) return FALSE;
   if(xLastSeparator(f->name)) return FALSE;
@@ -1256,7 +1256,7 @@ void xDestroyField(XField *f) {
  *
  * @param s    Pointer to the structure to be cleared.
  *
- * @sa smaDestroyStruct()
+ * @sa xDestroyStruct()
  */
 void xClearStruct(XStructure *s) {
   XField *f;
@@ -1496,7 +1496,7 @@ int xMatchNextID(const char *token, const char *id) {
  * Returns the aggregated (hierarchical) &lt;table&gt;:&lt;key&gt; ID. The caller is responsible for calling free()
  * on the returned string after use.
  *
- * \param table     SMA-X hastable name
+ * \param table     xchange top-level group / hashtable name
  * \param key       The lower-level id to concatenate.
  *
  * \return          The aggregated ID, or NULL if both arguments were NULL themselves.
@@ -1531,7 +1531,7 @@ char *xGetAggregateID(const char *table, const char *key) {
 /**
  * Returns the string pointer to the begining of the last separator in the ID.
  *
- * @param id    Compound SMA-X ID.
+ * @param id    Compound xchange ID.
  * @return      Pointer to the beginning of the last separator in the ID, or NULL if the ID does not contain a separator.
  *
  * @sa xSplitID()
@@ -1633,7 +1633,7 @@ long xDeepCountFields(const XStructure *s) {
  * @sa xSortFieldsByName()
  * @sa xReverseFieldOrder()
  */
-int xSortFields(XStructure *s, int (*cmp)(const XField **f1, const XField **f2), boolean recursive) {
+int xSortFields(XStructure *s, int (*cmp)(const XField **f1, const XField **f2), XBoolean recursive) {
   static const char *fn = "xSortFields";
 
   XField **array, *f;
@@ -1684,7 +1684,7 @@ static int XFieldNameCmp(const XField **f1, const XField **f2) {
  *
  * @sa xReverseFieldOrder()
  */
-int xSortFieldsByName(XStructure *s, boolean recursive) {
+int xSortFieldsByName(XStructure *s, XBoolean recursive) {
   prop_error("xSortFieldsByName", xSortFields(s, XFieldNameCmp, recursive));
   return X_SUCCESS;
 }
@@ -1700,7 +1700,7 @@ int xSortFieldsByName(XStructure *s, boolean recursive) {
  * @sa xSortFieldsByName()
  * @sa xInsertField()
  */
-int xReverseFieldOrder(XStructure *s, boolean recursive) {
+int xReverseFieldOrder(XStructure *s, XBoolean recursive) {
   XField *f, *rev = NULL;
 
   if(s == NULL) return x_error(X_NULL, EINVAL, "xReverseFieldOrder", "input structure is NULL");

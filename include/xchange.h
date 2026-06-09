@@ -20,7 +20,7 @@
 #define XCHANGE_MAJOR_VERSION  1
 
 /// API minor version
-#define XCHANGE_MINOR_VERSION  2
+#define XCHANGE_MINOR_VERSION  3
 
 /// Integer sub version of the release
 #define XCHANGE_PATCHLEVEL     0
@@ -153,11 +153,26 @@ typedef int XType;          ///< SMA-X data type.
 #define X_MAX_STRING_DIMS               (2 * X_MAX_DIMS + 1)    ///< \hideinitializer Maximum length of string representation of dimensions
 #define X_MAX_ELEMENTS                  (1<<X_MAX_DIMS)         ///< \hideinitializer Maximum number of array elements (~1 million).
 
-#if defined(_MSC_VER)
-#  include <windows.h>             // for boolean
-#elif !defined(_TYPEDEF_BOOLEAN)
+/**
+ * The xchange default boolean TRUE/FALSE data type. It is also aliased as `boolean`, unless the `_TYPEDEF_BOOLEAN` is
+ * already set when `xchange.h` is included, to maintain compatibility with previous xchange releases, which only defined
+ * `boolean`. If you don't want xchange to define a `boolean` type, e.g. because you use another header that defines
+ * it differently, then simply define `_TYPEDEF_BOOLEAN` before including `xchange.h` in your source code, e.g. as:
+ *
+ * ```c
+ * #define _TYPEDEF_BOOLEAN   // indicates that we have a custom definition for a boolean type
+ * #include <xchange.h>       // xchange.h, without defining its own `boolean` type.
+ * ```
+ *
+ * @since 1.3
+ */
+typedef int XBoolean;
+
+// If not Windows/MSC (which defines a `boolean` type in `windows.h`), and _TYPEDEF_BOOLEAN wasn't explicitl defined to
+// indicate a custom definition for `boolean`, then define `boolean` to be the same a `XBoolean`.
+#if !defined(_MSC_VER) && !defined(_TYPEDEF_BOOLEAN)
 #  define _TYPEDEF_BOOLEAN         ///< Precompiler constant to indicate that we use the xchange definition of a boolean
-typedef int boolean;               ///< the xchange default boolean TRUE/FALSE data type.
+typedef XBoolean boolean;          ///< compatibility boolean TRUE/FALSE data type prior to v1.3. Same as XBoolean.
 #endif
 
 #ifndef NAN
@@ -175,11 +190,11 @@ typedef int boolean;               ///< the xchange default boolean TRUE/FALSE d
 /**
  * \brief An SMA-X field, typically as part of an XStructure. A field may be a reference to a nested XStructure itself.
  *
- * \sa smaxCreateField()
- * \sa smaxCreateScalarField()
- * \sa smaxCreate1DField()
- * \sa smaxDestroyField()
- * \sa smaxShareField()
+ * \sa xCreateField()
+ * \sa xCreateScalarField()
+ * \sa xCreate1DField()
+ * \sa xDestroyField()
+ * \sa xShareField()
  */
 typedef struct XField {
   char *name;               ///< Pointer to a designated local name buffer. It may not contain a separator (see X_SEP).
@@ -192,7 +207,7 @@ typedef struct XField {
                             ///< NOTE: it should normally be dynamically allocated, to work with xClearField() / xDestroyField().
   int ndim;                 ///< The dimensionality of the data
   int sizes[X_MAX_DIMS];    ///< The sizes along each dimension
-  boolean isSerialized;     ///< Whether the fields is stored in serialized (string) format.
+  XBoolean isSerialized;     ///< Whether the fields is stored in serialized (string) format.
   struct XField *next;      ///< Pointer to the next linked element (if inside an XStructure).
 } XField;
 
@@ -204,9 +219,9 @@ typedef struct XField {
 /**
  * \brief SMA-X structure object, containing a linked-list of XField elements.
  *
- * \sa smaxCreateStruct()
- * \sa smaxDestroyStruct()
- * \sa smaxShareStruct()
+ * \sa xCreateStruct()
+ * \sa xDestroyStruct()
+ * \sa xShareStruct()
  */
 typedef struct XStructure {
   XField *firstField;           ///< Pointer to the first field in this structure or NULL if the structure is empty.
@@ -231,17 +246,17 @@ typedef struct {
  */
 #define X_STRUCT_INIT       {NULL}
 
-extern boolean xVerbose;        ///< Switch to enable verbose console output for XChange operations.
-extern boolean xDebug;          ///< Switch to enable debugging (very verbose) output for XChange operations.
+extern XBoolean xVerbose;        ///< Switch to enable verbose console output for XChange operations.
+extern XBoolean xDebug;          ///< Switch to enable debugging (very verbose) output for XChange operations.
 
 #define xvprintf if(xIsVerbose()) printf        ///< Use for generating verbose output
 #define xdprintf if(xIsDebug()) printf          ///< Use for generating debug output
 
 // In xutil.c ------------------------------------------------>
-boolean xIsVerbose();
-void xSetVerbose(boolean value);
-boolean xIsDebug();
-void xSetDebug(boolean value);
+XBoolean xIsVerbose();
+void xSetVerbose(XBoolean value);
+XBoolean xIsDebug();
+void xSetDebug(XBoolean value);
 int xError(const char *fn, int code);
 const char *xErrorDescription(int code);
 
@@ -258,7 +273,7 @@ void xDestroyField(XField *f);
 XField *xGetField(const XStructure *s, const char *name);
 XField *xSetField(XStructure *s, XField *f);
 XField *xRemoveField(XStructure *s, const char *name);
-boolean xIsFieldValid(const XField *f);
+XBoolean xIsFieldValid(const XField *f);
 long xGetFieldCount(const XField *f);
 void *xGetElementAtIndex(const XField *f, int idx);
 long xGetAsLongAtIndex(const XField *f, int idx, long defaultValue);
@@ -277,18 +292,18 @@ int xReduceStruct(XStructure *s);
 int xReduceField(XField *f);
 
 // Sorting, ordering
-int xSortFields(XStructure *s, int (*cmp)(const XField **f1, const XField **f2), boolean recursive);
-int xSortFieldsByName(XStructure *s, boolean recursive);
-int xReverseFieldOrder(XStructure *s, boolean recursive);
+int xSortFields(XStructure *s, int (*cmp)(const XField **f1, const XField **f2), XBoolean recursive);
+int xSortFieldsByName(XStructure *s, XBoolean recursive);
+int xReverseFieldOrder(XStructure *s, XBoolean recursive);
 
 // Field lookup
 XLookupTable *xAllocLookup(unsigned int size);
-XLookupTable *xCreateLookup(const XStructure *s, boolean recursive);
+XLookupTable *xCreateLookup(const XStructure *s, XBoolean recursive);
 XField *xLookupField(const XLookupTable *tab, const char *id);
 int xLookupPut(XLookupTable *tab, const char *prefix, const XField *field, XField **oldValue);
 XField *xLookupRemove(XLookupTable *tab, const char *id);
-int xLookupPutAll(XLookupTable *tab, const char *prefix, const XStructure *s, boolean recursive);
-int xLookupRemoveAll(XLookupTable *tab, const char *prefix, const XStructure *s, boolean recursive);
+int xLookupPutAll(XLookupTable *tab, const char *prefix, const XStructure *s, XBoolean recursive);
+int xLookupRemoveAll(XLookupTable *tab, const char *prefix, const XStructure *s, XBoolean recursive);
 long xLookupCount(const XLookupTable *tab);
 void xDestroyLookup(XLookupTable *tab);
 void xDestroyLookupAndData(XLookupTable *tab);
@@ -297,7 +312,7 @@ void xDestroyLookupAndData(XLookupTable *tab);
 XField *xCreateDoubleField(const char *name, double value);
 XField *xCreateIntField(const char *name, int value);
 XField *xCreateLongField(const char *name, long long value);
-XField *xCreateBooleanField(const char *name, boolean value);
+XField *xCreateBooleanField(const char *name, XBoolean value);
 XField *xCreateStringField(const char *name, const char *value);
 XField *xCreate1DField(const char *name, XType type, int count, const void *values);
 XField *xCreateMixedArrayField(const char *name, int ndim, const int *sizes, XField *value);
@@ -305,7 +320,7 @@ XField *xCreateMixed1DField(const char *name, int size, XField *value);
 int xSetSubtype(XField *f, const char *type);
 
 // Parsers / formatters
-boolean xParseBoolean(const char *str, char **end);
+XBoolean xParseBoolean(const char *str, char **end);
 float xParseFloat(const char *str, char **tail);
 double xParseDouble(const char *str, char **tail);
 int xPrintDouble(char *str, double value);
@@ -318,10 +333,10 @@ int xPrintDimsN(char *dst, int ndim, const int *sizes, size_t len);
 
 // Low-level utilities ---------------------------------------->
 char xTypeChar(XType type);
-boolean xIsCharSequence(XType type);
-boolean xIsInteger(XType type);
-boolean xIsDecimal(XType type);
-boolean xIsNumeric(XType type);
+XBoolean xIsCharSequence(XType type);
+XBoolean xIsInteger(XType type);
+XBoolean xIsDecimal(XType type);
+XBoolean xIsNumeric(XType type);
 char *xLastSeparator(const char *id);
 char *xNextIDToken(const char *id);
 char *xCopyIDToken(const char *id);

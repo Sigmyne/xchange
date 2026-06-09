@@ -56,7 +56,7 @@ static char *ParseString(char **pos, int *lineNumber);
 static void *ParsePrimitive(char **pos, XType *type, int *lineNumber);
 
 static long GetObjectStringSize(int prefixSize, const XStructure *s);
-static long GetFieldStringSize(int prefixSize, const XField *f, boolean ignoreName);
+static long GetFieldStringSize(int prefixSize, const XField *f, XBoolean ignoreName);
 static long GetArrayStringSize(int prefixSize, char *ptr, XType type, int ndim, const int *sizes);
 static long GetJsonStringSize(const char *src, int maxLength);
 
@@ -759,7 +759,7 @@ static void *ParsePrimitive(char **pos, XType *type, int *lineNumber) {
 
   // Check if boolean
   if(l == JSON_TRUE_LEN) if(!strncmp(next, JSON_TRUE, JSON_TRUE_LEN)) {
-    boolean *value = malloc(sizeof(boolean));
+    XBoolean *value = malloc(sizeof(XBoolean));
     x_check_alloc(value);
     *value = TRUE;
     *type = X_BOOLEAN;
@@ -767,7 +767,7 @@ static void *ParsePrimitive(char **pos, XType *type, int *lineNumber) {
   }
 
   if(l == JSON_FALSE_LEN) if(!strncmp(next, JSON_FALSE, JSON_FALSE_LEN)) {
-    boolean *value = malloc(sizeof(boolean));
+    XBoolean *value = malloc(sizeof(XBoolean));
     x_check_alloc(value);
     *value = FALSE;
     *type = X_BOOLEAN;
@@ -890,7 +890,7 @@ static void *ParseArray(char **pos, XType *type, int *ndim, int sizes[X_MAX_DIMS
 
   for(n = 0; *next && *next != ']';) {
     XField *e;
-    boolean isValid;
+    XBoolean isValid;
 
     e = (XField *) calloc(1, sizeof(XField));
     x_check_alloc(e);
@@ -1099,7 +1099,7 @@ static long PrintObject(const char *prefix, const XStructure *s, char *str, size
   return n;
 }
 
-static long GetFieldStringSize(int prefixSize, const XField *f, boolean ignoreName) {
+static long GetFieldStringSize(int prefixSize, const XField *f, XBoolean ignoreName) {
   static const char *fn = "GetFieldStringSize";
 
   long n = prefixSize + 2, m;      // <value> + `,\n`
@@ -1195,7 +1195,7 @@ static long GetArrayStringSize(int prefixSize, char *ptr, XType type, int ndim, 
   else {
     const int N = sizes[0];
     const int rowSize = SizeOf(type, ndim-1, &sizes[1]);
-    const boolean newLine = IsNewLine(type, ndim);
+    const XBoolean newLine = IsNewLine(type, ndim);
     int k;
 
     long n = 4;     // "[ " + .... +  " ]" or "[\n" + ... + "\n]"
@@ -1243,7 +1243,7 @@ static long PrintArray(const char *prefix, char *ptr, XType type, int ndim, cons
   else {
     const int N = sizes[0];
     const int rowSize = ptr ? SizeOf(type, ndim-1, &sizes[1]) : 0;
-    const boolean newLine = ptr ? IsNewLine(type, ndim) : FALSE;
+    const XBoolean newLine = ptr ? IsNewLine(type, ndim) : FALSE;
     size_t n = 0, plen;
 
     int k;
@@ -1319,7 +1319,7 @@ static long PrintPrimitive(const void *ptr, XType type, char *str, size_t len) {
 
   switch(type) {
     case X_UNKNOWN: return x_snprintf(str, len, JSON_NULL);
-    case X_BOOLEAN: return x_snprintf(str, len, (*(boolean *)ptr ? JSON_TRUE : JSON_FALSE));
+    case X_BOOLEAN: return x_snprintf(str, len, (*(XBoolean *)ptr ? JSON_TRUE : JSON_FALSE));
     case X_BYTE: return x_snprintf(str, len, "%hhu", *(unsigned char *) ptr);
     case X_FLOAT: return xPrintFloatN(str, *(float *) ptr, len);
     case X_DOUBLE: return xPrintDoubleN(str, *(double *) ptr, len);
