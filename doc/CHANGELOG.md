@@ -27,7 +27,7 @@ Upcoming feature release, possibly as early as 1 August 2026.
    problematic for Windows DLLs. It's better to use purely functional access instead.
    
  - `xvprintf()` / `xdprintf()` macros to reference functions instead of global vars (see above comment on Windows
-   DLLs.
+   DLLs).
    
 ### Changed
 

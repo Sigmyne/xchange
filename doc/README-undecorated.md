@@ -189,7 +189,7 @@ architectures (and in case of Windows also `x86`). It is effectively the same as
 more simplicity, convenience, and dependency resolution.
 
 
-You can install just the __xchange__ libvrary with `vcpkg` as:
+You can install just the __xchange__ library with `vcpkg` as:
 
 ```bash
   $ vcpkg install xchange
@@ -715,16 +715,16 @@ The JSON parser can also sink its error messages to a designated file or stream,
 <a name="xchange-debugging-support"></a>
 ## Debugging support
 
-You can enable verbose output of the __xchange__ library with `xSetVerbose(boolean)`. When enabled, it will produce 
+You can enable verbose output of the __xchange__ library with `xSetVerbose(XBoolean)`. When enabled, it will produce 
 status messages to `stderr`so you can follow what's going on. In addition (or alternatively), you can enable debug 
-messages with `xSetDebug(boolean)`. When enabled, all errors encountered by the library (such as invalid arguments 
+messages with `xSetDebug(XBoolean)`. When enabled, all errors encountered by the library (such as invalid arguments 
 passed) will be printed to `stderr`, including call traces, so you can walk back to see where the error may have 
 originated from. (You can also enable debug messages by default by defining the `DEBUG` constant for the compiler, 
 e.g. by adding `-DDEBUG` to `CFLAGS` prior to calling `make`). 
 
 For helping to debug your application, the __xchange__ library provides two macros: `xvprintf()` and `xdprintf()`, 
 for printing verbose and debug messages to `stderr`. Both work just like `printf()`, but they are conditional on 
-verbosity being enabled via `xSetVerbose(boolean)` and `xSetDebug(boolean)`, respectively. Applications using 
+verbosity being enabled via `xSetVerbose(XBoolean)` and `xSetDebug(XBoolean)`, respectively. Applications using 
 __xchange__ may use these macros to produce their own verbose and/or debugging outputs conditional on the same global 
 settings. 
 
