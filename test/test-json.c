@@ -66,7 +66,7 @@ int main() {
 
   str = xjsonEscape(specials, 0);
   if(strlen(str) != 2 * strlen(specials)) {
-    fprintf(stderr, "ERROR: '%s' has length %lu, expected %lu\n", str, (long) strlen(str), 2 * (long) strlen(specials));
+    fprintf(stderr, "ERROR: '%s' has length %zu, expected %zu\n", str, strlen(str), 2 * strlen(specials));
     return 1;
   }
 
