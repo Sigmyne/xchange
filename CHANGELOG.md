@@ -13,6 +13,9 @@ Upcoming feature release, possibly as early as 1 August 2026.
 
 ### Fixed
 
+ - #33: `x_snprintf()` to return the actual number of bytes printed, since this is how the library and its 
+   dependencies have used this function.
+
  - CMake `xchangeConfig` to skip requiring math lib for non-Windows platforms in general, since it can fail if the 
    math library is in the build path, but not in the search path, such as for some cross builds (see e.g. the vcpkg 
    Android builds)

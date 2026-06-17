@@ -876,6 +876,36 @@ int x_snprintf(char *buf, size_t len, const char *fmt, ...) {
   va_start(varg, fmt);
   n = vsprintf(buf, fmt, varg);
   va_end(varg);
+
+  if(n >= (int) len) {
+    fprintf(stderr, "ERROR! Memory corruption. Abort execution\n");
+    fprintf(stderr, "       x_snprintf() printed %d bytes into space of %zu bytes (fmt '%s').", n, len, fmt);
+    exit(EFAULT);
+  }
+
   return n;
 }
+#else
+
+/**
+ * Similar to `snprintf()`, expect the return value can never exceed len - 1.
+ *
+ * @param buf     buffer into which to print
+ * @param len     the size of the buffer
+ * @param fmt     the format string
+ *
+ * @return        The number of characters actually printed, excluding termination.
+ *                Unlike the standard C snprintf() It shall never exceed len - 1.
+ */
+int x_snprintf(char *buf, size_t len, const char *fmt, ...) {
+  va_list va;
+  int n;
+
+  va_start(va, fmt);
+  n = vsnprintf(buf, len, fmt, va);
+  va_end(va);
+
+  return n < (int) len ? n : (int) len - 1;
+}
+
 #endif // X_NO_SNPRINTF
