@@ -3,8 +3,8 @@ excerpt: structured data representation and JSON support for C/C++.
 ---
 
 <img src="/xchange/resources/Sigmyne-logo-200x44.png" alt="Sigmyne logo" width="200" height="44" align="right"><br clear="all">
-
 <img src="https://img.shields.io/github/v/release/Sigmyne/xchange?label=github" class="badge" alt="GitHub release version" align="left">
+<img src="https://img.shields.io/vcpkg/v/libxchange" class="badge" alt="vcpkg version">
 <img src="https://img.shields.io/fedora/v/libxchange?color=lightblue" class="badge" alt="Fedora package version" align="left">
 <br clear="all">
 
