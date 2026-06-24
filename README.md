@@ -379,7 +379,7 @@ Strings can be either fixed-width or else a 0-terminated sequence of ASCII chara
 does not impose any restriction of what ASCII characters may be used. However, we recommend that users stick to the 
 JSON convention, and represent special characters in escaped form. E.g. carriage return (`0xd`) as `\` followed by 
 `n`, tabs as `\` followed by `t`, etc. As a result a single backslash should also be escaped as two consecutive `\` 
-characters. You might use `xjsonEscapeString()` or `xjsonUnescapeString()` to perform the conversion to/from standard
+characters. You might use `xjsonEscape()` or `xjsonUnescape()` to perform the conversion to/from standard
 JSON representation.
 
 Fixed-width strings of up to _n_ characters are represented internally as the `XCHAR(n)` type. They may be 
@@ -451,7 +451,7 @@ Or, use `xCreateMixedArrayField()` to create a multi-dimensional array of hetero
 ### Creating structure
 
 Structures should always be created by calling `xCreateStruct()` (or else by an appropriate de-serialization 
-function such as `xjsonParseAt()`, or as a copy via `xCopyStruct()`). Once the structure is no longer used it should be 
+function such as `xjsonParseString()`, or as a copy via `xCopyOfStruct()`). Once the structure is no longer used it should be 
 explicitly destroyed (freed) by calling `xDestroyStruct()`. Named substructures can be added to any structure with 
 `xSetSubstruct()`, and named fields via `xSetField()`. That is the gist of it. So for example, the skeleton structure 
 from the example above can be created programatically as:

@@ -152,7 +152,7 @@ static char *GetIndent() {
  *
  * @sa xjsonFieldToString()
  * @sa xjsonSetIndent()
- * @sa xjsonParseAt()
+ * @sa xjsonParseString()
  * @sa xjsonParseFile()
  * @sa xjsonParsePath()
  */
@@ -250,7 +250,7 @@ char *xjsonFieldToIndentedString(int indent, const XField *f) {
  *
  * @sa xjsonToString()
  * @sa xjsonSetIndent()
- * @sa xjsonParseAt()
+ * @sa xjsonParseString()
  * @sa xjsonParseFile()
  * @sa xjsonParsePath()
  */
@@ -271,10 +271,10 @@ char *xjsonFieldToString(const XField *f) {
  *                set to EINVAL).
  *                The lineNumber argument can be used to determine where the error occurred.
  *
- * @sa xjsonParseFieldAt()
+ * @sa xjsonParseField()
  * @sa xjsonToString()
  * @sa xjsonParseFile()
- * @sa xjsonParseFileName()
+ * @sa xjsonParsePath()
  */
 XStructure *xjsonParseString(const char *str, char **tail) {
   int lineNumber = 0;
@@ -306,10 +306,10 @@ XStructure *xjsonParseString(const char *str, char **tail) {
  *                set to EINVAL).
  *                The lineNumber argument can be used to determine where the error occurred.
  *
- * @sa xjsonParseAt()
+ * @sa xjsonParseString()
  * @sa xjsonToString()
  * @sa xjsonParseFile()
- * @sa xjsonParseFileName()
+ * @sa xjsonParsePath()
  */
 XField *xjsonParseField(const char *str, char **tail) {
   int lineNumber = 0;
@@ -339,7 +339,7 @@ XField *xjsonParseField(const char *str, char **tail) {
  *             (errno is set to EINVAL). The lineNumber argument can be used to determine where the error occurred).
  *
  * @sa xjsonParseFile()
- * @sa xjsonParseAt()
+ * @sa xjsonParseString()
  * @sa xjsonToString()
  */
 XStructure *xjsonParsePath(const char *path) {
@@ -382,7 +382,7 @@ XStructure *xjsonParsePath(const char *path) {
  *             (errno is set to EINVAL). The lineNumber argument can be used to determine where the error occurred).
  *
  * @sa xjsonParsePath()
- * @sa xjsonParseAt()
+ * @sa xjsonParseString()
  * @sa xjsonToString()
  */
 XStructure *xjsonParseFile(FILE *fp, size_t length) {
