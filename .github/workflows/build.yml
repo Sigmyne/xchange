@@ -41,7 +41,7 @@ jobs:
       FORTIFY: 3
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     
     - name: Build static library
       run: make static
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     name: FreeBSD
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Build on FreeBSD
         uses: vmactions/freebsd-vm@v1

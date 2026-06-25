@@ -40,7 +40,7 @@ jobs:
     - name: install doxygen
       run: sudo apt-get install doxygen
 
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Generate docs
       run: make dox
@@ -54,7 +54,7 @@ jobs:
     steps:
 
     - name: Checkout source
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Generate headless README
       run: make -C doc README.md
@@ -68,7 +68,7 @@ jobs:
       run: for file in doc/html/*.html ; do sudo sed -i "/<\/head>/e cat resources/analytics.html" $file ; done
 
     - name: Checkout gh-pages
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         ref: 'gh-pages'
         path: site
@@ -102,10 +102,10 @@ jobs:
     steps:
 
     - name: Checkout source
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Checkout gh-pages
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         ref: 'gh-pages'
         path: site
