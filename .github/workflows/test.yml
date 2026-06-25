@@ -34,7 +34,7 @@ jobs:
       LIB: ${{ github.workspace }}/lib
       LD_LIBRARY_PATH: ${{ github.workspace }}/lib
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     
     - name: Build and run tests
       run: make test
@@ -59,7 +59,7 @@ jobs:
           - arch: ppc64le
             distro: ubuntu_latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: uraimo/run-on-arch-action@v3
         name: Run regression tests
         id: test
@@ -75,7 +75,7 @@ jobs:
     name: Test on MacOS
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Build and test on macOS
         run: make test
 
@@ -83,7 +83,7 @@ jobs:
     name: Test with CMake (Ubuntu)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       
       - name: Build
         run: |
