@@ -6,6 +6,7 @@ excerpt: structured data representation and JSON support for C/C++.
 <img src="https://img.shields.io/github/v/release/Sigmyne/xchange?label=github" class="badge" alt="GitHub release version" align="left">
 <img src="https://img.shields.io/vcpkg/v/libxchange" class="badge" alt="vcpkg version">
 <img src="https://img.shields.io/fedora/v/libxchange?color=lightblue" class="badge" alt="Fedora package version" align="left">
+<img src="https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/attipaci/homebrew-pub/pkginfo/xchange.json&query=$.versions.stable&label=homebrew" class="badge" alt="Homebrew package version" align="left">
 <br clear="all">
 
 The __xchange__ library provides structured data representation and exchange in C/C++, and includes support for JSON 
