@@ -25,7 +25,7 @@ on:
 
 jobs:
 
-  build:
+  test:
     name: Regression tests
 
     runs-on: ubuntu-latest
@@ -41,6 +41,7 @@ jobs:
 
   test-platforms:
     name: ${{ matrix.arch }}
+    needs: test
     # The host should always be linux
     runs-on: ubuntu-latest
 
@@ -73,6 +74,7 @@ jobs:
 
   test-macos:
     name: Test on MacOS
+    needs: test
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
@@ -81,6 +83,7 @@ jobs:
 
   test-cmake:
     name: Test with CMake (Ubuntu)
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
