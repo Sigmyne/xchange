@@ -38,6 +38,8 @@ Upcoming feature release, possibly as early as 1 August 2026.
    xchange-specific boolean type from other definitions. (Other header may define `boolean` also, and so by choosing
    a more unique type name, we reduce the chance of namespace conflicts.)
    
+ - #36: Staged GitHub Actions workflows, to fail early and cancel dependent jobs in case of errors.
+   
 
 ## [1.2.0] - 2026-06-08
 

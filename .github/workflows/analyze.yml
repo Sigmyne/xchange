@@ -30,11 +30,11 @@ jobs:
     env:
       CC: gcc
     steps:
-    
+
     - uses: actions/checkout@v7
-    
+
     - name: install dependencies
       run: sudo apt-get install -y cppcheck
-    
+
     - name: Run cppcheck
       run: make analyze
