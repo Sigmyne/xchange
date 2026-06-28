@@ -1,5 +1,5 @@
-![Build Status](https://github.com/Sigmyne/xchange/actions/workflows/build.yml/badge.svg)
-![Tests](https://github.com/Sigmyne/xchange/actions/workflows/test.yml/badge.svg)
+![GNU make](https://github.com/Sigmyne/xchange/actions/workflows/gnu.yml/badge.svg)
+![CMake](https://github.com/Sigmyne/xchange/actions/workflows/cmake.yml/badge.svg)
 ![Static Analysis](https://github.com/Sigmyne/xchange/actions/workflows/analyze.yml/badge.svg)
 <a href="https://sigmyne.github.io/xchange/apidoc/html/files.html">
  ![API documentation](https://github.com/Sigmyne/xchange/actions/workflows/dox.yml/badge.svg)

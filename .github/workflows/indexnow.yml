@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: create IndexNow key
         run: echo "${{ secrets.INDEXNOW_KEY }}" > "${{ secrets.INDEXNOW_KEY }}.txt"
-        
+
       - name: IndexNow
         uses: bojieyang/indexnow-action@v3
         with:
@@ -20,4 +20,3 @@ jobs:
           key: ${{ secrets.INDEXNOW_KEY }}
           key-location: 'https://sigmyne.github.io/xchange/${{ secrets.INDEXNOW_KEY }}.txt'
           limit: 200
-
