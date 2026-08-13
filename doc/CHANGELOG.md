@@ -7,11 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased]
+## [1.3.0-rc1] - 2026-08-13
 
-Upcoming feature release, possibly as early as 1 August 2026.
+Upcoming feature release, possibly around 1 September 2026.
 
 ### Fixed
+
+ - #33: `x_snprintf()` to return the actual number of bytes printed, since this is how the library and its 
+   dependencies have used this function.
 
  - CMake `xchangeConfig` to skip requiring math lib for non-Windows platforms in general, since it can fail if the 
    math library is in the build path, but not in the search path, such as for some cross builds (see e.g. the vcpkg 
@@ -34,6 +37,8 @@ Upcoming feature release, possibly as early as 1 August 2026.
  - #32: Changed `boolean` parameter and return types to the equivalent `XBoolean`, to disambiguate the 
    xchange-specific boolean type from other definitions. (Other header may define `boolean` also, and so by choosing
    a more unique type name, we reduce the chance of namespace conflicts.)
+   
+ - #36: Staged GitHub Actions workflows, to fail early and cancel dependent jobs in case of errors.
    
 
 ## [1.2.0] - 2026-06-08

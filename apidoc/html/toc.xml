@@ -261,6 +261,7 @@
           <topic label="__XCHANGE_INTERNAL_API__" href="xchange_8c.html#ac36bd75f87a1614fb477a0fbcd5df1f3"/>
           <topic label="EXPLICIT_PARSE_SPECIAL_DOUBLES" href="xchange_8c.html#a644d78a042d0b3aab5e99ee884cd13a7"/>
           <topic label="x_error" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7"/>
+          <topic label="x_snprintf" href="xchange_8c.html#ab0c1116cf7862434db129b2085f03ed6"/>
           <topic label="x_trace" href="xchange_8c.html#a9b61b8b8b3ef0f7cc0b96ab499265c74"/>
           <topic label="x_trace_null" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31"/>
           <topic label="x_warn" href="xchange_8c.html#af771fbf7ea96f8051db140b1750d3a20"/>

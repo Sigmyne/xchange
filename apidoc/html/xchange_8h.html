@@ -83,7 +83,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="Sigmyne-logo-55x55.png"/></td>
   <td id="projectalign">
-   <div id="projectname">xchange<span id="projectnumber">&#160;v1.2</span>
+   <div id="projectname">xchange<span id="projectnumber">&#160;v1.3</span>
    </div>
    <div id="projectbrief">Structured data exchange for C/C++</div>
   </td>
@@ -340,7 +340,7 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight"><b>XCHANGE_PATCHLEVEL</b>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:aef108c611a8388c435502dfd89c41a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integer sub version of the release. <br /></td></tr>
 <tr class="memitem:a1cda2967190e2d61c5560bf6b43d930d" id="r_a1cda2967190e2d61c5560bf6b43d930d"><td class="memItemLeft"><a id="a1cda2967190e2d61c5560bf6b43d930d" name="a1cda2967190e2d61c5560bf6b43d930d"></a>
-#define&#160;</td><td class="memItemRight"><b>XCHANGE_RELEASE_STRING</b>&#160;&#160;&#160;&quot;-devel&quot;</td></tr>
+#define&#160;</td><td class="memItemRight"><b>XCHANGE_RELEASE_STRING</b>&#160;&#160;&#160;&quot;-rc1&quot;</td></tr>
 <tr class="memdesc:a1cda2967190e2d61c5560bf6b43d930d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additional release information in version, e.g. "-1", or "-rc1". <br /></td></tr>
 <tr class="memitem:a2e8ac004db0f6cb82e1b7a13b79380c5" id="r_a2e8ac004db0f6cb82e1b7a13b79380c5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e8ac004db0f6cb82e1b7a13b79380c5">XCHANGE_VERSION_STRING</a></td></tr>
 <tr class="memdesc:a2e8ac004db0f6cb82e1b7a13b79380c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The version string for this library.  <br /></td></tr>
@@ -459,7 +459,7 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section date"><dt>Date</dt><dd>Mar 14, 2019 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Attila Kovacs </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.2</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.3</dd></dl>
 <p>A Basic set of utilities to allow platform-independent structured data exchange from C/C++. It also includes a JSON parser and emitter implementation. </p>
 </div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
 <a id="a1f298f5039a547cea57a36c2ef616522" name="a1f298f5039a547cea57a36c2ef616522"></a>
@@ -1145,7 +1145,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A field containing a heterogeneous array of entries, or NULL if there was an error. The entries are initially empty, except for their names bearing '.' followed by the 1-based array index, e.g. '.1', '.2'...</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xstruct_8c.html#a0b37b00634177189d5e717e3c84820e3">xCreateMixed1DField()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structXField.html#a5ac083a645d964373f022d03df4849c8">XField::name</a>, <a class="el" href="#a7e4c8b651428f090a441804bd8b7673e">X_FIELD</a>, <a class="el" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31">x_trace_null()</a>, <a class="el" href="xstruct_8c.html#a42e4e75cbf8f721ef4b251c692dcd7cb">xCreateField()</a>, <a class="el" href="xchange_8c.html#abd33468c427ffa1b24c357f652651ae0">xGetElementCount()</a>, and <a class="el" href="xchange_8c.html#a01d730a1a98963816de2dd73e72957a5">xStringCopyOf()</a>.</p>
+<p class="reference">References <a class="el" href="structXField.html#a5ac083a645d964373f022d03df4849c8">XField::name</a>, <a class="el" href="#a7e4c8b651428f090a441804bd8b7673e">X_FIELD</a>, <a class="el" href="xchange_8c.html#ab0c1116cf7862434db129b2085f03ed6">x_snprintf()</a>, <a class="el" href="xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31">x_trace_null()</a>, <a class="el" href="xstruct_8c.html#a42e4e75cbf8f721ef4b251c692dcd7cb">xCreateField()</a>, <a class="el" href="xchange_8c.html#abd33468c427ffa1b24c357f652651ae0">xGetElementCount()</a>, and <a class="el" href="xchange_8c.html#a01d730a1a98963816de2dd73e72957a5">xStringCopyOf()</a>.</p>
 
 </div>
 </div>
@@ -1493,7 +1493,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The aggregated ID, or NULL if both arguments were NULL themselves.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="xstruct_8c.html#acd6af91336f4b5501d0a0e3d5cf88ad3">xSplitID()</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#a923cd66e2074f32817a3468c5617a440">X_SEP</a>, <a class="el" href="#a28120364666ec6054159012a58ba27af">X_SEP_LENGTH</a>, and <a class="el" href="xchange_8c.html#a01d730a1a98963816de2dd73e72957a5">xStringCopyOf()</a>.</p>
+<p class="reference">References <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#a923cd66e2074f32817a3468c5617a440">X_SEP</a>, <a class="el" href="#a28120364666ec6054159012a58ba27af">X_SEP_LENGTH</a>, <a class="el" href="xchange_8c.html#ab0c1116cf7862434db129b2085f03ed6">x_snprintf()</a>, and <a class="el" href="xchange_8c.html#a01d730a1a98963816de2dd73e72957a5">xStringCopyOf()</a>.</p>
 
 </div>
 </div>
@@ -2619,7 +2619,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters written into the destination buffer, not counting the string termination, or -1 if an the essential pointer arguments is NULL.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 
-<p class="reference">References <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#a910ee1c8cd983bf127f7ca2c705d7894">X_MAX_DIMS</a>.</p>
+<p class="reference">References <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="#a910ee1c8cd983bf127f7ca2c705d7894">X_MAX_DIMS</a>, and <a class="el" href="xchange_8c.html#ab0c1116cf7862434db129b2085f03ed6">x_snprintf()</a>.</p>
 
 </div>
 </div>
@@ -2691,7 +2691,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed into the buffer, or -1 if there was an error.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 
-<p class="reference">References <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+<p class="reference">References <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xchange_8c.html#ab0c1116cf7862434db129b2085f03ed6">x_snprintf()</a>.</p>
 
 </div>
 </div>
@@ -2763,7 +2763,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed into the buffer.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 
-<p class="reference">References <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+<p class="reference">References <a class="el" href="xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xchange_8c.html#ab0c1116cf7862434db129b2085f03ed6">x_snprintf()</a>.</p>
 
 </div>
 </div>

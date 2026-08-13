@@ -3,6 +3,7 @@ var xchange_8c =
     [ "__XCHANGE_INTERNAL_API__", "xchange_8c.html#ac36bd75f87a1614fb477a0fbcd5df1f3", null ],
     [ "EXPLICIT_PARSE_SPECIAL_DOUBLES", "xchange_8c.html#a644d78a042d0b3aab5e99ee884cd13a7", null ],
     [ "x_error", "xchange_8c.html#ae73aaf705dc4e7d58dfb0fd81f4805c7", null ],
+    [ "x_snprintf", "xchange_8c.html#ab0c1116cf7862434db129b2085f03ed6", null ],
     [ "x_trace", "xchange_8c.html#a9b61b8b8b3ef0f7cc0b96ab499265c74", null ],
     [ "x_trace_null", "xchange_8c.html#ac39ae03ca89b115d49a12f633522dc31", null ],
     [ "x_warn", "xchange_8c.html#af771fbf7ea96f8051db140b1750d3a20", null ],

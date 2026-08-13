@@ -83,7 +83,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="Sigmyne-logo-55x55.png"/></td>
   <td id="projectalign">
-   <div id="projectname">xchange<span id="projectnumber">&#160;v1.2</span>
+   <div id="projectname">xchange<span id="projectnumber">&#160;v1.3</span>
    </div>
    <div id="projectbrief">Structured data exchange for C/C++</div>
   </td>
@@ -188,6 +188,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae73aaf705dc4e7d58dfb0fd81f4805c7" id="r_ae73aaf705dc4e7d58dfb0fd81f4805c7"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error</a> (int ret, int en, const char *from, const char *desc,...)</td></tr>
+<tr class="memitem:ab0c1116cf7862434db129b2085f03ed6" id="r_ab0c1116cf7862434db129b2085f03ed6"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab0c1116cf7862434db129b2085f03ed6">x_snprintf</a> (char *buf, size_t len, const char *fmt,...)</td></tr>
 <tr class="memitem:a9b61b8b8b3ef0f7cc0b96ab499265c74" id="r_a9b61b8b8b3ef0f7cc0b96ab499265c74"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a9b61b8b8b3ef0f7cc0b96ab499265c74">x_trace</a> (const char *loc, const char *op, int n)</td></tr>
 <tr class="memitem:ac39ae03ca89b115d49a12f633522dc31" id="r_ac39ae03ca89b115d49a12f633522dc31"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#ac39ae03ca89b115d49a12f633522dc31">x_trace_null</a> (const char *loc, const char *op)</td></tr>
 <tr class="memitem:af771fbf7ea96f8051db140b1750d3a20" id="r_af771fbf7ea96f8051db140b1750d3a20"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af771fbf7ea96f8051db140b1750d3a20">x_warn</a> (const char *from, const char *desc,...)</td></tr>
@@ -281,6 +282,47 @@ Variables</h2></td></tr>
 <a class="el" href="#a9b61b8b8b3ef0f7cc0b96ab499265c74">x_trace()</a> </dd></dl>
 
 <p class="reference">References <a class="el" href="#ae861a4336106eb082e7d75dd5a44a207">xDebug</a>.</p>
+
+</div>
+</div>
+<a id="ab0c1116cf7862434db129b2085f03ed6" name="ab0c1116cf7862434db129b2085f03ed6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0c1116cf7862434db129b2085f03ed6">&#9670;&#160;</a></span>x_snprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int x_snprintf </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>fmt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Similar to <span class="tt">snprintf()</span>, expect the return value can never exceed len - 1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>buffer into which to print </td></tr>
+    <tr><td class="paramname">len</td><td>the size of the buffer </td></tr>
+    <tr><td class="paramname">fmt</td><td>the format string</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of characters actually printed, excluding termination. Unlike the standard C snprintf() It shall never exceed len - 1. </dd></dl>
 
 </div>
 </div>
@@ -923,7 +965,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters written into the destination buffer, not counting the string termination, or -1 if an the essential pointer arguments is NULL.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 
-<p class="reference">References <a class="el" href="#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="xchange_8h.html#a910ee1c8cd983bf127f7ca2c705d7894">X_MAX_DIMS</a>.</p>
+<p class="reference">References <a class="el" href="#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, <a class="el" href="xchange_8h.html#a910ee1c8cd983bf127f7ca2c705d7894">X_MAX_DIMS</a>, and <a class="el" href="#ab0c1116cf7862434db129b2085f03ed6">x_snprintf()</a>.</p>
 
 </div>
 </div>
@@ -995,7 +1037,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed into the buffer, or -1 if there was an error.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 
-<p class="reference">References <a class="el" href="#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+<p class="reference">References <a class="el" href="#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#ab0c1116cf7862434db129b2085f03ed6">x_snprintf()</a>.</p>
 
 </div>
 </div>
@@ -1067,7 +1109,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Number of characters printed into the buffer.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.2 </dd></dl>
 
-<p class="reference">References <a class="el" href="#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>.</p>
+<p class="reference">References <a class="el" href="#ae73aaf705dc4e7d58dfb0fd81f4805c7">x_error()</a>, and <a class="el" href="#ab0c1116cf7862434db129b2085f03ed6">x_snprintf()</a>.</p>
 
 </div>
 </div>
