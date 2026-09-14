@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased]
+
+Upcoming bug fix release, expected around 1 December 2026.
+
+### Fixed
+
+ - #38: Thread-safe one-time mutex initialization (in a portable way).
+
+
 ## [1.3.0] - 2026-08-27
 
 Feature release, possibly around 1 September 2026.
