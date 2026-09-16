@@ -15,7 +15,7 @@ Upcoming bug fix release, expected around 1 December 2026.
 
  - #38: Thread-safe one-time mutex initialization (in a portable way).
 
- - #39: Fixed memleak in `ParseField()` when the parsing of a string value fails. (thanks to jokeez)
+ - #39: Fixed memleak in `ParseField()` when the parsing of field name fails. (thanks to jokeez)
  
 
 ## [1.3.0] - 2026-08-27
