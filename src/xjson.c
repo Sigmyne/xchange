@@ -548,6 +548,11 @@ static XField *ParseField(char **pos, int *lineNumber) {
   x_check_alloc(f);
 
   f->name = ParseString(pos, lineNumber);
+  if(!f->name) {
+    xDestroyField(f);
+    return NULL;
+  }
+
   *pos = SkipSpaces(*pos, lineNumber);
 
   if(**pos != ':') {
